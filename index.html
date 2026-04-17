@@ -602,6 +602,7 @@
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#promocion">Promoción</a></li>
+      <li><a href="#configurador">Arma tu Kit</a></li>
       <li><a href="#cobertura">Cobertura</a></li>
       <li><a href="#proceso">Proceso</a></li>
       <li><a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20cámaras%20de%20seguridad." class="nav-cta">Cotizar Ahora</a></li>
@@ -961,6 +962,521 @@
     </div>
   </div>
 </section>
+
+<!-- CONFIGURADOR DE KIT -->
+<section id="configurador" style="background: var(--bg); border-top: 1px solid var(--border2);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="tag">Arma tu Kit</div>
+      <h2>Configura tu sistema <span class="accent">a medida</span></h2>
+      <p>Selecciona solo lo que necesitas. El precio se calcula automáticamente.</p>
+    </div>
+
+    <div id="kit-builder" class="fade-up">
+
+      <!-- PASO 1: Situación del cliente -->
+      <div class="kb-step" id="step-situacion">
+        <div class="kb-step-header">
+          <span class="kb-step-num">01</span>
+          <h3>¿Cuál es tu situación?</h3>
+        </div>
+        <div class="kb-options-grid">
+          <div class="kb-option" onclick="setSituacion('todo')" data-val="todo">
+            <div class="kb-option-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div class="kb-option-title">Necesito todo</div>
+            <div class="kb-option-desc">No tengo nada, quiero un sistema completo desde cero</div>
+          </div>
+          <div class="kb-option" onclick="setSituacion('sin-camaras')" data-val="sin-camaras">
+            <div class="kb-option-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.9L15 14M3 8h12v8H3z"/></svg>
+            </div>
+            <div class="kb-option-title">Tengo DVR, necesito cámaras</div>
+            <div class="kb-option-desc">Ya tengo grabador, solo necesito agregar o reemplazar cámaras</div>
+          </div>
+          <div class="kb-option" onclick="setSituacion('sin-dvr')" data-val="sin-dvr">
+            <div class="kb-option-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h.01M10 12h.01"/><circle cx="17" cy="12" r="2"/></svg>
+            </div>
+            <div class="kb-option-title">Tengo cámaras, necesito DVR</div>
+            <div class="kb-option-desc">Ya tengo cámaras instaladas, necesito grabador</div>
+          </div>
+          <div class="kb-option" onclick="setSituacion('accesorios')" data-val="accesorios">
+            <div class="kb-option-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <div class="kb-option-title">Solo accesorios</div>
+            <div class="kb-option-desc">Necesito baluns, transformadores, conectores u otros accesorios</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASO 2: Cámaras -->
+      <div class="kb-step kb-hidden" id="step-camaras">
+        <div class="kb-step-header">
+          <span class="kb-step-num">02</span>
+          <h3>Selecciona tus cámaras</h3>
+        </div>
+        <div class="kb-products-grid">
+          <div class="kb-product" data-id="cam-hd" data-precio="25000" data-nombre="Cámara HD 1080p" data-tipo="camara">
+            <div class="kb-prod-info">
+              <div class="kb-prod-name">Cámara HD 1080p</div>
+              <div class="kb-prod-desc">Interior/Exterior · Visión nocturna 20m</div>
+              <div class="kb-prod-price">$25.000 c/u</div>
+            </div>
+            <div class="kb-qty">
+              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
+              <span class="kb-qty-val">0</span>
+              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
+            </div>
+          </div>
+          <div class="kb-product" data-id="cam-4k" data-precio="45000" data-nombre="Cámara 4K Ultra HD" data-tipo="camara">
+            <div class="kb-prod-info">
+              <div class="kb-prod-name">Cámara 4K Ultra HD</div>
+              <div class="kb-prod-desc">Exterior · Visión nocturna 40m · Gran angular</div>
+              <div class="kb-prod-price">$45.000 c/u</div>
+            </div>
+            <div class="kb-qty">
+              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
+              <span class="kb-qty-val">0</span>
+              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
+            </div>
+          </div>
+          <div class="kb-product" data-id="cam-domo" data-precio="28000" data-nombre="Cámara Domo Interior" data-tipo="camara">
+            <div class="kb-prod-info">
+              <div class="kb-prod-name">Cámara Domo Interior</div>
+              <div class="kb-prod-desc">Techo · Discreta · 360° · Antivandálica</div>
+              <div class="kb-prod-price">$28.000 c/u</div>
+            </div>
+            <div class="kb-qty">
+              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
+              <span class="kb-qty-val">0</span>
+              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
+            </div>
+          </div>
+          <div class="kb-product" data-id="cam-ptz" data-precio="95000" data-nombre="Cámara PTZ Motorizada" data-tipo="camara">
+            <div class="kb-prod-info">
+              <div class="kb-prod-name">Cámara PTZ Motorizada</div>
+              <div class="kb-prod-desc">Zoom óptico · Seguimiento automático · Control remoto</div>
+              <div class="kb-prod-price">$95.000 c/u</div>
+            </div>
+            <div class="kb-qty">
+              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
+              <span class="kb-qty-val">0</span>
+              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASO 3: DVR/NVR -->
+      <div class="kb-step kb-hidden" id="step-dvr">
+        <div class="kb-step-header">
+          <span class="kb-step-num" id="dvr-stepnum">03</span>
+          <h3>Selecciona tu grabador</h3>
+        </div>
+        <div class="kb-products-grid">
+          <div class="kb-product kb-single" data-id="dvr-4ch" data-precio="65000" data-nombre="DVR 4 canales" data-tipo="dvr" onclick="selectSingle(this)">
+            <div class="kb-prod-info">
+              <div class="kb-prod-name">DVR 4 canales</div>
+              <div class="kb-prod-desc">Para hasta 4 cámaras · Acceso remoto app</div>
+              <div class="kb-prod-price">$65.000</div>
+            </div>
+            <div class="kb-radio"></div>
+          </div>
+          <div class="kb-product kb-single" data-id="dvr-8ch" data-precio="89000" data-nombre="DVR 8 canales" data-tipo="dvr" onclick="selectSingle(this)">
+            <div class="kb-prod-info">
+              <div class="kb-prod-name">DVR 8 canales</div>
+              <div class="kb-prod-desc">Para hasta 8 cámaras · H.265+ · App móvil</div>
+              <div class="kb-prod-price">$89.000</div>
+            </div>
+            <div class="kb-radio"></div>
+          </div>
+          <div class="kb-product kb-single" data-id="dvr-16ch" data-precio="145000" data-nombre="DVR 16 canales" data-tipo="dvr" onclick="selectSingle(this)">
+            <div class="kb-prod-info">
+              <div class="kb-prod-name">DVR 16 canales</div>
+              <div class="kb-prod-desc">Para hasta 16 cámaras · Ideal negocios</div>
+              <div class="kb-prod-price">$145.000</div>
+            </div>
+            <div class="kb-radio"></div>
+          </div>
+          <div class="kb-product kb-single" data-id="nvr-8ch" data-precio="110000" data-nombre="NVR 8 canales (IP)" data-tipo="dvr" onclick="selectSingle(this)">
+            <div class="kb-prod-info">
+              <div class="kb-prod-name">NVR 8 canales (IP)</div>
+              <div class="kb-prod-desc">Para cámaras IP · Red WiFi · Alta resolución</div>
+              <div class="kb-prod-price">$110.000</div>
+            </div>
+            <div class="kb-radio"></div>
+          </div>
+        </div>
+
+        <!-- Disco duro -->
+        <div style="margin-top: 24px;">
+          <div class="kb-step-header" style="margin-bottom: 14px;">
+            <span class="kb-step-num" style="font-size: 12px; padding: 4px 10px;">+</span>
+            <h3 style="font-size: 17px;">¿Necesitas disco duro?</h3>
+          </div>
+          <div class="kb-options-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
+            <div class="kb-option kb-small kb-single-dd" onclick="selectDD(this)" data-id="dd-no" data-precio="0" data-nombre="">
+              <div class="kb-option-title">Sin disco</div>
+              <div class="kb-option-desc">Ya tengo o no necesito</div>
+            </div>
+            <div class="kb-option kb-small kb-single-dd" onclick="selectDD(this)" data-id="dd-500" data-precio="28000" data-nombre="Disco Duro 500GB">
+              <div class="kb-option-title">500 GB</div>
+              <div class="kb-option-desc">~7 días · 4 cámaras · $28.000</div>
+            </div>
+            <div class="kb-option kb-small kb-single-dd" onclick="selectDD(this)" data-id="dd-1tb" data-precio="45000" data-nombre="Disco Duro 1TB">
+              <div class="kb-option-title">1 TB</div>
+              <div class="kb-option-desc">~15 días · 4 cámaras · $45.000</div>
+            </div>
+            <div class="kb-option kb-small kb-single-dd" onclick="selectDD(this)" data-id="dd-2tb" data-precio="72000" data-nombre="Disco Duro 2TB">
+              <div class="kb-option-title">2 TB</div>
+              <div class="kb-option-desc">~30 días · 4 cámaras · $72.000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASO 4: Accesorios -->
+      <div class="kb-step kb-hidden" id="step-accesorios">
+        <div class="kb-step-header">
+          <span class="kb-step-num" id="acc-stepnum">04</span>
+          <h3>Accesorios <span style="font-size:13px; font-weight:400; color: var(--text3); font-family: 'DM Sans', sans-serif;">(opcional)</span></h3>
+        </div>
+        <div class="kb-products-grid">
+          <div class="kb-product" data-id="balun" data-precio="3500" data-nombre="Balun pasivo (par)" data-tipo="accesorio">
+            <div class="kb-prod-info">
+              <div class="kb-prod-name">Balun pasivo (par)</div>
+              <div class="kb-prod-desc">Transmite señal HD por cable UTP · Par Tx/Rx</div>
+              <div class="kb-prod-price">$3.500 el par</div>
+            </div>
+            <div class="kb-qty">
+              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
+              <span class="kb-qty-val">0</span>
+              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
+            </div>
+          </div>
+          <div class="kb-product" data-id="transformador" data-precio="5500" data-nombre="Transformador 12V 1A" data-tipo="accesorio">
+            <div class="kb-prod-info">
+              <div class="kb-prod-name">Transformador 12V 1A</div>
+              <div class="kb-prod-desc">Fuente de poder individual para cámara</div>
+              <div class="kb-prod-price">$5.500 c/u</div>
+            </div>
+            <div class="kb-qty">
+              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
+              <span class="kb-qty-val">0</span>
+              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
+            </div>
+          </div>
+          <div class="kb-product" data-id="fuente-central" data-precio="18000" data-nombre="Fuente central 5A" data-tipo="accesorio">
+            <div class="kb-prod-info">
+              <div class="kb-prod-name">Fuente central 5A</div>
+              <div class="kb-prod-desc">Alimenta hasta 4 cámaras desde un punto</div>
+              <div class="kb-prod-price">$18.000 c/u</div>
+            </div>
+            <div class="kb-qty">
+              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
+              <span class="kb-qty-val">0</span>
+              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
+            </div>
+          </div>
+          <div class="kb-product" data-id="conector-dc" data-precio="800" data-nombre="Conector DC hembra" data-tipo="accesorio">
+            <div class="kb-prod-info">
+              <div class="kb-prod-name">Conector DC hembra</div>
+              <div class="kb-prod-desc">Para empalme de alimentación de cámaras</div>
+              <div class="kb-prod-price">$800 c/u</div>
+            </div>
+            <div class="kb-qty">
+              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
+              <span class="kb-qty-val">0</span>
+              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
+            </div>
+          </div>
+          <div class="kb-product" data-id="cable-coaxial" data-precio="12000" data-nombre="Cable coaxial 100m" data-tipo="accesorio">
+            <div class="kb-prod-info">
+              <div class="kb-prod-name">Cable coaxial 100m</div>
+              <div class="kb-prod-desc">Rollo 100m · Compatible HD y 4K · Apantallado</div>
+              <div class="kb-prod-price">$12.000 el rollo</div>
+            </div>
+            <div class="kb-qty">
+              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
+              <span class="kb-qty-val">0</span>
+              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
+            </div>
+          </div>
+          <div class="kb-product" data-id="instalacion" data-precio="35000" data-nombre="Instalación profesional" data-tipo="accesorio">
+            <div class="kb-prod-info">
+              <div class="kb-prod-name">Instalación profesional</div>
+              <div class="kb-prod-desc">Mano de obra · Cableado · Configuración app</div>
+              <div class="kb-prod-price">Desde $35.000</div>
+            </div>
+            <div class="kb-qty">
+              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
+              <span class="kb-qty-val">0</span>
+              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESUMEN DEL KIT -->
+      <div class="kb-summary kb-hidden" id="kb-summary">
+        <div class="kb-summary-header">
+          <h3>Tu Kit Personalizado</h3>
+          <button onclick="resetKit()" class="kb-reset">Armar de nuevo</button>
+        </div>
+        <div id="kb-items-list"></div>
+        <div class="kb-total-row">
+          <span>Total estimado</span>
+          <span id="kb-total-price">$0</span>
+        </div>
+        <p style="font-size: 12px; color: var(--text3); margin-top: 8px;">* Precios de referencia. El valor final incluye instalación y puede variar según comuna y complejidad.</p>
+        <a id="kb-wa-btn" href="#" class="btn-primary" style="margin-top: 20px; display: inline-flex; justify-content: center; width: 100%; font-size: 16px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.571a.75.75 0 00.932.932l5.724-1.467A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22.5A10.456 10.456 0 016.37 20.82l-.41-.243-4.252 1.09 1.09-4.152-.267-.432A10.46 10.46 0 011.5 12C1.5 6.21 6.21 1.5 12 1.5S22.5 6.21 22.5 12 17.79 22.5 12 22.5z"/></svg>
+          Enviar Kit por WhatsApp
+        </a>
+      </div>
+
+    </div><!-- /kit-builder -->
+  </div>
+</section>
+
+<style>
+  #kit-builder { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+  .kb-hidden { display: none !important; }
+  .kb-step { background: var(--bg2); border: 1px solid var(--border2); border-radius: 14px; padding: 28px; }
+  .kb-step-header { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+  .kb-step-num {
+    font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 700;
+    letter-spacing: 0.1em; color: var(--accent);
+    background: var(--accent-dim); border: 1px solid var(--border);
+    padding: 5px 12px; border-radius: 100px; white-space: nowrap;
+  }
+  .kb-step-header h3 { font-size: 20px; font-weight: 600; letter-spacing: 0.02em; }
+  .kb-options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .kb-option {
+    background: var(--bg); border: 1px solid var(--border2);
+    border-radius: 10px; padding: 20px 18px; cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .kb-option:hover { border-color: var(--border); background: var(--surface); }
+  .kb-option.selected { border-color: var(--accent); background: var(--accent-dim); }
+  .kb-option-icon { margin-bottom: 12px; }
+  .kb-option-icon svg { width: 28px; height: 28px; stroke: var(--accent); }
+  .kb-option-title { font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .kb-option-desc { font-size: 12px; color: var(--text3); line-height: 1.45; }
+  .kb-option.kb-small { padding: 14px 16px; }
+  .kb-option.kb-small .kb-option-title { font-size: 15px; }
+
+  .kb-products-grid { display: flex; flex-direction: column; gap: 10px; }
+  .kb-product {
+    background: var(--bg); border: 1px solid var(--border2);
+    border-radius: 10px; padding: 16px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    transition: border-color 0.2s;
+  }
+  .kb-product:hover { border-color: var(--border); }
+  .kb-product.selected { border-color: var(--accent); background: var(--accent-dim); }
+  .kb-prod-name { font-family: 'Rajdhani', sans-serif; font-size: 17px; font-weight: 600; margin-bottom: 3px; }
+  .kb-prod-desc { font-size: 12px; color: var(--text3); margin-bottom: 6px; }
+  .kb-prod-price { font-size: 14px; font-weight: 500; color: var(--accent); }
+  .kb-qty { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .kb-qty-btn {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--surface2); border: 1px solid var(--border2);
+    color: var(--text); font-size: 18px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+    line-height: 1;
+  }
+  .kb-qty-btn:hover { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+  .kb-qty-val { font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 700; min-width: 24px; text-align: center; }
+  .kb-radio {
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 2px solid var(--border2); flex-shrink: 0;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .kb-product.selected .kb-radio { border-color: var(--accent); background: var(--accent); }
+  .kb-product.kb-single { cursor: pointer; }
+
+  .kb-summary {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px;
+  }
+  .kb-summary-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .kb-summary-header h3 { font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700; }
+  .kb-reset {
+    background: transparent; border: 1px solid var(--border2); color: var(--text3);
+    font-size: 13px; padding: 6px 14px; border-radius: 6px; cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .kb-reset:hover { color: var(--text); border-color: var(--border); }
+  .kb-item-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid var(--border2);
+    font-size: 14px;
+  }
+  .kb-item-row:last-child { border-bottom: none; }
+  .kb-item-name { color: var(--text2); }
+  .kb-item-price { color: var(--text); font-weight: 500; }
+  .kb-total-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 16px; padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700;
+  }
+  #kb-total-price { color: var(--accent); font-size: 28px; }
+
+  @media (max-width: 480px) {
+    .kb-step { padding: 18px 14px; }
+    .kb-options-grid { grid-template-columns: 1fr 1fr; }
+    .kb-product { flex-wrap: wrap; }
+    .kb-summary { padding: 18px 14px; }
+  }
+  @media (max-width: 360px) {
+    .kb-options-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+(function() {
+  let situacion = null;
+  const stepNums = { camaras: 2, dvr: 3, accesorios: 4 };
+
+  window.setSituacion = function(val) {
+    situacion = val;
+    document.querySelectorAll('#step-situacion .kb-option').forEach(o => {
+      o.classList.toggle('selected', o.dataset.val === val);
+    });
+    // Resetear productos
+    document.querySelectorAll('.kb-qty-val').forEach(el => el.textContent = '0');
+    document.querySelectorAll('.kb-product.kb-single').forEach(el => el.classList.remove('selected'));
+    document.querySelectorAll('.kb-option.kb-single-dd').forEach(el => el.classList.remove('selected'));
+    document.getElementById('kb-summary').classList.add('kb-hidden');
+
+    const showCam = val === 'todo' || val === 'sin-camaras';
+    const showDvr = val === 'todo' || val === 'sin-dvr';
+    const showAcc = true;
+
+    toggleStep('step-camaras', showCam);
+    toggleStep('step-dvr', showDvr);
+    toggleStep('step-accesorios', showAcc);
+
+    // renumerar pasos
+    let n = 2;
+    if (showCam) { document.querySelector('#step-camaras .kb-step-num').textContent = '0' + n++; }
+    if (showDvr) { document.getElementById('dvr-stepnum').textContent = '0' + n++; }
+    document.getElementById('acc-stepnum').textContent = '0' + n;
+
+    updateSummary();
+    document.getElementById('kb-summary').classList.remove('kb-hidden');
+    setTimeout(() => document.getElementById('kb-summary').scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+  };
+
+  function toggleStep(id, show) {
+    document.getElementById(id).classList.toggle('kb-hidden', !show);
+  }
+
+  window.changeQty = function(btn, delta) {
+    const qtyEl = btn.parentElement.querySelector('.kb-qty-val');
+    let val = parseInt(qtyEl.textContent) + delta;
+    if (val < 0) val = 0;
+    qtyEl.textContent = val;
+    updateSummary();
+  };
+
+  window.selectSingle = function(el) {
+    el.closest('.kb-products-grid').querySelectorAll('.kb-product.kb-single').forEach(p => p.classList.remove('selected'));
+    el.classList.add('selected');
+    updateSummary();
+  };
+
+  window.selectDD = function(el) {
+    document.querySelectorAll('.kb-option.kb-single-dd').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    updateSummary();
+  };
+
+  window.resetKit = function() {
+    situacion = null;
+    document.querySelectorAll('#step-situacion .kb-option').forEach(o => o.classList.remove('selected'));
+    document.querySelectorAll('.kb-qty-val').forEach(el => el.textContent = '0');
+    document.querySelectorAll('.kb-product.kb-single').forEach(el => el.classList.remove('selected'));
+    document.querySelectorAll('.kb-option.kb-single-dd').forEach(el => el.classList.remove('selected'));
+    ['step-camaras','step-dvr','step-accesorios'].forEach(id => document.getElementById(id).classList.add('kb-hidden'));
+    document.getElementById('kb-summary').classList.add('kb-hidden');
+    document.getElementById('step-situacion').scrollIntoView({ behavior: 'smooth' });
+  };
+
+  function updateSummary() {
+    const items = [];
+    let total = 0;
+
+    // Cámaras (qty)
+    document.querySelectorAll('#step-camaras .kb-product:not(.kb-hidden)').forEach(prod => {
+      if (prod.closest('.kb-hidden')) return;
+      const qty = parseInt(prod.querySelector('.kb-qty-val').textContent);
+      if (qty > 0) {
+        const precio = parseInt(prod.dataset.precio);
+        const subtotal = precio * qty;
+        total += subtotal;
+        items.push({ nombre: prod.dataset.nombre + ' x' + qty, precio: subtotal });
+      }
+    });
+
+    // DVR (single)
+    const dvrSel = document.querySelector('#step-dvr .kb-product.kb-single.selected');
+    if (dvrSel && !document.getElementById('step-dvr').classList.contains('kb-hidden')) {
+      const precio = parseInt(dvrSel.dataset.precio);
+      total += precio;
+      items.push({ nombre: dvrSel.dataset.nombre, precio });
+    }
+
+    // Disco duro
+    const ddSel = document.querySelector('.kb-option.kb-single-dd.selected');
+    if (ddSel && ddSel.dataset.precio > 0 && !document.getElementById('step-dvr').classList.contains('kb-hidden')) {
+      const precio = parseInt(ddSel.dataset.precio);
+      total += precio;
+      items.push({ nombre: ddSel.dataset.nombre, precio });
+    }
+
+    // Accesorios (qty)
+    document.querySelectorAll('#step-accesorios .kb-product:not(.kb-hidden)').forEach(prod => {
+      if (prod.closest('.kb-hidden')) return;
+      const qty = parseInt(prod.querySelector('.kb-qty-val').textContent);
+      if (qty > 0) {
+        const precio = parseInt(prod.dataset.precio);
+        const subtotal = precio * qty;
+        total += subtotal;
+        items.push({ nombre: prod.dataset.nombre + ' x' + qty, precio: subtotal });
+      }
+    });
+
+    // Render lista
+    const listEl = document.getElementById('kb-items-list');
+    if (items.length === 0) {
+      listEl.innerHTML = '<div class="kb-item-row"><span class="kb-item-name" style="color: var(--text3);">Selecciona productos para ver el resumen</span></div>';
+    } else {
+      listEl.innerHTML = items.map(i =>
+        `<div class="kb-item-row"><span class="kb-item-name">${i.nombre}</span><span class="kb-item-price">$${i.precio.toLocaleString('es-CL')}</span></div>`
+      ).join('');
+    }
+
+    document.getElementById('kb-total-price').textContent = '$' + total.toLocaleString('es-CL');
+
+    // Construir mensaje WhatsApp
+    let msg = 'Hola, armé mi kit en su web y quiero cotizar:%0A%0A';
+    if (items.length > 0) {
+      items.forEach(i => { msg += '• ' + i.nombre + ' — $' + i.precio.toLocaleString('es-CL') + '%0A'; });
+      msg += '%0ATotal estimado: $' + total.toLocaleString('es-CL') + '%0A%0A¿Pueden confirmarme el precio final con instalación?';
+    } else {
+      msg += 'Estoy armando mi kit, ¿pueden ayudarme?';
+    }
+    document.getElementById('kb-wa-btn').href = 'https://api.whatsapp.com/send?phone=56984442165&text=' + msg;
+  }
+})();
+</script>
 
 <!-- FAQ -->
 <section style="background: var(--bg2); border-top: 1px solid var(--border2);">
