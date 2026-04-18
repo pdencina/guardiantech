@@ -127,6 +127,42 @@
     }
     .nav-cta:hover { opacity: 0.85 !important; }
 
+    /* HAMBURGUESA */
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 6px; background: none; border: none;
+    }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile-menu {
+      display: none; position: fixed;
+      top: 57px; left: 0; right: 0; z-index: 99;
+      background: rgba(9,12,16,0.98); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border2);
+      padding: 12px 24px 24px; flex-direction: column; gap: 0;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      color: var(--text2); text-decoration: none; font-size: 16px;
+      padding: 14px 0; border-bottom: 1px solid var(--border2);
+      transition: color 0.2s; display: block;
+    }
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+    .nav-mobile-menu a:hover { color: var(--text); }
+    .nav-mobile-cta {
+      margin-top: 14px !important; border-bottom: none !important;
+      background: var(--accent); color: #000 !important;
+      text-align: center; border-radius: 8px;
+      padding: 14px !important; font-weight: 500;
+    }
+    @media (max-width: 768px) { .nav-hamburger { display: flex; } }
+
     /* ─── HERO ─── */
     .hero {
       min-height: 100vh;
@@ -607,8 +643,32 @@
       <li><a href="#proceso">Proceso</a></li>
       <li><a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20cámaras%20de%20seguridad." class="nav-cta">Cotizar Ahora</a></li>
     </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<div class="nav-mobile-menu" id="mobile-menu">
+  <a href="#servicios" onclick="closeMenu()">Servicios</a>
+  <a href="#promocion" onclick="closeMenu()">Promoción</a>
+  <a href="#configurador" onclick="closeMenu()">Arma tu Kit</a>
+  <a href="#cobertura" onclick="closeMenu()">Cobertura</a>
+  <a href="#proceso" onclick="closeMenu()">Proceso</a>
+  <a href="#" onclick="closeMenu()">FAQ</a>
+  <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20cámaras%20de%20seguridad." class="nav-mobile-cta">Cotizar por WhatsApp</a>
+</div>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobile-menu').classList.remove('open');
+  }
+</script>
 
 <!-- HERO -->
 <section class="hero">
