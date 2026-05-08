@@ -630,26 +630,37 @@ function showPage(id, el) {
 
 // ══ CATÁLOGO ══
 let catalogo = [
-  {id:'cam-hd',   nombre:'Cámara HD 1080p Bullet/Domo',  categoria:'Cámaras',       precio:42000},
-  {id:'cam-4k',   nombre:'Cámara 4K 8MP Exterior',        categoria:'Cámaras',       precio:85000},
-  {id:'cam-domo', nombre:'Cámara Domo Interior',           categoria:'Cámaras',       precio:40000},
-  {id:'cam-ptz',  nombre:'Cámara PTZ Motorizada',          categoria:'Cámaras',       precio:180000},
-  {id:'dvr-4',    nombre:'DVR/XVR 4 canales',              categoria:'Grabadores',    precio:75000},
-  {id:'dvr-8',    nombre:'DVR/XVR 8 canales',              categoria:'Grabadores',    precio:110000},
-  {id:'dvr-16',   nombre:'DVR/XVR 16 canales',             categoria:'Grabadores',    precio:190000},
-  {id:'dvr-32',   nombre:'DVR/XVR 32 canales',             categoria:'Grabadores',    precio:320000},
-  {id:'nvr-8',    nombre:'NVR 8 canales IP',               categoria:'Grabadores',    precio:135000},
-  {id:'dd-500',   nombre:'Disco Duro CCTV 500GB',          categoria:'Almacenamiento',precio:40000},
-  {id:'dd-1tb',   nombre:'Disco Duro CCTV 1TB',            categoria:'Almacenamiento',precio:62000},
-  {id:'dd-2tb',   nombre:'Disco Duro CCTV 2TB',            categoria:'Almacenamiento',precio:96000},
-  {id:'balun',    nombre:'Balun pasivo (par Tx/Rx)',        categoria:'Accesorios',    precio:4500},
-  {id:'transf',   nombre:'Transformador 12V 1A',            categoria:'Accesorios',    precio:7500},
-  {id:'fuente5a', nombre:'Fuente central 5A (4 cámaras)',  categoria:'Accesorios',    precio:21000},
-  {id:'cable100', nombre:'Cable coaxial 100m',              categoria:'Accesorios',    precio:18000},
-  {id:'condc',    nombre:'Conector DC hembra',              categoria:'Accesorios',    precio:900},
-  {id:'inst',     nombre:'Instalación profesional',         categoria:'Servicio',      precio:45000},
-  {id:'videop',   nombre:'Video portero IP',                categoria:'Otros',         precio:95000},
-  {id:'acceso',   nombre:'Control de acceso RFID',          categoria:'Otros',         precio:85000},
+  // CÁMARAS
+  {id:'cam-hd',    nombre:'Cámara HD 1080p Bullet/Domo',       categoria:'Cámaras',        precio:18000},
+  {id:'cam-4k',    nombre:'Cámara 4K 8MP Exterior',             categoria:'Cámaras',        precio:38000},
+  {id:'cam-domo',  nombre:'Cámara Domo Interior HD',            categoria:'Cámaras',        precio:16000},
+  {id:'cam-color', nombre:'Cámara Full Color Visión Nocturna',  categoria:'Cámaras',        precio:24000},
+  {id:'cam-ptz',   nombre:'Cámara PTZ Motorizada',              categoria:'Cámaras',        precio:95000},
+  // GRABADORES
+  {id:'dvr-4',     nombre:'DVR/XVR 4 canales',                  categoria:'Grabadores',     precio:55000},
+  {id:'dvr-8',     nombre:'DVR/XVR 8 canales',                  categoria:'Grabadores',     precio:85000},
+  {id:'dvr-16',    nombre:'DVR/XVR 16 canales',                 categoria:'Grabadores',     precio:145000},
+  {id:'dvr-32',    nombre:'DVR/XVR 32 canales',                 categoria:'Grabadores',     precio:280000},
+  {id:'nvr-8',     nombre:'NVR 8 canales IP',                   categoria:'Grabadores',     precio:110000},
+  // ALMACENAMIENTO
+  {id:'dd-500',    nombre:'Disco Duro CCTV 500GB',              categoria:'Almacenamiento', precio:28000},
+  {id:'dd-1tb',    nombre:'Disco Duro CCTV 1TB',                categoria:'Almacenamiento', precio:45000},
+  {id:'dd-2tb',    nombre:'Disco Duro CCTV 2TB',                categoria:'Almacenamiento', precio:72000},
+  // ACCESORIOS
+  {id:'balun',     nombre:'Balun pasivo (par Tx/Rx)',            categoria:'Accesorios',     precio:3500},
+  {id:'transf',    nombre:'Transformador 12V 1A',                categoria:'Accesorios',     precio:5500},
+  {id:'fuente5a',  nombre:'Fuente central 5A (4 cámaras)',      categoria:'Accesorios',     precio:16000},
+  {id:'cable100',  nombre:'Cable coaxial 100m',                  categoria:'Accesorios',     precio:14000},
+  {id:'condc',     nombre:'Conector DC hembra',                  categoria:'Accesorios',     precio:800},
+  // SERVICIO
+  {id:'inst-cam',  nombre:'Instalación por cámara',             categoria:'Servicio',       precio:15000},
+  {id:'inst-dvr',  nombre:'Instalación DVR + configuración app',categoria:'Servicio',       precio:25000},
+  {id:'inst-full', nombre:'Instalación completa (kit ≤4 cám)',  categoria:'Servicio',       precio:45000},
+  {id:'inst-full8',nombre:'Instalación completa (kit 5–8 cám)', categoria:'Servicio',       precio:70000},
+  {id:'mantenc',   nombre:'Mantención anual del sistema',        categoria:'Servicio',       precio:35000},
+  // OTROS
+  {id:'videop',    nombre:'Video portero IP',                    categoria:'Otros',          precio:65000},
+  {id:'acceso',    nombre:'Control de acceso RFID',              categoria:'Otros',          precio:75000},
 ];
 
 // ══ ESTADO ══
