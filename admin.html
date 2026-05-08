@@ -535,6 +535,9 @@
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                   Descargar PDF
                 </button>
+                <button onclick="limpiarFormulario()" style="background:transparent;border:1px solid var(--border2);color:var(--text3);font-size:13px;padding:10px;border-radius:var(--radius);cursor:pointer;transition:color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text3)'">
+                  🗑 Nueva cotización
+                </button>
               </div>
             </div>
           </div>
@@ -557,7 +560,7 @@
                 <th>Total</th>
                 <th>Fecha</th>
                 <th>Estado</th>
-                <th>Acción</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody id="hist-body">
@@ -1023,19 +1026,45 @@ function generarPDF() {
 
 // ══════════ HISTORIAL ══════════
 function guardarEnHistorial(estado) {
-  const nombre = document.getElementById('c-nombre').value || 'Cliente';
-  const tipo = document.getElementById('c-tipo').value;
-  const { total } = calcTotales();
-  const nro = getNroCot();
+  const nombre   = document.getElementById('c-nombre').value || 'Cliente';
+  const rut      = document.getElementById('c-rut').value || '—';
+  const tel      = document.getElementById('c-telefono').value || '—';
+  const email    = document.getElementById('c-email').value || '—';
+  const tipo     = document.getElementById('c-tipo').value;
+  const comuna   = document.getElementById('c-comuna').value || '—';
+  const dir      = document.getElementById('c-direccion').value || '—';
+  const validez  = document.getElementById('c-validez').value;
+  const inst     = document.getElementById('c-instalacion').value;
+  const notas    = document.getElementById('c-notas').value || '';
+  const { neto, iva, total } = calcTotales();
+  const nro   = getNroCot();
   const fecha = new Date().toLocaleDateString('es-CL');
 
+  // Guardar snapshot completo de la cotización
+  const snap = {
+    nro, nombre, rut, tel, email, tipo, comuna, dir,
+    validez, inst, notas, neto, iva, total, fecha, estado,
+    items: JSON.parse(JSON.stringify(itemsCot)) // copia profunda
+  };
+
   const hist = JSON.parse(localStorage.getItem('gt-hist') || '[]');
-  hist.unshift({ nro, nombre, tipo, total, fecha, estado });
+  // Evitar duplicados del mismo nro
+  const idx = hist.findIndex(h => h.nro === nro);
+  if (idx >= 0) { hist[idx] = snap; } else { hist.unshift(snap); }
   localStorage.setItem('gt-hist', JSON.stringify(hist));
 
   contadorCot++;
   localStorage.setItem('gt-contador', contadorCot);
+  // NO limpiar itemsCot aquí — el usuario decide cuándo limpiar
+}
+
+function limpiarFormulario() {
+  if (!confirm('¿Limpiar formulario para una nueva cotización?')) return;
   itemsCot = [];
+  ['c-nombre','c-rut','c-telefono','c-email','c-comuna','c-direccion','c-notas'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
   renderProductos();
 }
 
@@ -1043,20 +1072,150 @@ function renderHistorial() {
   const hist = JSON.parse(localStorage.getItem('gt-hist') || '[]');
   const tbody = document.getElementById('hist-body');
   if (hist.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--text3); padding:32px;">No hay cotizaciones aún</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; color:var(--text3); padding:32px;">No hay cotizaciones aún</td></tr>';
     return;
   }
-  tbody.innerHTML = hist.map(h => `
+  tbody.innerHTML = hist.map((h, i) => `
     <tr>
       <td style="font-family:Rajdhani,sans-serif; font-weight:600; color:var(--accent)">${h.nro}</td>
-      <td>${h.nombre}</td>
+      <td>${h.nombre}<br><span style="font-size:11px;color:var(--text3)">${h.tel}</span></td>
       <td style="color:var(--text2)">${h.tipo}</td>
       <td style="font-family:Rajdhani,sans-serif; color:var(--text)">${fmtCLP(h.total)}</td>
       <td style="color:var(--text3)">${h.fecha}</td>
       <td><span class="status-badge status-${h.estado}">${h.estado}</span></td>
-      <td><span class="hist-action" onclick="showPage('nueva-cot')">Nueva cotización</span></td>
+      <td style="display:flex;gap:8px;flex-wrap:wrap;">
+        <span class="hist-action" onclick="reenviarWA(${i})">📲 WhatsApp</span>
+        <span class="hist-action" onclick="reenviarPDF(${i})">📄 PDF</span>
+        <span class="hist-action" onclick="cargarCotizacion(${i})" style="color:var(--orange)">✏️ Editar</span>
+      </td>
     </tr>
   `).join('');
+}
+
+function reenviarWA(idx) {
+  const hist = JSON.parse(localStorage.getItem('gt-hist') || '[]');
+  const h = hist[idx];
+  if (!h) return;
+  let msg = `*COTIZACIÓN GUARDIANTECH N° ${h.nro}*%0A`;
+  msg += `━━━━━━━━━━━━━━━━━━━━%0A`;
+  msg += `📅 Fecha: ${h.fecha}%0A`;
+  msg += `⏱ Válida por: ${h.validez}%0A%0A`;
+  msg += `*CLIENTE*%0A`;
+  msg += `👤 Nombre: ${h.nombre}%0A`;
+  msg += `📱 Teléfono: ${h.tel}%0A`;
+  msg += `🏠 Tipo: ${h.tipo}%0A`;
+  msg += `📍 Comuna: ${h.comuna}%0A%0A`;
+  msg += `*DETALLE DEL KIT*%0A`;
+  msg += `━━━━━━━━━━━━━━━━━━━━%0A`;
+  h.items.forEach(i => {
+    msg += `▸ ${i.nombre} x${i.qty} → ${fmtCLP(i.precio * i.qty)}%0A`;
+  });
+  msg += `━━━━━━━━━━━━━━━━━━━━%0A`;
+  msg += `💰 Neto: ${fmtCLP(h.neto)}%0A`;
+  msg += `📊 IVA 19%%: ${fmtCLP(h.iva)}%0A`;
+  msg += `✅ *TOTAL: ${fmtCLP(h.total)}*%0A%0A`;
+  msg += `🔧 ${h.inst}%0A%0A`;
+  msg += `_GuardianTech Seguridad · +56 9 8444 2165 · www.guardiantech.cl_`;
+  const waNum = h.tel.replace(/\D/g,'');
+  const waTarget = waNum.length > 8 ? waNum : '56984442165';
+  window.open(`https://api.whatsapp.com/send?phone=${waTarget}&text=${msg}`, '_blank');
+}
+
+function reenviarPDF(idx) {
+  const hist = JSON.parse(localStorage.getItem('gt-hist') || '[]');
+  const h = hist[idx];
+  if (!h) return;
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit:'mm', format:'a4' });
+  // Header
+  doc.setFillColor(0,119,182); doc.rect(0,0,210,38,'F');
+  doc.setFillColor(0,201,255); doc.rect(0,35,210,3,'F');
+  doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(26);
+  doc.text('Guardian',14,20);
+  doc.setTextColor(0,201,255); doc.text('Tech',55,20);
+  doc.setTextColor(255,255,255); doc.setFontSize(10); doc.setFont('helvetica','normal');
+  doc.text('Seguridad Electrónica Profesional · Santiago de Chile',14,28);
+  doc.setFont('helvetica','bold'); doc.setFontSize(14);
+  doc.text(`COTIZACIÓN N° ${h.nro}`,196,16,{align:'right'});
+  doc.setFont('helvetica','normal'); doc.setFontSize(9);
+  doc.text(`Fecha: ${h.fecha}`,196,23,{align:'right'});
+  doc.text(`Válida por: ${h.validez}`,196,29,{align:'right'});
+  // Cliente
+  doc.setFillColor(247,249,252); doc.rect(14,44,182,42,'F');
+  doc.setDrawColor(220,230,240); doc.rect(14,44,182,42,'S');
+  doc.setTextColor(0,119,182); doc.setFont('helvetica','bold'); doc.setFontSize(9);
+  doc.text('DATOS DEL CLIENTE',18,52);
+  doc.setTextColor(50,50,50); doc.setFont('helvetica','normal'); doc.setFontSize(9);
+  [[`Nombre: ${h.nombre}`,`Teléfono: ${h.tel}`],[`RUT: ${h.rut}`,`Email: ${h.email}`],[`Tipo: ${h.tipo}`,`Comuna: ${h.comuna}`],[`Instalación: ${h.inst}`,'']]
+    .forEach(([a,b],i) => { doc.text(a,18,58+i*7); if(b) doc.text(b,110,58+i*7); });
+  // Tabla
+  let y=96;
+  doc.setFillColor(0,119,182); doc.rect(14,y,182,8,'F');
+  doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(9);
+  doc.text('PRODUCTO / SERVICIO',18,y+5.5);
+  doc.text('CANT.',134,y+5.5,{align:'center'});
+  doc.text('P. UNIT.',162,y+5.5,{align:'right'});
+  doc.text('TOTAL',192,y+5.5,{align:'right'});
+  y+=8;
+  doc.setFont('helvetica','normal');
+  h.items.forEach((item,idx2) => {
+    if(idx2%2===0){doc.setFillColor(249,250,251);doc.rect(14,y,182,8,'F');}
+    doc.setTextColor(40,40,40);
+    doc.text(item.nombre,18,y+5.5);
+    doc.text(String(item.qty),134,y+5.5,{align:'center'});
+    doc.text(fmtCLP(item.precio),162,y+5.5,{align:'right'});
+    doc.text(fmtCLP(item.precio*item.qty),192,y+5.5,{align:'right'});
+    y+=8;
+  });
+  // Totales
+  y+=6;
+  doc.setDrawColor(0,119,182); doc.setLineWidth(0.5); doc.line(120,y,196,y); y+=6;
+  doc.setTextColor(80,80,80); doc.setFontSize(9);
+  doc.text('Neto:',140,y); doc.text(fmtCLP(h.neto),192,y,{align:'right'}); y+=7;
+  doc.text('IVA 19%:',140,y); doc.text(fmtCLP(h.iva),192,y,{align:'right'}); y+=4;
+  doc.line(120,y,196,y); y+=7;
+  doc.setFillColor(0,119,182); doc.rect(120,y-5,76,10,'F');
+  doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(12);
+  doc.text('TOTAL:',125,y+2); doc.text(fmtCLP(h.total),192,y+2,{align:'right'});
+  // Notas
+  y+=18;
+  doc.setFillColor(240,249,255); doc.rect(14,y,182,28,'F');
+  doc.setDrawColor(0,201,255); doc.setLineWidth(1); doc.line(14,y,14,y+28);
+  doc.setTextColor(0,119,182); doc.setFont('helvetica','bold'); doc.setFontSize(9);
+  doc.text('CONDICIONES Y OBSERVACIONES',20,y+7);
+  doc.setFont('helvetica','normal'); doc.setTextColor(60,60,60);
+  doc.text(doc.splitTextToSize(h.notas||'Incluye configuración de app móvil.',168).slice(0,3),20,y+14);
+  // Footer
+  y=272;
+  doc.setFillColor(240,244,248); doc.rect(0,y,210,25,'F');
+  doc.setTextColor(0,119,182); doc.setFont('helvetica','bold'); doc.setFontSize(10);
+  doc.text('GuardianTech Seguridad',14,y+10);
+  doc.setFont('helvetica','normal'); doc.setTextColor(80,80,80); doc.setFontSize(8);
+  doc.text('+56 9 8444 2165  |  www.guardiantech.cl  |  Santiago de Chile',14,y+17);
+  doc.setTextColor(160,160,160);
+  doc.text(`Cotización N° ${h.nro} — Generada el ${h.fecha}`,196,y+17,{align:'right'});
+  doc.save(`Cotizacion-${h.nro}-${h.nombre.replace(/\s/g,'-')}.pdf`);
+}
+
+function cargarCotizacion(idx) {
+  const hist = JSON.parse(localStorage.getItem('gt-hist') || '[]');
+  const h = hist[idx];
+  if (!h) return;
+  showPage('nueva-cot');
+  setTimeout(() => {
+    document.getElementById('c-nombre').value = h.nombre;
+    document.getElementById('c-rut').value = h.rut;
+    document.getElementById('c-telefono').value = h.tel;
+    document.getElementById('c-email').value = h.email;
+    document.getElementById('c-tipo').value = h.tipo;
+    document.getElementById('c-comuna').value = h.comuna;
+    document.getElementById('c-direccion').value = h.dir;
+    document.getElementById('c-validez').value = h.validez;
+    document.getElementById('c-instalacion').value = h.inst;
+    document.getElementById('c-notas').value = h.notas;
+    itemsCot = JSON.parse(JSON.stringify(h.items));
+    renderProductos();
+  }, 100);
 }
 
 function updateDash() {
