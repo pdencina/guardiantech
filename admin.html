@@ -546,9 +546,14 @@
 
       <!-- HISTORIAL -->
       <div class="page" id="page-historial">
-        <div class="page-header">
-          <h2>Historial de Cotizaciones</h2>
-          <p>Todas las cotizaciones generadas en este navegador</p>
+        <div class="page-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px;">
+          <div>
+            <h2>Historial de Cotizaciones</h2>
+            <p>Todas las cotizaciones generadas en este navegador</p>
+          </div>
+          <button onclick="limpiarHistorial()" style="background:transparent;border:1px solid rgba(255,68,68,0.3);color:var(--red);font-size:12px;padding:8px 14px;border-radius:8px;cursor:pointer;">
+            🗑 Limpiar historial
+          </button>
         </div>
         <div class="card">
           <table class="hist-table">
@@ -1096,18 +1101,19 @@ function reenviarWA(idx) {
   const hist = JSON.parse(localStorage.getItem('gt-hist') || '[]');
   const h = hist[idx];
   if (!h) return;
+  const items = Array.isArray(h.items) ? h.items : [];
   let msg = `*COTIZACIÓN GUARDIANTECH N° ${h.nro}*%0A`;
   msg += `━━━━━━━━━━━━━━━━━━━━%0A`;
-  msg += `📅 Fecha: ${h.fecha}%0A`;
-  msg += `⏱ Válida por: ${h.validez}%0A%0A`;
+  msg += `📅 Fecha: ${h.fecha||'—'}%0A`;
+  msg += `⏱ Válida por: ${h.validez||'15 días'}%0A%0A`;
   msg += `*CLIENTE*%0A`;
-  msg += `👤 Nombre: ${h.nombre}%0A`;
-  msg += `📱 Teléfono: ${h.tel}%0A`;
-  msg += `🏠 Tipo: ${h.tipo}%0A`;
-  msg += `📍 Comuna: ${h.comuna}%0A%0A`;
+  msg += `👤 Nombre: ${h.nombre||'—'}%0A`;
+  msg += `📱 Teléfono: ${h.tel||'—'}%0A`;
+  msg += `🏠 Tipo: ${h.tipo||'—'}%0A`;
+  msg += `📍 Comuna: ${h.comuna||'—'}%0A%0A`;
   msg += `*DETALLE DEL KIT*%0A`;
   msg += `━━━━━━━━━━━━━━━━━━━━%0A`;
-  h.items.forEach(i => {
+  items.forEach(i => {
     msg += `▸ ${i.nombre} x${i.qty} → ${fmtCLP(i.precio * i.qty)}%0A`;
   });
   msg += `━━━━━━━━━━━━━━━━━━━━%0A`;
@@ -1116,7 +1122,7 @@ function reenviarWA(idx) {
   msg += `✅ *TOTAL: ${fmtCLP(h.total)}*%0A%0A`;
   msg += `🔧 ${h.inst}%0A%0A`;
   msg += `_GuardianTech Seguridad · +56 9 8444 2165 · www.guardiantech.cl_`;
-  const waNum = h.tel.replace(/\D/g,'');
+  const waNum = (h.tel||'').replace(/\D/g,'');
   const waTarget = waNum.length > 8 ? waNum : '56984442165';
   window.open(`https://api.whatsapp.com/send?phone=${waTarget}&text=${msg}`, '_blank');
 }
@@ -1125,6 +1131,10 @@ function reenviarPDF(idx) {
   const hist = JSON.parse(localStorage.getItem('gt-hist') || '[]');
   const h = hist[idx];
   if (!h) return;
+  const items = Array.isArray(h.items) ? h.items : [];
+  const neto  = h.neto  || 0;
+  const iva   = h.iva   || 0;
+  const total = h.total || 0;
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit:'mm', format:'a4' });
   // Header
@@ -1136,17 +1146,17 @@ function reenviarPDF(idx) {
   doc.setTextColor(255,255,255); doc.setFontSize(10); doc.setFont('helvetica','normal');
   doc.text('Seguridad Electrónica Profesional · Santiago de Chile',14,28);
   doc.setFont('helvetica','bold'); doc.setFontSize(14);
-  doc.text(`COTIZACIÓN N° ${h.nro}`,196,16,{align:'right'});
+  doc.text(`COTIZACIÓN N° ${h.nro||'—'}`,196,16,{align:'right'});
   doc.setFont('helvetica','normal'); doc.setFontSize(9);
-  doc.text(`Fecha: ${h.fecha}`,196,23,{align:'right'});
-  doc.text(`Válida por: ${h.validez}`,196,29,{align:'right'});
+  doc.text(`Fecha: ${h.fecha||'—'}`,196,23,{align:'right'});
+  doc.text(`Válida por: ${h.validez||'15 días'}`,196,29,{align:'right'});
   // Cliente
   doc.setFillColor(247,249,252); doc.rect(14,44,182,42,'F');
   doc.setDrawColor(220,230,240); doc.rect(14,44,182,42,'S');
   doc.setTextColor(0,119,182); doc.setFont('helvetica','bold'); doc.setFontSize(9);
   doc.text('DATOS DEL CLIENTE',18,52);
   doc.setTextColor(50,50,50); doc.setFont('helvetica','normal'); doc.setFontSize(9);
-  [[`Nombre: ${h.nombre}`,`Teléfono: ${h.tel}`],[`RUT: ${h.rut}`,`Email: ${h.email}`],[`Tipo: ${h.tipo}`,`Comuna: ${h.comuna}`],[`Instalación: ${h.inst}`,'']]
+  [[`Nombre: ${h.nombre||'—'}`,`Teléfono: ${h.tel||'—'}`],[`RUT: ${h.rut||'—'}`,`Email: ${h.email||'—'}`],[`Tipo: ${h.tipo||'—'}`,`Comuna: ${h.comuna||'—'}`],[`Instalación: ${h.inst||'—'}`,'']]
     .forEach(([a,b],i) => { doc.text(a,18,58+i*7); if(b) doc.text(b,110,58+i*7); });
   // Tabla
   let y=96;
@@ -1158,25 +1168,32 @@ function reenviarPDF(idx) {
   doc.text('TOTAL',192,y+5.5,{align:'right'});
   y+=8;
   doc.setFont('helvetica','normal');
-  h.items.forEach((item,idx2) => {
-    if(idx2%2===0){doc.setFillColor(249,250,251);doc.rect(14,y,182,8,'F');}
-    doc.setTextColor(40,40,40);
-    doc.text(item.nombre,18,y+5.5);
-    doc.text(String(item.qty),134,y+5.5,{align:'center'});
-    doc.text(fmtCLP(item.precio),162,y+5.5,{align:'right'});
-    doc.text(fmtCLP(item.precio*item.qty),192,y+5.5,{align:'right'});
+  if (items.length === 0) {
+    doc.setFillColor(249,250,251); doc.rect(14,y,182,8,'F');
+    doc.setTextColor(150,150,150);
+    doc.text('Sin productos registrados',18,y+5.5);
     y+=8;
-  });
+  } else {
+    items.forEach((item,idx2) => {
+      if(idx2%2===0){doc.setFillColor(249,250,251);doc.rect(14,y,182,8,'F');}
+      doc.setTextColor(40,40,40);
+      doc.text(item.nombre||'—',18,y+5.5);
+      doc.text(String(item.qty||1),134,y+5.5,{align:'center'});
+      doc.text(fmtCLP(item.precio||0),162,y+5.5,{align:'right'});
+      doc.text(fmtCLP((item.precio||0)*(item.qty||1)),192,y+5.5,{align:'right'});
+      y+=8;
+    });
+  }
   // Totales
   y+=6;
   doc.setDrawColor(0,119,182); doc.setLineWidth(0.5); doc.line(120,y,196,y); y+=6;
   doc.setTextColor(80,80,80); doc.setFontSize(9);
-  doc.text('Neto:',140,y); doc.text(fmtCLP(h.neto),192,y,{align:'right'}); y+=7;
-  doc.text('IVA 19%:',140,y); doc.text(fmtCLP(h.iva),192,y,{align:'right'}); y+=4;
+  doc.text('Neto:',140,y); doc.text(fmtCLP(neto),192,y,{align:'right'}); y+=7;
+  doc.text('IVA 19%:',140,y); doc.text(fmtCLP(iva),192,y,{align:'right'}); y+=4;
   doc.line(120,y,196,y); y+=7;
   doc.setFillColor(0,119,182); doc.rect(120,y-5,76,10,'F');
   doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(12);
-  doc.text('TOTAL:',125,y+2); doc.text(fmtCLP(h.total),192,y+2,{align:'right'});
+  doc.text('TOTAL:',125,y+2); doc.text(fmtCLP(total),192,y+2,{align:'right'});
   // Notas
   y+=18;
   doc.setFillColor(240,249,255); doc.rect(14,y,182,28,'F');
@@ -1216,6 +1233,13 @@ function cargarCotizacion(idx) {
     itemsCot = JSON.parse(JSON.stringify(h.items));
     renderProductos();
   }, 100);
+}
+
+function limpiarHistorial() {
+  if (!confirm('¿Eliminar todo el historial? Esta acción no se puede deshacer.')) return;
+  localStorage.removeItem('gt-hist');
+  renderHistorial();
+  updateDash();
 }
 
 function updateDash() {
