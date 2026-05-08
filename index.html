@@ -163,6 +163,25 @@
     }
     @media (max-width: 768px) { .nav-hamburger { display: flex; } }
 
+    .hero-badge-resp {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,230,118,0.08);
+      border: 1px solid rgba(0,230,118,0.25);
+      color: #00e676; font-size: 13px; font-weight: 400;
+      padding: 7px 16px; border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .badge-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #00e676; flex-shrink: 0;
+      box-shadow: 0 0 8px #00e676;
+      animation: pulse-green 2s infinite;
+    }
+    @keyframes pulse-green {
+      0%,100% { box-shadow: 0 0 4px #00e676; }
+      50% { box-shadow: 0 0 14px #00e676; }
+    }
+
     /* ─── HERO ─── */
     .hero {
       min-height: 100vh;
@@ -642,7 +661,9 @@
       <li><a href="#configurador">Arma tu Kit</a></li>
       <li><a href="#cobertura">Cobertura</a></li>
       <li><a href="#proceso">Proceso</a></li>
-      <li><a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20cámaras%20de%20seguridad." class="nav-cta">Cotizar Ahora</a></li>
+      <li><a href="#galeria">Trabajos</a></li>
+      <li><a href="#cotizar">Cotizar</a></li>
+      <li><a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20cámaras%20de%20seguridad." class="nav-cta">WhatsApp</a></li>
     </ul>
     <button class="nav-hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
       <span></span><span></span><span></span>
@@ -657,6 +678,8 @@
   <a href="#configurador" onclick="closeMenu()">Arma tu Kit</a>
   <a href="#cobertura" onclick="closeMenu()">Cobertura</a>
   <a href="#proceso" onclick="closeMenu()">Proceso</a>
+  <a href="#galeria" onclick="closeMenu()">Trabajos realizados</a>
+  <a href="#cotizar" onclick="closeMenu()">Cotizar gratis</a>
   <a href="#" onclick="closeMenu()">FAQ</a>
   <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20cámaras%20de%20seguridad." class="nav-mobile-cta">Cotizar por WhatsApp</a>
 </div>
@@ -691,17 +714,25 @@
           Llamar Ahora
         </a>
       </div>
+      <div class="hero-badge-resp">
+        <span class="badge-dot"></span>
+        Respondemos en menos de 1 hora · Lun–Sáb 8:00–19:00
+      </div>
       <div class="hero-stats">
         <div class="stat-item">
-          <div class="stat-num">500+</div>
+          <div class="stat-num" data-target="500" data-suffix="+">0+</div>
           <div class="stat-label">Instalaciones realizadas</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">5★</div>
-          <div class="stat-label">Valoración clientes</div>
+          <div class="stat-num" data-target="5" data-suffix="★">0★</div>
+          <div class="stat-label">Valoración Google</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">24h</div>
+          <div class="stat-num" data-target="8" data-suffix=" años">0 años</div>
+          <div class="stat-label">De experiencia</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="24" data-suffix="h">0h</div>
           <div class="stat-label">Soporte técnico</div>
         </div>
       </div>
@@ -1275,6 +1306,14 @@
             </div>
             <div class="kb-radio"></div>
           </div>
+          <div class="kb-product kb-single" data-id="dvr-32ch" data-precio="320000" data-nombre="DVR/XVR 32 canales" data-tipo="dvr" onclick="selectSingle(this)">
+            <div class="kb-prod-info">
+              <div class="kb-prod-name">DVR/XVR 32 canales</div>
+              <div class="kb-prod-desc">Condominios y edificios · Penta-híbrido · IA WizSense · hasta 4K · 2 HDD · App móvil</div>
+              <div class="kb-prod-price">$280.000 – $420.000</div>
+            </div>
+            <div class="kb-radio"></div>
+          </div>
         </div>
 
         <!-- Disco duro -->
@@ -1680,6 +1719,332 @@
   </div>
 </section>
 
+<!-- MARCAS -->
+<section style="background: var(--bg2); border-top: 1px solid var(--border2); padding: 48px 0;">
+  <div class="container">
+    <div class="section-header fade-up" style="margin-bottom: 36px;">
+      <div class="tag">Marcas que instalamos</div>
+      <h2>Equipos de <span class="accent">marcas reconocidas</span></h2>
+      <p>Solo trabajamos con marcas líderes del mercado con garantía y respaldo técnico.</p>
+    </div>
+    <div class="brands-grid fade-up">
+      <div class="brand-card">
+        <div class="brand-name">Hikvision</div>
+        <div class="brand-desc">Líder mundial en videovigilancia · CCTV · IP · IA</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-name">Dahua</div>
+        <div class="brand-desc">Tecnología WizSense · DVR/NVR · Condominios</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-name">Ezviz</div>
+        <div class="brand-desc">Cámaras WiFi · App móvil · Hogares</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-name">Imou</div>
+        <div class="brand-desc">Vigilancia inteligente · IA · Exterior</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-name">HiLook</div>
+        <div class="brand-desc">By Hikvision · Calidad profesional · Precio accesible</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-name">ZKTeco</div>
+        <div class="brand-desc">Control de acceso · Biometría · Edificios</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+  .brand-card {
+    background: var(--bg); border: 1px solid var(--border2);
+    border-radius: 10px; padding: 20px 18px; text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .brand-card:hover { border-color: var(--border); transform: translateY(-3px); }
+  .brand-name {
+    font-family: 'Rajdhani', sans-serif; font-size: 20px;
+    font-weight: 700; color: var(--text); margin-bottom: 6px;
+  }
+  .brand-desc { font-size: 11px; color: var(--text3); line-height: 1.4; }
+</style>
+
+<!-- GALERÍA DE TRABAJOS -->
+<section id="galeria" style="background: var(--bg); border-top: 1px solid var(--border2);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="tag">Trabajos realizados</div>
+      <h2>Instalaciones <span class="accent">reales</span> en Santiago</h2>
+      <p>Cada proyecto es único. Mira algunos de nuestros trabajos en condominios, casas y negocios.</p>
+    </div>
+    <div class="gallery-grid fade-up">
+      <div class="gallery-item gallery-item-big">
+        <div class="gallery-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Edificio / Condominio</span>
+          <small>Agrega tu foto aquí</small>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-tag">Condominio · Las Condes</div>
+          <div class="gallery-desc">16 cámaras HD + control de acceso + video portero IP</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Casa residencial</span>
+          <small>Agrega tu foto aquí</small>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-tag">Casa · Providencia</div>
+          <div class="gallery-desc">4 cámaras 4K exteriores + app celular</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Local comercial</span>
+          <small>Agrega tu foto aquí</small>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-tag">Negocio · Maipú</div>
+          <div class="gallery-desc">8 cámaras HD + DVR + monitoreo remoto</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Estacionamiento</span>
+          <small>Agrega tu foto aquí</small>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-tag">Edificio · Ñuñoa</div>
+          <div class="gallery-desc">Cámaras PTZ + control acceso vehicular</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Oficina empresarial</span>
+          <small>Agrega tu foto aquí</small>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-tag">Empresa · Vitacura</div>
+          <div class="gallery-desc">Control acceso biométrico + 12 cámaras IP</div>
+        </div>
+      </div>
+    </div>
+    <p class="gallery-note fade-up">📸 ¿Quieres ver más trabajos? Escríbenos y te enviamos fotos de proyectos similares al tuyo.</p>
+  </div>
+</section>
+
+<style>
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 14px;
+  }
+  .gallery-item-big { grid-column: span 2; grid-row: span 2; }
+  .gallery-item {
+    position: relative; border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--border2);
+    aspect-ratio: 4/3;
+    transition: transform 0.3s;
+  }
+  .gallery-item-big { aspect-ratio: auto; min-height: 320px; }
+  .gallery-item:hover { transform: scale(1.015); }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-placeholder {
+    width: 100%; height: 100%; min-height: 160px;
+    background: var(--bg2);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 8px;
+    color: var(--text3);
+  }
+  .gallery-placeholder svg { width: 36px; height: 36px; opacity: 0.3; }
+  .gallery-placeholder span { font-size: 13px; font-weight: 500; }
+  .gallery-placeholder small { font-size: 11px; opacity: 0.5; }
+  .gallery-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    padding: 24px 18px 16px;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .gallery-tag {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 4px;
+  }
+  .gallery-desc { font-size: 13px; color: var(--text2); }
+  .gallery-note {
+    text-align: center; margin-top: 24px;
+    font-size: 14px; color: var(--text3);
+  }
+  @media (max-width: 600px) {
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item-big { grid-column: span 2; grid-row: span 1; min-height: 180px; }
+    .gallery-overlay { opacity: 1; }
+  }
+</style>
+
+<!-- FORMULARIO COTIZACIÓN -->
+<section id="cotizar" style="background: var(--bg2); border-top: 1px solid var(--border2);">
+  <div class="container">
+    <div class="cotizar-grid">
+      <div class="cotizar-info fade-up">
+        <div class="tag">Cotización Gratuita</div>
+        <h2>Cuéntanos tu proyecto, <span class="accent">te respondemos hoy</span></h2>
+        <p style="color: var(--text2); font-size: 15px; line-height: 1.65; margin-top: 14px;">Completa el formulario y en menos de 1 hora te contactamos con un presupuesto a medida. Sin compromiso.</p>
+        <div class="cotizar-benefits">
+          <div class="cotizar-benefit">
+            <span class="cb-icon">✓</span>
+            <span>Cotización sin costo</span>
+          </div>
+          <div class="cotizar-benefit">
+            <span class="cb-icon">✓</span>
+            <span>Visita técnica gratuita</span>
+          </div>
+          <div class="cotizar-benefit">
+            <span class="cb-icon">✓</span>
+            <span>Presupuesto cerrado sin sorpresas</span>
+          </div>
+          <div class="cotizar-benefit">
+            <span class="cb-icon">✓</span>
+            <span>Instalación en 24–48 horas</span>
+          </div>
+        </div>
+        <div style="margin-top: 28px;">
+          <div style="font-size: 13px; color: var(--text3); margin-bottom: 8px;">¿Prefieres contacto directo?</div>
+          <a href="https://api.whatsapp.com/send?phone=56984442165" style="color: var(--accent); font-size: 15px; font-weight: 500; text-decoration: none;">
+            +56 9 8444 2165 · WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="cotizar-form-wrap fade-up">
+        <div class="cotizar-form-card">
+          <div class="cform-row">
+            <div class="cform-group">
+              <label>Nombre</label>
+              <input type="text" id="cf-nombre" placeholder="Tu nombre">
+            </div>
+            <div class="cform-group">
+              <label>Teléfono / WhatsApp</label>
+              <input type="tel" id="cf-telefono" placeholder="+56 9 ....">
+            </div>
+          </div>
+          <div class="cform-group">
+            <label>Tipo de propiedad</label>
+            <div class="cform-chips" id="cf-tipo">
+              <span class="chip" onclick="selectChip(this, 'tipo')">🏠 Casa</span>
+              <span class="chip" onclick="selectChip(this, 'tipo')">🏢 Condominio/Edificio</span>
+              <span class="chip" onclick="selectChip(this, 'tipo')">🏪 Negocio</span>
+              <span class="chip" onclick="selectChip(this, 'tipo')">🏭 Empresa/Bodega</span>
+            </div>
+          </div>
+          <div class="cform-row">
+            <div class="cform-group">
+              <label>Comuna</label>
+              <input type="text" id="cf-comuna" placeholder="Ej: Las Condes">
+            </div>
+            <div class="cform-group">
+              <label>N° de cámaras aprox.</label>
+              <div class="cform-chips" id="cf-camaras">
+                <span class="chip" onclick="selectChip(this, 'camaras')">1–4</span>
+                <span class="chip" onclick="selectChip(this, 'camaras')">5–8</span>
+                <span class="chip" onclick="selectChip(this, 'camaras')">9–16</span>
+                <span class="chip" onclick="selectChip(this, 'camaras')">+16</span>
+              </div>
+            </div>
+          </div>
+          <div class="cform-group">
+            <label>¿Qué necesitas? <span style="color: var(--text3); font-weight:400;">(opcional)</span></label>
+            <textarea id="cf-mensaje" placeholder="Cuéntanos un poco más sobre tu proyecto, qué áreas quieres cubrir, si ya tienes equipos, etc." rows="3"></textarea>
+          </div>
+          <button onclick="enviarCotizacion()" class="btn-primary" style="width:100%; justify-content: center; font-size:16px; padding: 15px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.571a.75.75 0 00.932.932l5.724-1.467A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22.5A10.456 10.456 0 016.37 20.82l-.41-.243-4.252 1.09 1.09-4.152-.267-.432A10.46 10.46 0 011.5 12C1.5 6.21 6.21 1.5 12 1.5S22.5 6.21 22.5 12 17.79 22.5 12 22.5z"/></svg>
+            Enviar Cotización por WhatsApp
+          </button>
+          <p style="text-align:center; font-size:12px; color: var(--text3); margin-top:10px;">Tu información es privada y no se comparte con terceros.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cotizar-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+  .cotizar-benefits { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+  .cotizar-benefit { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text2); }
+  .cb-icon {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: rgba(0,230,118,0.1); border: 1px solid rgba(0,230,118,0.3);
+    color: var(--green); display: flex; align-items: center; justify-content: center;
+    font-size: 12px; flex-shrink: 0;
+  }
+  .cotizar-form-card {
+    background: var(--bg); border: 1px solid var(--border2);
+    border-radius: 14px; padding: 28px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .cform-group { display: flex; flex-direction: column; gap: 7px; }
+  .cform-group label { font-size: 13px; font-weight: 500; color: var(--text2); }
+  .cform-group input, .cform-group textarea {
+    background: var(--bg2); border: 1px solid var(--border2);
+    border-radius: 8px; padding: 10px 14px;
+    color: var(--text); font-size: 14px; font-family: 'DM Sans', sans-serif;
+    outline: none; transition: border-color 0.2s; resize: none;
+  }
+  .cform-group input:focus, .cform-group textarea:focus { border-color: var(--accent); }
+  .cform-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chip {
+    font-size: 12px; padding: 6px 12px; border-radius: 100px;
+    border: 1px solid var(--border2); background: var(--bg2);
+    color: var(--text2); cursor: pointer; transition: all 0.15s;
+    user-select: none;
+  }
+  .chip:hover { border-color: var(--border); color: var(--text); }
+  .chip.selected { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
+  @media (max-width: 768px) {
+    .cotizar-grid { grid-template-columns: 1fr; gap: 32px; }
+    .cform-row { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  function selectChip(el, group) {
+    el.closest('.cform-chips').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  function enviarCotizacion() {
+    const nombre = document.getElementById('cf-nombre').value.trim();
+    const telefono = document.getElementById('cf-telefono').value.trim();
+    const comuna = document.getElementById('cf-comuna').value.trim();
+    const tipo = document.querySelector('#cf-tipo .chip.selected')?.textContent || 'No especificado';
+    const camaras = document.querySelector('#cf-camaras .chip.selected')?.textContent || 'No especificado';
+    const mensaje = document.getElementById('cf-mensaje').value.trim();
+
+    if (!nombre || !telefono) {
+      alert('Por favor ingresa tu nombre y teléfono para continuar.');
+      return;
+    }
+
+    let msg = `Hola GuardianTech! Quiero cotizar una instalación de cámaras:%0A%0A`;
+    msg += `👤 *Nombre:* ${nombre}%0A`;
+    msg += `📱 *Teléfono:* ${telefono}%0A`;
+    msg += `🏠 *Tipo:* ${tipo}%0A`;
+    msg += `📍 *Comuna:* ${comuna || 'No indicada'}%0A`;
+    msg += `📷 *Cámaras aprox.:* ${camaras}%0A`;
+    if (mensaje) msg += `💬 *Detalles:* ${mensaje}%0A`;
+    msg += `%0A¿Pueden enviarme una cotización?`;
+
+    window.open(`https://api.whatsapp.com/send?phone=56984442165&text=${msg}`, '_blank');
+  }
+</script>
+
 <!-- CTA FINAL -->
 <section class="cta-section">
   <div class="cta-glow"></div>
@@ -1770,6 +2135,27 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Contadores animados
+  const counters = document.querySelectorAll('.stat-num[data-target]');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1800;
+      const step = Math.ceil(target / (duration / 16));
+      let current = 0;
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = current + suffix;
+        if (current >= target) clearInterval(timer);
+      }, 16);
+      counterObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(el => counterObserver.observe(el));
 </script>
 
 </body>
