@@ -661,7 +661,6 @@
       <li><a href="#configurador">Arma tu Kit</a></li>
       <li><a href="#cobertura">Cobertura</a></li>
       <li><a href="#proceso">Proceso</a></li>
-      <li><a href="#galeria">Trabajos</a></li>
       <li><a href="#cotizar">Cotizar</a></li>
       <li><a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20cámaras%20de%20seguridad." class="nav-cta">WhatsApp</a></li>
     </ul>
@@ -678,7 +677,6 @@
   <a href="#configurador" onclick="closeMenu()">Arma tu Kit</a>
   <a href="#cobertura" onclick="closeMenu()">Cobertura</a>
   <a href="#proceso" onclick="closeMenu()">Proceso</a>
-  <a href="#galeria" onclick="closeMenu()">Trabajos realizados</a>
   <a href="#cotizar" onclick="closeMenu()">Cotizar gratis</a>
   <a href="#" onclick="closeMenu()">FAQ</a>
   <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20cámaras%20de%20seguridad." class="nav-mobile-cta">Cotizar por WhatsApp</a>
@@ -1769,124 +1767,6 @@
     font-weight: 700; color: var(--text); margin-bottom: 6px;
   }
   .brand-desc { font-size: 11px; color: var(--text3); line-height: 1.4; }
-</style>
-
-<!-- GALERÍA DE TRABAJOS -->
-<section id="galeria" style="background: var(--bg); border-top: 1px solid var(--border2);">
-  <div class="container">
-    <div class="section-header fade-up">
-      <div class="tag">Trabajos realizados</div>
-      <h2>Instalaciones <span class="accent">reales</span> en Santiago</h2>
-      <p>Cada proyecto es único. Mira algunos de nuestros trabajos en condominios, casas y negocios.</p>
-    </div>
-    <div class="gallery-grid fade-up">
-      <div class="gallery-item gallery-item-big">
-        <div class="gallery-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Edificio / Condominio</span>
-          <small>Agrega tu foto aquí</small>
-        </div>
-        <div class="gallery-overlay">
-          <div class="gallery-tag">Condominio · Las Condes</div>
-          <div class="gallery-desc">16 cámaras HD + control de acceso + video portero IP</div>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Casa residencial</span>
-          <small>Agrega tu foto aquí</small>
-        </div>
-        <div class="gallery-overlay">
-          <div class="gallery-tag">Casa · Providencia</div>
-          <div class="gallery-desc">4 cámaras 4K exteriores + app celular</div>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Local comercial</span>
-          <small>Agrega tu foto aquí</small>
-        </div>
-        <div class="gallery-overlay">
-          <div class="gallery-tag">Negocio · Maipú</div>
-          <div class="gallery-desc">8 cámaras HD + DVR + monitoreo remoto</div>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Estacionamiento</span>
-          <small>Agrega tu foto aquí</small>
-        </div>
-        <div class="gallery-overlay">
-          <div class="gallery-tag">Edificio · Ñuñoa</div>
-          <div class="gallery-desc">Cámaras PTZ + control acceso vehicular</div>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Oficina empresarial</span>
-          <small>Agrega tu foto aquí</small>
-        </div>
-        <div class="gallery-overlay">
-          <div class="gallery-tag">Empresa · Vitacura</div>
-          <div class="gallery-desc">Control acceso biométrico + 12 cámaras IP</div>
-        </div>
-      </div>
-    </div>
-    <p class="gallery-note fade-up">📸 ¿Quieres ver más trabajos? Escríbenos y te enviamos fotos de proyectos similares al tuyo.</p>
-  </div>
-</section>
-
-<style>
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto;
-    gap: 14px;
-  }
-  .gallery-item-big { grid-column: span 2; grid-row: span 2; }
-  .gallery-item {
-    position: relative; border-radius: 12px; overflow: hidden;
-    border: 1px solid var(--border2);
-    aspect-ratio: 4/3;
-    transition: transform 0.3s;
-  }
-  .gallery-item-big { aspect-ratio: auto; min-height: 320px; }
-  .gallery-item:hover { transform: scale(1.015); }
-  .gallery-item:hover .gallery-overlay { opacity: 1; }
-  .gallery-placeholder {
-    width: 100%; height: 100%; min-height: 160px;
-    background: var(--bg2);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 8px;
-    color: var(--text3);
-  }
-  .gallery-placeholder svg { width: 36px; height: 36px; opacity: 0.3; }
-  .gallery-placeholder span { font-size: 13px; font-weight: 500; }
-  .gallery-placeholder small { font-size: 11px; opacity: 0.5; }
-  .gallery-overlay {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.85));
-    padding: 24px 18px 16px;
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .gallery-tag {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--accent); margin-bottom: 4px;
-  }
-  .gallery-desc { font-size: 13px; color: var(--text2); }
-  .gallery-note {
-    text-align: center; margin-top: 24px;
-    font-size: 14px; color: var(--text3);
-  }
-  @media (max-width: 600px) {
-    .gallery-grid { grid-template-columns: 1fr 1fr; }
-    .gallery-item-big { grid-column: span 2; grid-row: span 1; min-height: 180px; }
-    .gallery-overlay { opacity: 1; }
-  }
 </style>
 
 <!-- FORMULARIO COTIZACIÓN -->

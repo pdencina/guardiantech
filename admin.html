@@ -403,6 +403,7 @@
                 </div>
               </div>
               <div class="form-row">
+                <div class="form-row">
                 <div class="form-group">
                   <label class="form-label">Tipo de propiedad</label>
                   <select class="form-select" id="c-tipo">
@@ -419,8 +420,63 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="form-label">Dirección (opcional)</label>
-                <input class="form-input" id="c-direccion" placeholder="Calle, número">
+                <label class="form-label">Dirección / Nombre del proyecto</label>
+                <input class="form-input" id="c-direccion" placeholder="Ej: Edificio Arrieta Cañas 5770">
+              </div>
+              <!-- SELECTOR TIPO DOCUMENTO -->
+              <div class="form-group" style="margin-top:4px;">
+                <label class="form-label" style="color:var(--accent);">Tipo de documento PDF</label>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;">
+                  <div class="doc-type-opt selected" id="doc-simple" onclick="selectDocType('simple')"
+                    style="background:var(--accent-dim);border:1px solid var(--accent);border-radius:8px;
+                    padding:12px 14px;cursor:pointer;transition:all 0.2s;">
+                    <div style="font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:600;">📄 Presupuesto Simple</div>
+                    <div style="font-size:11px;color:var(--text2);margin-top:3px;">Para casas, negocios y proyectos pequeños</div>
+                  </div>
+                  <div class="doc-type-opt" id="doc-tecnico" onclick="selectDocType('tecnico')"
+                    style="background:var(--bg3);border:1px solid var(--border2);border-radius:8px;
+                    padding:12px 14px;cursor:pointer;transition:all 0.2s;">
+                    <div style="font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:600;">🏢 Presupuesto Técnico</div>
+                    <div style="font-size:11px;color:var(--text2);margin-top:3px;">Para condominios, edificios y empresas</div>
+                  </div>
+                </div>
+              </div>
+              <!-- CAMPOS EXTRA PARA PRESUPUESTO TÉCNICO -->
+              <div id="campos-tecnicos" style="display:none;">
+                <div class="form-row" style="margin-top:12px;">
+                  <div class="form-group">
+                    <label class="form-label">Fecha levantamiento</label>
+                    <input class="form-input" id="c-levant" placeholder="Ej: 05 de Mayo de 2026 — 15:30 hrs">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Días de ejecución</label>
+                    <input class="form-input" id="c-dias" placeholder="Ej: 8 días hábiles" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Alcance del proyecto (zonas / descripción)</label>
+                  <textarea class="form-input" id="c-alcance" rows="3"
+                    placeholder="Ej: Edificio A pisos 1-5: 2 cámaras por piso. Escalera emergencia: 1 cámara por piso. Subterráneo: 5 cámaras fisheye..."></textarea>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Forma de pago</label>
+                    <select class="form-select" id="c-pago">
+                      <option>50% a la firma — 50% contra entrega</option>
+                      <option>30% a la firma — 70% contra entrega</option>
+                      <option>100% a la firma</option>
+                      <option>100% contra entrega</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Garantía equipos</label>
+                    <select class="form-select" id="c-garantia">
+                      <option>12 meses equipos / 6 meses instalación</option>
+                      <option>12 meses equipos / 90 días mano de obra</option>
+                      <option>6 meses equipos / 3 meses instalación</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -746,6 +802,17 @@ function renderResumen() {
 
 function getNroCot() { return 'GT-'+String(contadorCot).padStart(4,'0'); }
 
+// ══ TIPO DOCUMENTO ══
+let tipoDoc = 'simple';
+function selectDocType(tipo) {
+  tipoDoc = tipo;
+  document.getElementById('doc-simple').style.background  = tipo==='simple' ? 'var(--accent-dim)' : 'var(--bg3)';
+  document.getElementById('doc-simple').style.borderColor = tipo==='simple' ? 'var(--accent)' : 'rgba(255,255,255,0.07)';
+  document.getElementById('doc-tecnico').style.background  = tipo==='tecnico' ? 'rgba(255,145,0,0.1)' : 'var(--bg3)';
+  document.getElementById('doc-tecnico').style.borderColor = tipo==='tecnico' ? 'var(--orange)' : 'rgba(255,255,255,0.07)';
+  document.getElementById('campos-tecnicos').style.display = tipo==='tecnico' ? 'block' : 'none';
+}
+
 function getFormData() {
   return {
     nombre:   document.getElementById('c-nombre').value||'Cliente',
@@ -758,6 +825,13 @@ function getFormData() {
     validez:  document.getElementById('c-validez').value,
     inst:     document.getElementById('c-instalacion').value,
     notas:    document.getElementById('c-notas').value||'Incluye configuración de app móvil y capacitación.',
+    // Campos técnicos
+    levant:   document.getElementById('c-levant')?.value||'—',
+    dias:     document.getElementById('c-dias')?.value||'—',
+    alcance:  document.getElementById('c-alcance')?.value||'—',
+    pago:     document.getElementById('c-pago')?.value||'50% a la firma — 50% contra entrega',
+    garantia: document.getElementById('c-garantia')?.value||'12 meses equipos / 6 meses instalación',
+    tipoDoc,
   };
 }
 
@@ -882,9 +956,229 @@ function generarPDF() {
   const d = getFormData();
   const {neto,iva,total} = calcTotales();
   const nro   = getNroCot();
-  const fecha = new Date().toLocaleDateString('es-CL');
-  _generarPDF(d, itemsCot, neto, iva, total, nro, fecha);
+  const fecha = new Date().toLocaleDateString('es-CL',{day:'2-digit',month:'long',year:'numeric'});
+  if (d.tipoDoc === 'tecnico') {
+    _generarPDFTecnico(d, itemsCot, neto, iva, total, nro, fecha);
+  } else {
+    _generarPDF(d, itemsCot, neto, iva, total, nro, fecha);
+  }
   guardarEnHistorial('enviada');
+}
+
+function _generarPDFTecnico(d, items, neto, iva, total, nro, fecha) {
+  const {jsPDF} = window.jspdf;
+  const doc = new jsPDF({unit:'mm', format:'a4'});
+  const W = 210, M = 14;
+
+  // ── HEADER AZUL ──
+  doc.setFillColor(0,77,128); doc.rect(0,0,W,42,'F');
+  doc.setFillColor(0,201,255); doc.rect(0,39,W,3,'F');
+  doc.setTextColor(255,255,255);
+  doc.setFont('helvetica','bold'); doc.setFontSize(28);
+  doc.text('Guardian',M,22);
+  doc.setTextColor(0,201,255); doc.text('Tech',62,22);
+  doc.setTextColor(200,230,255); doc.setFont('helvetica','normal'); doc.setFontSize(9);
+  doc.text('SpA  ·  Seguridad Electrónica Profesional  ·  CCTV · Alarmas · Control de Acceso',M,30);
+  doc.text('guardiantech.cl  ·  Santiago, Chile',M,36);
+  // Nro derecha
+  doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(11);
+  doc.text('PRESUPUESTO TÉCNICO',W-M,16,{align:'right'});
+  doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(180,220,255);
+  doc.text(`N° ${nro}`,W-M,23,{align:'right'});
+  doc.text(fecha,W-M,29,{align:'right'});
+  doc.text(`Válido: ${d.validez}`,W-M,35,{align:'right'});
+
+  // ── TÍTULO PROYECTO ──
+  let y = 50;
+  doc.setFillColor(240,248,255); doc.rect(M,y,W-M*2,14,'F');
+  doc.setDrawColor(0,119,182); doc.setLineWidth(0.5); doc.rect(M,y,W-M*2,14,'S');
+  doc.setTextColor(0,77,128); doc.setFont('helvetica','bold'); doc.setFontSize(13);
+  doc.text(`SISTEMA CCTV IP — ${d.dir||d.nombre}`,W/2,y+9,{align:'center'});
+  y += 20;
+
+  // ── TABLA PROVEEDOR / CLIENTE ──
+  const half = (W-M*2)/2 - 2;
+  // Proveedor
+  doc.setFillColor(0,77,128); doc.rect(M,y,half,7,'F');
+  doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(8);
+  doc.text('PROVEEDOR',M+4,y+5);
+  doc.setFillColor(247,250,254); doc.rect(M,y+7,half,28,'F');
+  doc.setDrawColor(200,215,230); doc.rect(M,y,half,35,'S');
+  doc.setTextColor(30,30,30); doc.setFont('helvetica','normal'); doc.setFontSize(8.5);
+  doc.text('Guardiantech SpA',M+4,y+13);
+  doc.text('Santiago, Chile',M+4,y+19);
+  doc.text('guardiantech.cl',M+4,y+25);
+  doc.text(`+56 9 8444 2165`,M+4,y+31);
+  // Cliente
+  const cx = M+half+4;
+  doc.setFillColor(0,119,182); doc.rect(cx,y,half,7,'F');
+  doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(8);
+  doc.text('CLIENTE',cx+4,y+5);
+  doc.setFillColor(247,250,254); doc.rect(cx,y+7,half,28,'F');
+  doc.setDrawColor(200,215,230); doc.rect(cx,y,half,35,'S');
+  doc.setTextColor(30,30,30); doc.setFont('helvetica','normal'); doc.setFontSize(8.5);
+  doc.text(d.nombre,cx+4,y+13);
+  doc.text(`RUT: ${d.rut}`,cx+4,y+19);
+  doc.text(`Tel: ${d.tel}`,cx+4,y+25);
+  if(d.levant && d.levant!=='—') doc.text(`Levant.: ${d.levant}`,cx+4,y+31);
+  y += 42;
+
+  // ── SECCIÓN 1: ALCANCE ──
+  if (d.alcance && d.alcance!=='—') {
+    doc.setFillColor(0,77,128); doc.rect(M,y,W-M*2,7,'F');
+    doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(9);
+    doc.text('▌  1. ALCANCE DEL PROYECTO',M+4,y+5);
+    y+=7;
+    doc.setFillColor(252,253,255); doc.rect(M,y,W-M*2,20,'F');
+    doc.setDrawColor(200,215,230); doc.rect(M,y,W-M*2,20,'S');
+    doc.setTextColor(40,40,40); doc.setFont('helvetica','normal'); doc.setFontSize(8.5);
+    const alcLines = doc.splitTextToSize(d.alcance, W-M*2-8);
+    doc.text(alcLines.slice(0,4), M+4, y+6);
+    y += 26;
+  }
+
+  // ── SECCIÓN 2: MATERIALES ──
+  doc.setFillColor(0,77,128); doc.rect(M,y,W-M*2,7,'F');
+  doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(9);
+  doc.text('▌  2. DETALLE DE MATERIALES Y SERVICIOS',M+4,y+5);
+  y+=7;
+
+  // Cabecera tabla
+  const cols = [8, 100, 16, 16, 24, 28]; // N, Descripción, Unidad, Cant, P.Unit, Total
+  const cw   = [10, 92, 16, 14, 26, 28];
+  doc.setFillColor(0,119,182); doc.rect(M,y,W-M*2,7,'F');
+  doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(7.5);
+  let cx2 = M;
+  ['N°','DESCRIPCIÓN / ÍTEM','UNID','CANT.','P. UNIT.','TOTAL'].forEach((h,i)=>{
+    doc.text(h, cx2+2, y+5);
+    cx2 += cw[i];
+  });
+  y+=7;
+
+  // Filas de productos
+  let catActual = '';
+  doc.setFont('helvetica','normal'); doc.setFontSize(8);
+  items.forEach((item, idx)=>{
+    // Cabecera de categoría si cambia
+    if (item.categoria !== catActual) {
+      catActual = item.categoria;
+      doc.setFillColor(230,240,250); doc.rect(M,y,W-M*2,6,'F');
+      doc.setTextColor(0,77,128); doc.setFont('helvetica','bold'); doc.setFontSize(7.5);
+      doc.text(catActual.toUpperCase(), M+4, y+4.5);
+      y+=6;
+      doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor(30,30,30);
+    }
+    if (idx%2===0){doc.setFillColor(249,252,255);} else {doc.setFillColor(255,255,255);}
+    doc.rect(M,y,W-M*2,7,'F');
+    doc.setDrawColor(220,230,240); doc.line(M,y+7,M+W-M*2,y+7);
+    doc.setTextColor(40,40,40);
+    let xx = M;
+    doc.text(String(idx+1).padStart(2,'0'), xx+2, y+5); xx+=cw[0];
+    doc.text(doc.splitTextToSize(item.nombre,88)[0], xx+1, y+5); xx+=cw[1];
+    doc.text('Unid.', xx+1, y+5); xx+=cw[2];
+    doc.text(String(item.qty||1), xx+3, y+5, {align:'right'}); xx+=cw[3];
+    doc.text(fmtCLP(item.precio||0), xx+cw[4]-2, y+5, {align:'right'}); xx+=cw[4];
+    doc.setFont('helvetica','bold');
+    doc.text(fmtCLP((item.precio||0)*(item.qty||1)), xx+cw[5]-2, y+5, {align:'right'});
+    doc.setFont('helvetica','normal');
+    y+=7;
+    if (y>255) { doc.addPage(); y=20; }
+  });
+
+  // ── TOTALES ──
+  y+=4;
+  const tw=90, tx=W-M-tw;
+  doc.setDrawColor(0,119,182); doc.setLineWidth(0.4); doc.line(tx,y,W-M,y); y+=5;
+  doc.setTextColor(60,60,60); doc.setFontSize(9);
+  doc.text('Neto (sin IVA):',tx+2,y); doc.text(fmtCLP(neto),W-M,y,{align:'right'}); y+=6;
+  doc.text('IVA 19%:',tx+2,y); doc.text(fmtCLP(iva),W-M,y,{align:'right'}); y+=3;
+  doc.line(tx,y,W-M,y); y+=5;
+  doc.setFillColor(0,77,128); doc.rect(tx,y-1,tw,9,'F');
+  doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(11);
+  doc.text('TOTAL CON IVA:', tx+3,y+6);
+  doc.text(fmtCLP(total), W-M,y+6,{align:'right'});
+  y+=16;
+
+  if (y > 240) { doc.addPage(); y=20; }
+
+  // ── SECCIÓN 3: PLAN DE EJECUCIÓN ──
+  if (d.dias && d.dias!=='—') {
+    doc.setFillColor(0,77,128); doc.rect(M,y,W-M*2,7,'F');
+    doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(9);
+    doc.text('▌  3. PLAN DE EJECUCIÓN',M+4,y+5);
+    y+=7;
+    doc.setFillColor(252,253,255); doc.rect(M,y,W-M*2,10,'F');
+    doc.setDrawColor(200,215,230); doc.rect(M,y,W-M*2,10,'S');
+    doc.setTextColor(40,40,40); doc.setFont('helvetica','normal'); doc.setFontSize(8.5);
+    doc.text(`Duración estimada: ${d.dias}`,M+4,y+7);
+    y+=16;
+  }
+
+  // ── SECCIÓN 4: CONDICIONES COMERCIALES ──
+  doc.setFillColor(0,77,128); doc.rect(M,y,W-M*2,7,'F');
+  doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(9);
+  doc.text('▌  4. CONDICIONES COMERCIALES',M+4,y+5);
+  y+=7;
+  doc.setFillColor(252,253,255); doc.rect(M,y,W-M*2,36,'F');
+  doc.setDrawColor(200,215,230); doc.rect(M,y,W-M*2,36,'S');
+  doc.setTextColor(40,40,40); doc.setFont('helvetica','normal'); doc.setFontSize(8.5);
+  const conds = [
+    ['Forma de pago:', d.pago||'50% a la firma — 50% contra entrega'],
+    ['Garantía equipos:', d.garantia||'12 meses en equipos / 6 meses instalación'],
+    ['Garantía instalación:', '90 días en mano de obra y configuración'],
+    ['Vigencia oferta:', `${d.validez} desde la fecha de emisión`],
+    ['No incluye:', 'Permisos, obras civiles, pintura ni terminaciones'],
+  ];
+  conds.forEach(([k,v],i)=>{
+    doc.setFont('helvetica','bold'); doc.text(k, M+4, y+7+i*6);
+    doc.setFont('helvetica','normal'); doc.text(v, M+52, y+7+i*6);
+  });
+  y+=42;
+
+  // ── SECCIÓN 5: OBSERVACIONES ──
+  if (d.notas) {
+    doc.setFillColor(240,249,255); doc.rect(M,y,W-M*2,18,'F');
+    doc.setDrawColor(0,201,255); doc.setLineWidth(1); doc.line(M,y,M,y+18);
+    doc.setLineWidth(0.3);
+    doc.setTextColor(0,77,128); doc.setFont('helvetica','bold'); doc.setFontSize(8);
+    doc.text('OBSERVACIONES', M+4, y+6);
+    doc.setFont('helvetica','normal'); doc.setTextColor(50,50,50); doc.setFontSize(8);
+    doc.text(doc.splitTextToSize(d.notas,W-M*2-8).slice(0,2), M+4, y+12);
+    y+=24;
+  }
+
+  // ── FIRMA ──
+  if (y > 248) { doc.addPage(); y=20; }
+  y+=4;
+  const fw=(W-M*2)/2-6;
+  // Bloque proveedor
+  doc.setDrawColor(0,119,182); doc.setLineWidth(0.5);
+  doc.line(M, y+20, M+fw, y+20);
+  doc.setTextColor(0,77,128); doc.setFont('helvetica','bold'); doc.setFontSize(8.5);
+  doc.text('Guardiantech SpA', M, y+25);
+  doc.setFont('helvetica','normal'); doc.setTextColor(80,80,80); doc.setFontSize(7.5);
+  doc.text('Proveedor', M, y+30);
+  // Bloque cliente
+  const fx2 = M+fw+12;
+  doc.setDrawColor(0,119,182);
+  doc.line(fx2, y+20, fx2+fw, y+20);
+  doc.setTextColor(0,77,128); doc.setFont('helvetica','bold'); doc.setFontSize(8.5);
+  doc.text(d.nombre, fx2, y+25);
+  doc.setFont('helvetica','normal'); doc.setTextColor(80,80,80); doc.setFontSize(7.5);
+  doc.text('Cliente / Representante Legal', fx2, y+30);
+
+  // ── FOOTER ──
+  const pages = doc.getNumberOfPages();
+  for(let p=1;p<=pages;p++){
+    doc.setPage(p);
+    doc.setFillColor(235,242,250); doc.rect(0,285,W,12,'F');
+    doc.setTextColor(0,77,128); doc.setFont('helvetica','bold'); doc.setFontSize(7.5);
+    doc.text('Guardiantech SpA  ·  guardiantech.cl  ·  +56 9 8444 2165  ·  Santiago, Chile',W/2,291,{align:'center'});
+    doc.setTextColor(150,160,170); doc.setFont('helvetica','normal'); doc.setFontSize(7);
+    doc.text(`Presupuesto ${nro}  ·  ${fecha}  ·  Página ${p} de ${pages}`,W/2,295,{align:'center'});
+  }
+
+  doc.save(`PresupuestoTecnico-${nro}-${(d.dir||d.nombre).replace(/[\s\/]/g,'-')}.pdf`);
 }
 
 function _generarPDF(d, items, neto, iva, total, nro, fecha) {
@@ -1043,7 +1337,12 @@ function reenviarPDF(i) {
   const hist = JSON.parse(localStorage.getItem('gt-hist')||'[]');
   const h = hist[i];
   if (!h) return;
-  _generarPDF(h, h.items||[], h.neto||0, h.iva||0, h.total||0, h.nro, h.fecha);
+  const fecha = h.fecha || new Date().toLocaleDateString('es-CL');
+  if (h.tipoDoc === 'tecnico') {
+    _generarPDFTecnico(h, h.items||[], h.neto||0, h.iva||0, h.total||0, h.nro, fecha);
+  } else {
+    _generarPDF(h, h.items||[], h.neto||0, h.iva||0, h.total||0, h.nro, fecha);
+  }
 }
 
 function cargarCotizacion(i) {
@@ -1064,6 +1363,15 @@ function cargarCotizacion(i) {
     document.getElementById('c-notas').value     = h.notas||'';
     itemsCot = JSON.parse(JSON.stringify(h.items||[]));
     renderProductos();
+    // Restaurar tipo documento
+    selectDocType(h.tipoDoc||'simple');
+    if (h.tipoDoc==='tecnico') {
+      if(document.getElementById('c-levant')) document.getElementById('c-levant').value = h.levant||'';
+      if(document.getElementById('c-dias'))   document.getElementById('c-dias').value   = h.dias||'';
+      if(document.getElementById('c-alcance'))document.getElementById('c-alcance').value= h.alcance||'';
+      if(document.getElementById('c-pago'))   document.getElementById('c-pago').value   = h.pago||'';
+      if(document.getElementById('c-garantia'))document.getElementById('c-garantia').value= h.garantia||'';
+    }
   },100);
 }
 
