@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Bloquear panel admin de Google
+Disallow: /admin.html
+
+# Sitemap
+Sitemap: https://www.guardiantech.cl/sitemap.xml
