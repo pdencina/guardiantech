@@ -26,7 +26,7 @@
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "GuardianTech Seguridad",
-    "description": "Instalación profesional de cámaras de seguridad para condominios, edificios, casas y negocios en Santiago de Chile. CCTV, control de acceso y video portero IP.",
+    "description": "Instalación profesional de cámaras de seguridad para condominios, edificios, casas y negocios en Santiago de Chile.",
     "url": "https://www.guardiantech.cl",
     "telephone": "+56984442165",
     "address": {
@@ -38,7 +38,7 @@
     "areaServed": ["Santiago", "Las Condes", "Providencia", "Ñuñoa", "Maipú", "La Florida", "Vitacura", "Pudahuel", "San Bernardo", "La Reina", "Lo Barnechea", "Quilicura", "San Miguel"],
     "priceRange": "$$",
     "openingHours": "Mo-Sa 08:00-19:00",
-    "serviceType": ["Instalación de cámaras de seguridad en condominios", "Sistemas CCTV edificios", "Control de Acceso edificios", "Video portero IP", "Seguridad condominios Santiago"]
+    "serviceType": ["Instalación de cámaras de seguridad en condominios", "Sistemas CCTV edificios", "Control de Acceso edificios", "Video portero IP"]
   }
   </script>
 
@@ -63,13 +63,10 @@
       --border2: rgba(255,255,255,0.06);
       --green: #00e676;
       --orange: #ff9100;
-      --red: #ff3d3d;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
@@ -77,119 +74,71 @@
       overflow-x: hidden;
     }
 
-    /* UTILITY */
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
     .accent { color: var(--accent); }
     .tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-dim);
-      border: 1px solid var(--border);
-      padding: 5px 14px;
-      border-radius: 100px;
-      margin-bottom: 16px;
+      display: inline-block; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+      background: var(--accent-dim); border: 1px solid var(--border);
+      padding: 5px 14px; border-radius: 100px; margin-bottom: 16px;
     }
     h1, h2, h3, h4 { font-family: 'Rajdhani', sans-serif; }
 
     /* ─── NAV ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(9,12,16,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border2);
-      padding: 14px 0;
+      background: rgba(9,12,16,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border2); padding: 14px 0;
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; }
     .logo {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: 0.04em;
+      font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700;
+      color: var(--text); text-decoration: none; letter-spacing: 0.04em;
     }
     .logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
-    .nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.2s; }
+    .nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
     .nav-cta {
-      background: var(--accent);
-      color: #000 !important;
-      padding: 8px 18px;
-      border-radius: 6px;
-      font-weight: 500 !important;
-      font-size: 13px !important;
+      background: var(--accent); color: #000 !important; padding: 8px 18px;
+      border-radius: 6px; font-weight: 500 !important; font-size: 13px !important;
       transition: opacity 0.2s !important;
     }
     .nav-cta:hover { opacity: 0.85 !important; }
-
-    /* HAMBURGUESA */
     .nav-hamburger {
       display: none; flex-direction: column; gap: 5px;
       cursor: pointer; padding: 6px; background: none; border: none;
     }
     .nav-hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--text); border-radius: 2px;
-      transition: transform 0.3s, opacity 0.3s;
+      display: block; width: 24px; height: 2px; background: var(--text);
+      border-radius: 2px; transition: transform 0.3s, opacity 0.3s;
     }
     .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-hamburger.open span:nth-child(2) { opacity: 0; }
     .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .nav-mobile-menu {
-      display: none; position: fixed;
-      top: 57px; left: 0; right: 0; z-index: 99;
+      display: none; position: fixed; top: 57px; left: 0; right: 0; z-index: 99;
       background: rgba(9,12,16,0.98); backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border2);
-      padding: 12px 24px 24px; flex-direction: column; gap: 0;
+      border-bottom: 1px solid var(--border2); padding: 12px 24px 24px;
+      flex-direction: column;
     }
     .nav-mobile-menu.open { display: flex; }
     .nav-mobile-menu a {
       color: var(--text2); text-decoration: none; font-size: 16px;
-      padding: 14px 0; border-bottom: 1px solid var(--border2);
-      transition: color 0.2s; display: block;
+      padding: 14px 0; border-bottom: 1px solid var(--border2); display: block;
     }
     .nav-mobile-menu a:last-child { border-bottom: none; }
-    .nav-mobile-menu a:hover { color: var(--text); }
     .nav-mobile-cta {
       margin-top: 14px !important; border-bottom: none !important;
       background: var(--accent); color: #000 !important;
-      text-align: center; border-radius: 8px;
-      padding: 14px !important; font-weight: 500;
+      text-align: center; border-radius: 8px; padding: 14px !important; font-weight: 500;
     }
     @media (max-width: 768px) { .nav-hamburger { display: flex; } }
 
-    .hero-badge-resp {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,230,118,0.08);
-      border: 1px solid rgba(0,230,118,0.25);
-      color: #00e676; font-size: 13px; font-weight: 400;
-      padding: 7px 16px; border-radius: 100px;
-      margin-bottom: 20px;
-    }
-    .badge-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: #00e676; flex-shrink: 0;
-      box-shadow: 0 0 8px #00e676;
-      animation: pulse-green 2s infinite;
-    }
-    @keyframes pulse-green {
-      0%,100% { box-shadow: 0 0 4px #00e676; }
-      50% { box-shadow: 0 0 14px #00e676; }
-    }
-
     /* ─── HERO ─── */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 120px 0 80px;
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; overflow: hidden; padding: 120px 0 80px;
     }
     .hero-grid {
       position: absolute; inset: 0; z-index: 0;
@@ -206,335 +155,281 @@
     }
     .hero-content { position: relative; z-index: 1; max-width: 640px; }
     .hero h1 {
-      font-size: clamp(38px, 6vw, 68px);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.01em;
-      margin-bottom: 20px;
+      font-size: clamp(38px, 6vw, 68px); font-weight: 700;
+      line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 20px;
     }
     .hero h1 span { color: var(--accent); }
-    .hero p {
-      font-size: 17px;
-      line-height: 1.65;
-      color: var(--text2);
-      margin-bottom: 36px;
-      max-width: 500px;
-    }
+    .hero p { font-size: 17px; line-height: 1.65; color: var(--text2); margin-bottom: 36px; max-width: 500px; }
     .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 10px;
-      background: var(--accent);
-      color: #000;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      padding: 14px 28px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: transform 0.2s, opacity 0.2s;
+      background: var(--accent); color: #000;
+      font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 600;
+      letter-spacing: 0.04em; padding: 14px 28px; border-radius: 8px;
+      text-decoration: none; transition: transform 0.2s, opacity 0.2s;
     }
     .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
     .btn-secondary {
       display: inline-flex; align-items: center; gap: 10px;
-      background: transparent;
-      color: var(--text);
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 16px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      padding: 14px 28px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      text-decoration: none;
+      background: transparent; color: var(--text);
+      font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 500;
+      letter-spacing: 0.04em; padding: 14px 28px; border-radius: 8px;
+      border: 1px solid var(--border); text-decoration: none;
       transition: border-color 0.2s, background 0.2s;
     }
     .btn-secondary:hover { border-color: var(--accent); background: var(--accent-dim); }
-
-    .hero-stats {
-      display: flex; gap: 36px; margin-top: 52px; flex-wrap: wrap;
+    .hero-badge-resp {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,230,118,0.08); border: 1px solid rgba(0,230,118,0.25);
+      color: #00e676; font-size: 13px; padding: 7px 16px; border-radius: 100px;
+      margin-bottom: 20px;
     }
-    .stat-item { }
+    .badge-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #00e676;
+      box-shadow: 0 0 8px #00e676; animation: pulse-green 2s infinite;
+    }
+    @keyframes pulse-green {
+      0%,100% { box-shadow: 0 0 4px #00e676; } 50% { box-shadow: 0 0 14px #00e676; }
+    }
+    .hero-stats { display: flex; gap: 36px; margin-top: 52px; flex-wrap: wrap; }
     .stat-num {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
+      font-family: 'Rajdhani', sans-serif; font-size: 32px;
+      font-weight: 700; color: var(--accent); line-height: 1;
     }
     .stat-label { font-size: 13px; color: var(--text3); margin-top: 4px; }
 
     /* ─── TICKER ─── */
     .ticker-wrap {
-      background: var(--bg2);
-      border-top: 1px solid var(--border2);
-      border-bottom: 1px solid var(--border2);
-      overflow: hidden;
-      padding: 12px 0;
+      background: var(--bg2); border-top: 1px solid var(--border2);
+      border-bottom: 1px solid var(--border2); overflow: hidden; padding: 12px 0;
     }
     .ticker {
-      display: flex; gap: 48px;
-      animation: ticker 25s linear infinite;
-      white-space: nowrap;
-      width: max-content;
+      display: flex; gap: 48px; animation: ticker 25s linear infinite;
+      white-space: nowrap; width: max-content;
     }
-    .ticker-item {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 13px; font-weight: 400; color: var(--text3);
-    }
+    .ticker-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text3); }
     .ticker-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ─── SERVICIOS ─── */
-    section { padding: 96px 0; }
-    .section-header { text-align: center; margin-bottom: 64px; }
+    /* ─── SECTIONS ─── */
+    section { padding: 80px 0; }
+    .section-header { text-align: center; margin-bottom: 56px; }
     .section-header h2 {
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      line-height: 1.1;
-      margin-bottom: 14px;
+      font-size: clamp(28px, 4vw, 44px); font-weight: 700;
+      line-height: 1.1; margin-bottom: 14px;
     }
     .section-header p { font-size: 16px; color: var(--text2); max-width: 480px; margin: 0 auto; line-height: 1.6; }
 
+    /* ─── SEGMENTOS ─── */
+    .seg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .seg-card {
+      background: var(--bg); border: 1px solid var(--border2);
+      border-radius: 14px; padding: 32px 28px;
+      position: relative; display: flex; flex-direction: column; gap: 14px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .seg-card:hover { border-color: var(--border); transform: translateY(-4px); }
+    .seg-card-featured {
+      border-color: var(--border);
+      background: linear-gradient(160deg, var(--surface) 0%, var(--bg) 100%);
+      box-shadow: 0 0 40px rgba(0,201,255,0.06);
+    }
+    .seg-badge {
+      position: absolute; top: -12px; left: 24px;
+      background: var(--accent); color: #000;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 100px;
+    }
+    .seg-icon { font-size: 36px; line-height: 1; }
+    .seg-card h3 { font-size: 22px; font-weight: 700; }
+    .seg-card p { font-size: 14px; color: var(--text2); line-height: 1.6; }
+    .seg-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .seg-list li { font-size: 13px; color: var(--text2); padding-left: 18px; position: relative; }
+    .seg-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 12px; }
+    .seg-cta {
+      display: inline-block; margin-top: auto; color: var(--accent); font-size: 14px;
+      font-weight: 500; text-decoration: none; padding-top: 8px;
+      border-top: 1px solid var(--border2); transition: color 0.2s;
+    }
+    .seg-cta:hover { color: var(--text); }
+
+    /* ─── SERVICIOS (compacto) ─── */
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
     .service-card {
-      background: var(--bg2);
-      border: 1px solid var(--border2);
-      border-radius: 12px;
-      padding: 32px 28px;
+      background: var(--bg2); border: 1px solid var(--border2);
+      border-radius: 12px; padding: 28px 24px;
       transition: border-color 0.3s, transform 0.3s;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
     .service-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
+      opacity: 0; transition: opacity 0.3s;
     }
     .service-card:hover { border-color: var(--border); transform: translateY(-4px); }
     .service-card:hover::before { opacity: 1; }
     .service-icon {
-      width: 48px; height: 48px;
-      background: var(--accent-dim);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px;
+      width: 44px; height: 44px; background: var(--accent-dim);
+      border: 1px solid var(--border); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
     }
-    .service-icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.8; }
-    .service-card h3 {
-      font-size: 20px; font-weight: 600; letter-spacing: 0.02em;
-      margin-bottom: 10px; color: var(--text);
-    }
-    .service-card p { font-size: 14px; color: var(--text2); line-height: 1.6; margin-bottom: 16px; }
-    .service-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .service-tag {
-      font-size: 11px; font-weight: 400;
-      background: var(--surface); color: var(--text3);
-      padding: 4px 10px; border-radius: 4px;
-      border: 1px solid var(--border2);
-    }
+    .service-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.8; }
+    .service-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .service-card p { font-size: 13px; color: var(--text2); line-height: 1.6; }
 
     /* ─── PROMO ─── */
     .promo-section { background: var(--bg2); border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); }
     .promo-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
     .promo-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,145,0,0.1);
-      border: 1px solid rgba(255,145,0,0.3);
-      color: var(--orange);
-      font-size: 12px; font-weight: 500;
-      padding: 6px 14px; border-radius: 100px;
-      margin-bottom: 20px;
+      background: rgba(255,145,0,0.1); border: 1px solid rgba(255,145,0,0.3);
+      color: var(--orange); font-size: 12px; font-weight: 500;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 20px;
     }
-    .promo-inner h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 700; margin-bottom: 14px; }
     .promo-price {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 52px; font-weight: 700; color: var(--accent);
-      line-height: 1; margin-bottom: 8px;
+      font-family: 'Rajdhani', sans-serif; font-size: 52px;
+      font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 8px;
     }
     .promo-price-note { font-size: 13px; color: var(--text3); margin-bottom: 28px; }
     .kit-features { list-style: none; margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px; }
-    .kit-features li {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 15px; color: var(--text2);
-    }
+    .kit-features li { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--text2); }
     .check {
       width: 20px; height: 20px; background: rgba(0,230,118,0.1);
       border: 1px solid rgba(0,230,118,0.3); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .check::after {
-      content: ''; display: block;
-      width: 6px; height: 9px;
-      border-right: 1.5px solid var(--green);
-      border-bottom: 1.5px solid var(--green);
+      content: ''; display: block; width: 6px; height: 9px;
+      border-right: 1.5px solid var(--green); border-bottom: 1.5px solid var(--green);
       transform: rotate(45deg) translate(-1px, -1px);
     }
-
     .kit-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      text-align: center;
-      position: relative;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px; text-align: center;
     }
     .kit-visual {
-      width: 120px; height: 120px;
-      background: var(--accent-dim);
-      border: 2px solid var(--border);
-      border-radius: 50%;
-      margin: 0 auto 24px;
-      display: flex; align-items: center; justify-content: center;
+      width: 100px; height: 100px; background: var(--accent-dim);
+      border: 2px solid var(--border); border-radius: 50%;
+      margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;
     }
-    .kit-visual svg { width: 52px; height: 52px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+    .kit-visual svg { width: 44px; height: 44px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
     .kit-items { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .kit-item {
-      background: var(--bg);
-      border: 1px solid var(--border2);
-      border-radius: 8px;
-      padding: 12px;
-      font-size: 13px; color: var(--text2);
+      background: var(--bg); border: 1px solid var(--border2);
+      border-radius: 8px; padding: 12px; font-size: 13px; color: var(--text2);
     }
     .kit-item strong { display: block; font-family: 'Rajdhani', sans-serif; font-size: 18px; color: var(--text); font-weight: 600; }
 
-    /* ─── COBERTURAS ─── */
-    .coverage-section { background: var(--bg); }
+    /* ─── POR QUÉ + PROCESO ─── */
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .why-card { padding: 28px; border: 1px solid var(--border2); border-radius: 10px; background: var(--bg2); }
+    .why-num {
+      font-family: 'Rajdhani', sans-serif; font-size: 42px; font-weight: 700;
+      color: var(--accent); opacity: 0.3; line-height: 1; margin-bottom: 12px;
+    }
+    .why-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .why-card p { font-size: 14px; color: var(--text2); line-height: 1.6; }
+
+    .process-section { background: var(--bg2); border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); }
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; }
+    .process-step { padding: 36px 28px; border-right: 1px solid var(--border2); }
+    .process-step:last-child { border-right: none; }
+    .step-num {
+      font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.1em; color: var(--accent); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .step-num::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+    .process-step h3 { font-size: 19px; font-weight: 600; margin-bottom: 8px; }
+    .process-step p { font-size: 14px; color: var(--text2); line-height: 1.55; }
+
+    /* ─── COBERTURA ─── */
     .coverage-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
     .coverage-pill {
       background: var(--bg2); border: 1px solid var(--border2);
-      border-radius: 100px; padding: 8px 20px;
-      font-size: 14px; color: var(--text2);
+      border-radius: 100px; padding: 8px 20px; font-size: 14px; color: var(--text2);
       transition: border-color 0.2s, color 0.2s;
     }
     .coverage-pill:hover { border-color: var(--border); color: var(--text); }
 
-    /* ─── POR QUÉ ─── */
-    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-    .why-card {
-      padding: 28px;
-      border: 1px solid var(--border2);
-      border-radius: 10px;
-      background: var(--bg2);
-    }
-    .why-num {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 42px; font-weight: 700; color: var(--accent);
-      opacity: 0.3; line-height: 1; margin-bottom: 12px;
-    }
-    .why-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; letter-spacing: 0.02em; }
-    .why-card p { font-size: 14px; color: var(--text2); line-height: 1.6; }
-
-    /* ─── PROCESO ─── */
-    .process-section { background: var(--bg2); border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); }
-    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; }
-    .process-step {
-      padding: 36px 28px;
-      position: relative;
-      border-right: 1px solid var(--border2);
-    }
-    .process-step:last-child { border-right: none; }
-    .step-num {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 13px; font-weight: 600; letter-spacing: 0.1em;
-      color: var(--accent); margin-bottom: 14px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .step-num::before {
-      content: ''; display: block;
-      width: 24px; height: 1px; background: var(--accent);
-    }
-    .process-step h3 { font-size: 19px; font-weight: 600; margin-bottom: 8px; letter-spacing: 0.02em; }
-    .process-step p { font-size: 14px; color: var(--text2); line-height: 1.55; }
-
     /* ─── TESTIMONIOS ─── */
     .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .testi-card {
-      background: var(--bg2);
-      border: 1px solid var(--border2);
-      border-radius: 12px;
-      padding: 28px;
-    }
+    .testi-card { background: var(--bg2); border: 1px solid var(--border2); border-radius: 12px; padding: 28px; }
     .testi-stars { display: flex; gap: 4px; margin-bottom: 16px; }
     .star { color: var(--orange); font-size: 14px; }
     .testi-text { font-size: 14px; color: var(--text2); line-height: 1.65; margin-bottom: 20px; font-style: italic; }
     .testi-author { display: flex; align-items: center; gap: 12px; }
     .testi-avatar {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: var(--accent-dim);
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 700; font-size: 14px;
-      color: var(--accent);
-      flex-shrink: 0;
+      width: 38px; height: 38px; border-radius: 50%; background: var(--accent-dim);
+      border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 14px; color: var(--accent);
     }
     .testi-name { font-size: 14px; font-weight: 500; }
     .testi-location { font-size: 12px; color: var(--text3); }
 
     /* ─── FAQ ─── */
     .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-    .faq-item {
-      background: var(--bg2); border: 1px solid var(--border2);
-      border-radius: 10px; overflow: hidden;
-    }
+    .faq-item { background: var(--bg2); border: 1px solid var(--border2); border-radius: 10px; overflow: hidden; }
     .faq-q {
-      padding: 18px 24px;
-      display: flex; justify-content: space-between; align-items: center;
-      cursor: pointer; user-select: none;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 17px; font-weight: 600; letter-spacing: 0.02em;
-      gap: 16px;
+      padding: 18px 24px; display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; user-select: none; font-family: 'Rajdhani', sans-serif;
+      font-size: 17px; font-weight: 600; gap: 16px;
     }
     .faq-icon { flex-shrink: 0; color: var(--accent); font-size: 20px; transition: transform 0.25s; }
-    .faq-a {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s;
-    }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
     .faq-a-inner { padding: 0 24px 20px; font-size: 14px; color: var(--text2); line-height: 1.65; }
     .faq-item.open .faq-a { max-height: 300px; }
     .faq-item.open .faq-icon { transform: rotate(45deg); }
 
-    /* ─── CTA FINAL ─── */
-    .cta-section {
-      background: var(--bg2); border-top: 1px solid var(--border2);
-      text-align: center; padding: 96px 0;
-      position: relative; overflow: hidden;
+    /* ─── COTIZAR FORM ─── */
+    .cotizar-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+    .cotizar-benefits { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+    .cotizar-benefit { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text2); }
+    .cb-icon {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(0,230,118,0.1); border: 1px solid rgba(0,230,118,0.3);
+      color: var(--green); display: flex; align-items: center; justify-content: center;
+      font-size: 12px; flex-shrink: 0;
     }
-    .cta-glow {
-      position: absolute; bottom: -200px; left: 50%; transform: translateX(-50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(0,119,182,0.2) 0%, transparent 70%);
-      z-index: 0;
+    .cotizar-form-card {
+      background: var(--bg); border: 1px solid var(--border2);
+      border-radius: 14px; padding: 28px; display: flex; flex-direction: column; gap: 18px;
     }
-    .cta-section .container { position: relative; z-index: 1; }
-    .cta-section h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 700; margin-bottom: 14px; }
-    .cta-section p { font-size: 16px; color: var(--text2); margin-bottom: 36px; }
-    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .phone-link {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 20px; font-family: 'Rajdhani', sans-serif;
-      font-weight: 600; color: var(--text); text-decoration: none;
-      margin-top: 24px;
+    .cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .cform-group { display: flex; flex-direction: column; gap: 7px; }
+    .cform-group label { font-size: 13px; font-weight: 500; color: var(--text2); }
+    .cform-group input, .cform-group textarea {
+      background: var(--bg2); border: 1px solid var(--border2); border-radius: 8px;
+      padding: 10px 14px; color: var(--text); font-size: 14px;
+      font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.2s; resize: none;
     }
-    .phone-link:hover { color: var(--accent); }
+    .cform-group input:focus, .cform-group textarea:focus { border-color: var(--accent); }
+    .cform-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .chip {
+      font-size: 12px; padding: 6px 12px; border-radius: 100px;
+      border: 1px solid var(--border2); background: var(--bg2);
+      color: var(--text2); cursor: pointer; transition: all 0.15s; user-select: none;
+    }
+    .chip:hover { border-color: var(--border); color: var(--text); }
+    .chip.selected { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
+
+    /* ─── MARCAS ─── */
+    .brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+    .brand-card {
+      background: var(--bg); border: 1px solid var(--border2);
+      border-radius: 10px; padding: 16px 14px; text-align: center;
+      transition: border-color 0.2s;
+    }
+    .brand-card:hover { border-color: var(--border); }
+    .brand-name { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .brand-desc { font-size: 11px; color: var(--text3); line-height: 1.4; }
 
     /* ─── FOOTER ─── */
     footer {
-      background: var(--bg);
-      border-top: 1px solid var(--border2);
-      padding: 40px 0 28px;
+      background: var(--bg); border-top: 1px solid var(--border2); padding: 40px 0 28px;
     }
     .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; }
-    .footer-logo-text {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 20px; font-weight: 700;
-    }
+    .footer-logo-text { font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 700; }
     .footer-logo-text span { color: var(--accent); }
     .footer-tagline { font-size: 13px; color: var(--text3); margin-top: 6px; }
     .footer-links h4 { font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text2); margin-bottom: 14px; }
@@ -542,8 +437,7 @@
     .footer-links a { font-size: 13px; color: var(--text3); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--text2); }
     .footer-bottom {
-      margin-top: 36px; padding-top: 20px;
-      border-top: 1px solid var(--border2);
+      margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border2);
       display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
     }
     .footer-bottom p { font-size: 12px; color: var(--text3); }
@@ -551,27 +445,19 @@
     /* ─── WHATSAPP FLOAT ─── */
     .wa-float {
       position: fixed; bottom: 28px; right: 28px; z-index: 200;
-      width: 54px; height: 54px;
-      background: #25D366;
-      border-radius: 50%;
+      width: 54px; height: 54px; background: #25D366; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-      text-decoration: none;
-      transition: transform 0.2s;
+      text-decoration: none; transition: transform 0.2s;
     }
     .wa-float:hover { transform: scale(1.08); }
     .wa-float svg { width: 28px; height: 28px; fill: #fff; }
 
     /* ─── ANIMATIONS ─── */
-    .fade-up {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ─── RESPONSIVE ─── */
-
-    /* Tablet grande / iPad Pro — 1024px */
     @media (max-width: 1024px) {
       .hero h1 { font-size: 48px; }
       .promo-price { font-size: 44px; }
@@ -582,13 +468,10 @@
       .process-step:nth-child(3) { border-top: 1px solid var(--border2); }
       .process-step:nth-child(4) { border-right: none; border-top: 1px solid var(--border2); }
     }
-
-    /* Tablet / iPad — 768px */
     @media (max-width: 768px) {
-      section { padding: 72px 0; }
+      section { padding: 64px 0; }
       .hero { padding: 100px 0 64px; }
       .hero h1 { font-size: 40px; }
-      .hero p { font-size: 15px; }
       .hero-stats { gap: 24px; }
       .stat-num { font-size: 26px; }
       .promo-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -596,50 +479,36 @@
       .testimonials-grid { grid-template-columns: 1fr; }
       .section-header h2 { font-size: 28px; }
       .nav-links li:not(:last-child) { display: none; }
+      .cotizar-grid { grid-template-columns: 1fr; gap: 32px; }
+      .cform-row { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; gap: 28px; }
-      .footer-bottom { flex-direction: column; text-align: center; gap: 6px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
     }
-
-    /* Smartphone grande — 480px */
     @media (max-width: 480px) {
       .container { padding: 0 16px; }
       section { padding: 56px 0; }
       .hero { padding: 88px 0 56px; min-height: auto; }
       .hero h1 { font-size: 34px; line-height: 1.1; }
-      .hero p { font-size: 14px; }
       .hero-btns { flex-direction: column; }
       .hero-btns a { text-align: center; justify-content: center; }
       .hero-stats { gap: 20px; margin-top: 36px; }
-      .stat-num { font-size: 24px; }
-      .stat-label { font-size: 12px; }
       .btn-primary, .btn-secondary { font-size: 15px; padding: 13px 22px; width: 100%; justify-content: center; }
       .services-grid { grid-template-columns: 1fr; }
+      .seg-grid { grid-template-columns: 1fr; }
       .why-grid { grid-template-columns: 1fr; }
       .process-steps { grid-template-columns: 1fr; }
       .process-step { border-right: none; border-bottom: 1px solid var(--border2); }
       .process-step:last-child { border-bottom: none; }
-      .process-step:nth-child(3) { border-top: none; }
-      .process-step:nth-child(4) { border-top: none; }
+      .process-step:nth-child(3), .process-step:nth-child(4) { border-top: none; }
       .promo-price { font-size: 42px; }
-      .kit-items { grid-template-columns: 1fr 1fr; }
       .coverage-grid { gap: 8px; }
       .coverage-pill { font-size: 13px; padding: 7px 14px; }
       .faq-q { font-size: 15px; padding: 16px 18px; }
-      .faq-a-inner { padding: 0 18px 16px; }
-      .cta-section h2 { font-size: 28px; }
-      .cta-btns { flex-direction: column; align-items: center; }
-      .cta-btns .btn-primary { width: 100%; max-width: 340px; justify-content: center; font-size: 16px; padding: 15px 24px; }
-      .phone-link { font-size: 17px; }
       .section-header { margin-bottom: 40px; }
-      .section-header h2 { font-size: 26px; }
-      .section-header p { font-size: 14px; }
       .nav-links { display: none; }
-      .footer-links { width: 100%; }
       .wa-float { bottom: 18px; right: 18px; width: 50px; height: 50px; }
       .wa-float svg { width: 24px; height: 24px; }
     }
-
-    /* Smartphone pequeño — 360px */
     @media (max-width: 360px) {
       .hero h1 { font-size: 30px; }
       .promo-price { font-size: 36px; }
@@ -656,10 +525,7 @@
     <a href="#" class="logo">Guardian<span>Tech</span></a>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#segmentos">Condominios</a></li>
       <li><a href="#promocion">Promoción</a></li>
-      <li><a href="#configurador">Arma tu Kit</a></li>
-      <li><a href="#cobertura">Cobertura</a></li>
       <li><a href="#proceso">Proceso</a></li>
       <li><a href="#cotizar">Cotizar</a></li>
       <li><a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20cámaras%20de%20seguridad." class="nav-cta">WhatsApp</a></li>
@@ -672,13 +538,10 @@
 
 <div class="nav-mobile-menu" id="mobile-menu">
   <a href="#servicios" onclick="closeMenu()">Servicios</a>
-  <a href="#segmentos" onclick="closeMenu()">Condominios y Edificios</a>
   <a href="#promocion" onclick="closeMenu()">Promoción</a>
-  <a href="#configurador" onclick="closeMenu()">Arma tu Kit</a>
-  <a href="#cobertura" onclick="closeMenu()">Cobertura</a>
   <a href="#proceso" onclick="closeMenu()">Proceso</a>
+  <a href="#cobertura" onclick="closeMenu()">Cobertura</a>
   <a href="#cotizar" onclick="closeMenu()">Cotizar gratis</a>
-  <a href="#" onclick="closeMenu()">FAQ</a>
   <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20cámaras%20de%20seguridad." class="nav-mobile-cta">Cotizar por WhatsApp</a>
 </div>
 
@@ -701,7 +564,7 @@
     <div class="hero-content">
       <div class="tag">Casas · Negocios · Condominios · Edificios</div>
       <h1>Seguridad profesional para <span>condominios</span> y edificios en Santiago</h1>
-      <p>Instalamos cámaras CCTV, control de acceso y video portero IP en condominios, edificios, casas y negocios. Monitoreo 24/7 desde tu celular. Cotiza gratis hoy.</p>
+      <p>Instalamos cámaras CCTV, control de acceso y video portero IP. Monitoreo 24/7 desde tu celular. Cotiza gratis hoy.</p>
       <div class="hero-btns">
         <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20instalacion%20de%20camaras%20de%20seguridad.%20Mi%20ubicacion%20es%20[COMUNA],%20es%20para%20[CASA/NEGOCIO]%20y%20aproximadamente%20necesito%20[X]%20camaras." class="btn-primary">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.571a.75.75 0 00.932.932l5.724-1.467A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22.5A10.456 10.456 0 016.37 20.82l-.41-.243-4.252 1.09 1.09-4.152-.267-.432A10.46 10.46 0 011.5 12C1.5 6.21 6.21 1.5 12 1.5S22.5 6.21 22.5 12 17.79 22.5 12 22.5z"/></svg>
@@ -745,54 +608,45 @@
     <div class="ticker-item"><span class="ticker-dot"></span> Condominios y Edificios</div>
     <div class="ticker-item"><span class="ticker-dot"></span> Monitoreo desde celular</div>
     <div class="ticker-item"><span class="ticker-dot"></span> Control de Acceso</div>
-    <div class="ticker-item"><span class="ticker-dot"></span> Instalación en 24 horas</div>
     <div class="ticker-item"><span class="ticker-dot"></span> Video Portero IP</div>
-    <div class="ticker-item"><span class="ticker-dot"></span> Garantía en equipos</div>
     <div class="ticker-item"><span class="ticker-dot"></span> Visión nocturna</div>
-    <div class="ticker-item"><span class="ticker-dot"></span> Negocios y Empresas</div>
     <div class="ticker-item"><span class="ticker-dot"></span> Soporte técnico 24/7</div>
-    <!-- Repetido para loop continuo -->
     <div class="ticker-item"><span class="ticker-dot"></span> Cámaras HD y 4K</div>
     <div class="ticker-item"><span class="ticker-dot"></span> Condominios y Edificios</div>
     <div class="ticker-item"><span class="ticker-dot"></span> Monitoreo desde celular</div>
     <div class="ticker-item"><span class="ticker-dot"></span> Control de Acceso</div>
-    <div class="ticker-item"><span class="ticker-dot"></span> Instalación en 24 horas</div>
     <div class="ticker-item"><span class="ticker-dot"></span> Video Portero IP</div>
-    <div class="ticker-item"><span class="ticker-dot"></span> Garantía en equipos</div>
     <div class="ticker-item"><span class="ticker-dot"></span> Visión nocturna</div>
-    <div class="ticker-item"><span class="ticker-dot"></span> Negocios y Empresas</div>
     <div class="ticker-item"><span class="ticker-dot"></span> Soporte técnico 24/7</div>
   </div>
 </div>
 
-<!-- SEGMENTOS -->
-<section id="segmentos" style="background: var(--bg2); border-top: 1px solid var(--border2); padding: 72px 0;">
+<!-- SEGMENTOS: Tipo de propiedad -->
+<section id="servicios" style="background: var(--bg2); border-top: 1px solid var(--border2);">
   <div class="container">
     <div class="section-header fade-up">
-      <div class="tag">¿Para quién trabajamos?</div>
-      <h2>Soluciones según tu <span class="accent">tipo de propiedad</span></h2>
-      <p>Cada espacio tiene necesidades distintas. Tenemos la solución correcta para cada uno.</p>
+      <div class="tag">Soluciones a medida</div>
+      <h2>Seguridad según tu <span class="accent">tipo de propiedad</span></h2>
+      <p>Cada espacio tiene necesidades distintas. Diseñamos la solución correcta para cada uno.</p>
     </div>
     <div class="seg-grid">
-
       <div class="seg-card fade-up">
         <div class="seg-icon">🏢</div>
         <h3>Condominios y Edificios</h3>
-        <p>Vigilancia de pasillos, estacionamientos, accesos y áreas comunes. Control de acceso por tarjeta o huella. Video portero IP para cada piso o unidad.</p>
+        <p>Vigilancia de pasillos, estacionamientos y áreas comunes. Control de acceso y video portero IP por piso.</p>
         <ul class="seg-list">
-          <li>Cámaras en hall de entrada y estacionamiento</li>
+          <li>Cámaras en hall y estacionamiento</li>
           <li>Control de acceso puertas y portones</li>
           <li>Video portero con apertura desde celular</li>
-          <li>Monitoreo centralizado para el conserje</li>
+          <li>Monitoreo centralizado para conserje</li>
         </ul>
         <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20soy%20administrador%20de%20un%20condominio/edificio%20y%20quiero%20cotizar%20un%20sistema%20de%20seguridad." class="seg-cta">Cotizar para mi edificio →</a>
       </div>
-
       <div class="seg-card fade-up seg-card-featured">
         <div class="seg-badge">Más solicitado</div>
         <div class="seg-icon">🏠</div>
         <h3>Casas y Hogares</h3>
-        <p>Protege tu familia con cámaras en entradas, jardín y garaje. Ve todo desde tu smartphone en tiempo real, recibe alertas y revisa grabaciones cuando quieras.</p>
+        <p>Cámaras en entradas, jardín y garaje. Ve todo desde tu smartphone en tiempo real con alertas instantáneas.</p>
         <ul class="seg-list">
           <li>Cámaras exteriores HD y 4K</li>
           <li>Visión nocturna hasta 40 metros</li>
@@ -801,11 +655,10 @@
         </ul>
         <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20camaras%20de%20seguridad%20para%20mi%20casa." class="seg-cta">Cotizar para mi casa →</a>
       </div>
-
       <div class="seg-card fade-up">
         <div class="seg-icon">🏪</div>
         <h3>Negocios y Empresas</h3>
-        <p>Protege tu local, bodega u oficina. Monitoreo remoto para dueños y gerentes. Cámaras en cajas, bodegas, accesos y zonas críticas del negocio.</p>
+        <p>Protege tu local, bodega u oficina. Monitoreo remoto para dueños con cámaras en zonas críticas.</p>
         <ul class="seg-list">
           <li>Cámaras en caja y bodega</li>
           <li>Control de acceso empleados</li>
@@ -814,64 +667,16 @@
         </ul>
         <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20camaras%20de%20seguridad%20para%20mi%20negocio/empresa." class="seg-cta">Cotizar para mi negocio →</a>
       </div>
-
     </div>
   </div>
 </section>
 
-<style>
-  .seg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-  .seg-card {
-    background: var(--bg); border: 1px solid var(--border2);
-    border-radius: 14px; padding: 32px 28px;
-    position: relative; display: flex; flex-direction: column; gap: 14px;
-    transition: border-color 0.3s, transform 0.3s;
-  }
-  .seg-card:hover { border-color: var(--border); transform: translateY(-4px); }
-  .seg-card-featured {
-    border-color: var(--border);
-    background: linear-gradient(160deg, var(--surface) 0%, var(--bg) 100%);
-    box-shadow: 0 0 40px rgba(0,201,255,0.06);
-  }
-  .seg-badge {
-    position: absolute; top: -12px; left: 24px;
-    background: var(--accent); color: #000;
-    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; padding: 4px 12px; border-radius: 100px;
-  }
-  .seg-icon { font-size: 36px; line-height: 1; }
-  .seg-card h3 { font-size: 22px; font-weight: 700; letter-spacing: 0.02em; }
-  .seg-card p { font-size: 14px; color: var(--text2); line-height: 1.6; }
-  .seg-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .seg-list li {
-    font-size: 13px; color: var(--text2);
-    padding-left: 18px; position: relative;
-  }
-  .seg-list li::before {
-    content: '→'; position: absolute; left: 0;
-    color: var(--accent); font-size: 12px;
-  }
-  .seg-cta {
-    display: inline-block; margin-top: auto;
-    color: var(--accent); font-size: 14px; font-weight: 500;
-    text-decoration: none; padding-top: 8px;
-    border-top: 1px solid var(--border2);
-    transition: color 0.2s;
-  }
-  .seg-cta:hover { color: var(--text); }
-  @media (max-width: 480px) {
-    .seg-grid { grid-template-columns: 1fr; }
-    .seg-card { padding: 24px 20px; }
-  }
-</style>
-
-<!-- SERVICIOS -->
-<section id="servicios">
+<!-- SERVICIOS TÉCNICOS (compacto - 4 cards) -->
+<section>
   <div class="container">
     <div class="section-header fade-up">
       <div class="tag">Nuestros Servicios</div>
-      <h2>Soluciones de seguridad <span class="accent">completas</span></h2>
-      <p>Desde cámaras CCTV hasta control de acceso, cubrimos todas tus necesidades de seguridad en Santiago.</p>
+      <h2>Todo lo que necesitas en <span class="accent">un solo lugar</span></h2>
     </div>
     <div class="services-grid">
       <div class="service-card fade-up">
@@ -879,75 +684,28 @@
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M20 12c0-4.42-3.58-8-8-8s-8 3.58-8 8 3.58 8 8 8"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
         </div>
         <h3>Cámaras CCTV</h3>
-        <p>Instalación de cámaras HD y 4K para casas, departamentos, negocios y condominios. Grabación continua con acceso remoto.</p>
-        <div class="service-tags">
-          <span class="service-tag">HD 1080p</span>
-          <span class="service-tag">4K</span>
-          <span class="service-tag">Visión nocturna</span>
-          <span class="service-tag">Exterior/Interior</span>
-        </div>
+        <p>HD, 4K, domo, bullet y PTZ. Interior y exterior con visión nocturna y grabación continua con acceso remoto.</p>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
         </div>
         <h3>Control de Acceso</h3>
-        <p>Sistemas de control de acceso con tarjetas, huella digital y PIN. Ideal para empresas, edificios y condominios en Santiago.</p>
-        <div class="service-tags">
-          <span class="service-tag">Tarjeta RFID</span>
-          <span class="service-tag">Huella</span>
-          <span class="service-tag">PIN</span>
-          <span class="service-tag">App móvil</span>
-        </div>
+        <p>Tarjetas RFID, huella digital, PIN y app móvil. Ideal para edificios, condominios y empresas.</p>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.9L15 14M3 8h12v8H3z"/></svg>
         </div>
         <h3>Video Portero IP</h3>
-        <p>Videoporteros con visión nocturna y acceso desde smartphone. Atiende visitas desde cualquier lugar del mundo.</p>
-        <div class="service-tags">
-          <span class="service-tag">IP</span>
-          <span class="service-tag">App remota</span>
-          <span class="service-tag">Apertura digital</span>
-        </div>
+        <p>Atiende visitas desde cualquier lugar. Visión nocturna y apertura remota desde smartphone.</p>
       </div>
       <div class="service-card fade-up">
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
         </div>
-        <h3>DVR/NVR y Grabadores</h3>
-        <p>Instalación y configuración de grabadores digitales con almacenamiento en nube o disco duro. Visualiza eventos pasados fácilmente.</p>
-        <div class="service-tags">
-          <span class="service-tag">DVR</span>
-          <span class="service-tag">NVR</span>
-          <span class="service-tag">Nube</span>
-          <span class="service-tag">Disco duro</span>
-        </div>
-      </div>
-      <div class="service-card fade-up">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3>Alarmas y Sensores</h3>
-        <p>Sistemas de alarma con sensores de movimiento, apertura de puertas y ventanas. Notificaciones al instante en tu celular.</p>
-        <div class="service-tags">
-          <span class="service-tag">Movimiento</span>
-          <span class="service-tag">Apertura</span>
-          <span class="service-tag">Notificaciones</span>
-        </div>
-      </div>
-      <div class="service-card fade-up">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
-        </div>
-        <h3>Mantención y Soporte</h3>
-        <p>Mantención preventiva, revisión de equipos y soporte técnico. Mantenemos tu sistema siempre operativo y actualizado.</p>
-        <div class="service-tags">
-          <span class="service-tag">Revisión</span>
-          <span class="service-tag">Actualización</span>
-          <span class="service-tag">Garantía</span>
-        </div>
+        <h3>DVR/NVR y Mantención</h3>
+        <p>Grabadores con almacenamiento en nube o disco. Mantención preventiva y soporte técnico continuo.</p>
       </div>
     </div>
   </div>
@@ -983,22 +741,10 @@
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12 6v6l4 2"/></svg>
           </div>
           <div class="kit-items">
-            <div class="kit-item">
-              <strong>4</strong>
-              Cámaras HD
-            </div>
-            <div class="kit-item">
-              <strong>1</strong>
-              DVR Grabador
-            </div>
-            <div class="kit-item">
-              <strong>500GB</strong>
-              Almacenamiento
-            </div>
-            <div class="kit-item">
-              <strong>24/7</strong>
-              Monitoreo
-            </div>
+            <div class="kit-item"><strong>4</strong>Cámaras HD</div>
+            <div class="kit-item"><strong>1</strong>DVR Grabador</div>
+            <div class="kit-item"><strong>500GB</strong>Almacenamiento</div>
+            <div class="kit-item"><strong>24/7</strong>Monitoreo</div>
           </div>
         </div>
       </div>
@@ -1006,40 +752,7 @@
   </div>
 </section>
 
-<!-- COBERTURA -->
-<section id="cobertura" class="coverage-section">
-  <div class="container">
-    <div class="section-header fade-up">
-      <div class="tag">Zonas de Cobertura</div>
-      <h2>Instalamos en toda el <span class="accent">área metropolitana</span></h2>
-      <p>Llegamos a tu comuna en Santiago para instalar tu sistema de seguridad.</p>
-    </div>
-    <div class="coverage-grid fade-up">
-      <span class="coverage-pill">Las Condes</span>
-      <span class="coverage-pill">Providencia</span>
-      <span class="coverage-pill">Ñuñoa</span>
-      <span class="coverage-pill">Santiago Centro</span>
-      <span class="coverage-pill">Vitacura</span>
-      <span class="coverage-pill">La Florida</span>
-      <span class="coverage-pill">Maipú</span>
-      <span class="coverage-pill">Pudahuel</span>
-      <span class="coverage-pill">Peñalolén</span>
-      <span class="coverage-pill">San Bernardo</span>
-      <span class="coverage-pill">La Reina</span>
-      <span class="coverage-pill">Lo Barnechea</span>
-      <span class="coverage-pill">Quilicura</span>
-      <span class="coverage-pill">Huechuraba</span>
-      <span class="coverage-pill">Independencia</span>
-      <span class="coverage-pill">Recoleta</span>
-      <span class="coverage-pill">San Miguel</span>
-      <span class="coverage-pill">Macul</span>
-      <span class="coverage-pill">La Cisterna</span>
-      <span class="coverage-pill">El Bosque</span>
-    </div>
-  </div>
-</section>
-
-<!-- POR QUÉ ELEGIRNOS -->
+<!-- POR QUÉ ELEGIRNOS (reducido a 4) -->
 <section>
   <div class="container">
     <div class="section-header fade-up">
@@ -1050,32 +763,22 @@
       <div class="why-card fade-up">
         <div class="why-num">01</div>
         <h3>Técnicos Certificados</h3>
-        <p>Nuestro equipo tiene experiencia y formación técnica especializada en instalación de sistemas de seguridad electrónica.</p>
+        <p>Equipo con experiencia y formación especializada en seguridad electrónica. Equipos de marcas reconocidas con garantía.</p>
       </div>
       <div class="why-card fade-up">
         <div class="why-num">02</div>
-        <h3>Equipos de Calidad</h3>
-        <p>Trabajamos solo con marcas reconocidas y equipos con garantía. Sin equipos baratos que fallan a los pocos meses.</p>
+        <h3>Instalación Rápida</h3>
+        <p>En la mayoría de los casos instalamos en 24 horas. Trabajo limpio, cableado prolijo y sin obras complicadas.</p>
       </div>
       <div class="why-card fade-up">
         <div class="why-num">03</div>
-        <h3>Instalación el Mismo Día</h3>
-        <p>En la mayoría de los casos podemos instalar tu sistema en 24 horas. Rápido, limpio y sin obras complicadas.</p>
+        <h3>Precio Transparente</h3>
+        <p>Sin cobros ocultos ni sorpresas. Presupuesto cerrado antes de comenzar cualquier trabajo.</p>
       </div>
       <div class="why-card fade-up">
         <div class="why-num">04</div>
         <h3>Soporte Post-Venta</h3>
-        <p>No desaparecemos tras la instalación. Ofrecemos soporte técnico continuo para mantener tu sistema funcionando.</p>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-num">05</div>
-        <h3>Precio Transparente</h3>
-        <p>Sin cobros ocultos ni sorpresas. Te damos un presupuesto cerrado antes de comenzar cualquier trabajo.</p>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-num">06</div>
-        <h3>App en tu Celular</h3>
-        <p>Ve tus cámaras en tiempo real desde cualquier parte del mundo. Alertas, grabaciones y control total desde tu smartphone.</p>
+        <p>No desaparecemos tras la instalación. Soporte técnico continuo y app para ver cámaras desde cualquier lugar.</p>
       </div>
     </div>
   </div>
@@ -1092,22 +795,22 @@
       <div class="process-step fade-up">
         <div class="step-num">01</div>
         <h3>Cotización Gratuita</h3>
-        <p>Contáctanos por WhatsApp o teléfono. Te preguntamos sobre tus necesidades y te enviamos un presupuesto sin compromiso.</p>
+        <p>Contáctanos por WhatsApp o teléfono. Te enviamos un presupuesto sin compromiso.</p>
       </div>
       <div class="process-step fade-up">
         <div class="step-num">02</div>
         <h3>Visita Técnica</h3>
-        <p>Nuestro técnico visita tu propiedad, evalúa los puntos óptimos para las cámaras y confirma el presupuesto final.</p>
+        <p>Evaluamos los puntos óptimos para las cámaras y confirmamos el presupuesto final.</p>
       </div>
       <div class="process-step fade-up">
         <div class="step-num">03</div>
         <h3>Instalación</h3>
-        <p>Instalamos el sistema de forma limpia y ordenada. Cableado prolijo y fijaciones resistentes para exteriores e interiores.</p>
+        <p>Instalamos de forma limpia y ordenada. Cableado prolijo y fijaciones resistentes.</p>
       </div>
       <div class="process-step fade-up">
         <div class="step-num">04</div>
-        <h3>Configuración y Entrega</h3>
-        <p>Configuramos el acceso remoto en tu celular y te enseñamos a usar el sistema. Listo para protegerte desde el primer día.</p>
+        <h3>Configuración</h3>
+        <p>Configuramos acceso remoto en tu celular y te enseñamos a usar el sistema.</p>
       </div>
     </div>
   </div>
@@ -1123,563 +826,59 @@
     <div class="testimonials-grid">
       <div class="testi-card fade-up">
         <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="testi-text">"Excelente servicio, llegaron puntual y dejaron todo impecable. Las cámaras se ven perfectas y ya las estoy viendo desde el celular. Lo recomiendo totalmente."</p>
+        <p class="testi-text">"Excelente servicio, llegaron puntual y dejaron todo impecable. Las cámaras se ven perfectas y ya las estoy viendo desde el celular."</p>
         <div class="testi-author">
           <div class="testi-avatar">MA</div>
-          <div>
-            <div class="testi-name">Marcos A.</div>
-            <div class="testi-location">Las Condes, Santiago</div>
-          </div>
+          <div><div class="testi-name">Marcos A.</div><div class="testi-location">Las Condes, Santiago</div></div>
         </div>
       </div>
       <div class="testi-card fade-up">
         <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="testi-text">"Instalaron 8 cámaras en mi local comercial. El trabajo fue rápido, limpio y el precio fue muy conveniente. Ahora puedo monitorear mi negocio desde cualquier lugar."</p>
+        <p class="testi-text">"Instalaron 8 cámaras en mi local comercial. El trabajo fue rápido, limpio y el precio fue muy conveniente."</p>
         <div class="testi-author">
           <div class="testi-avatar">CR</div>
-          <div>
-            <div class="testi-name">Carolina R.</div>
-            <div class="testi-location">Providencia, Santiago</div>
-          </div>
+          <div><div class="testi-name">Carolina R.</div><div class="testi-location">Providencia, Santiago</div></div>
         </div>
       </div>
       <div class="testi-card fade-up">
         <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="testi-text">"Muy buena atención desde la cotización hasta la instalación. El técnico explicó todo muy bien y me ayudó a configurar la app. 100% recomendado para casas y negocios."</p>
+        <p class="testi-text">"Muy buena atención desde la cotización hasta la instalación. El técnico explicó todo muy bien. 100% recomendado."</p>
         <div class="testi-author">
           <div class="testi-avatar">JP</div>
-          <div>
-            <div class="testi-name">Jorge P.</div>
-            <div class="testi-location">Maipú, Santiago</div>
-          </div>
+          <div><div class="testi-name">Jorge P.</div><div class="testi-location">Maipú, Santiago</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONFIGURADOR DE KIT -->
-<section id="configurador" style="background: var(--bg); border-top: 1px solid var(--border2);">
+<!-- COBERTURA -->
+<section id="cobertura">
   <div class="container">
     <div class="section-header fade-up">
-      <div class="tag">Arma tu Kit</div>
-      <h2>Configura tu sistema <span class="accent">a medida</span></h2>
-      <p>Selecciona solo lo que necesitas. El precio se calcula automáticamente.</p>
+      <div class="tag">Zonas de Cobertura</div>
+      <h2>Instalamos en toda el <span class="accent">área metropolitana</span></h2>
     </div>
-
-    <div id="kit-builder" class="fade-up">
-
-      <!-- PASO 1: Situación del cliente -->
-      <div class="kb-step" id="step-situacion">
-        <div class="kb-step-header">
-          <span class="kb-step-num">01</span>
-          <h3>¿Cuál es tu situación?</h3>
-        </div>
-        <div class="kb-options-grid">
-          <div class="kb-option" onclick="setSituacion('todo')" data-val="todo">
-            <div class="kb-option-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            </div>
-            <div class="kb-option-title">Necesito todo</div>
-            <div class="kb-option-desc">No tengo nada, quiero un sistema completo desde cero</div>
-          </div>
-          <div class="kb-option" onclick="setSituacion('sin-camaras')" data-val="sin-camaras">
-            <div class="kb-option-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.9L15 14M3 8h12v8H3z"/></svg>
-            </div>
-            <div class="kb-option-title">Tengo DVR, necesito cámaras</div>
-            <div class="kb-option-desc">Ya tengo grabador, solo necesito agregar o reemplazar cámaras</div>
-          </div>
-          <div class="kb-option" onclick="setSituacion('sin-dvr')" data-val="sin-dvr">
-            <div class="kb-option-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h.01M10 12h.01"/><circle cx="17" cy="12" r="2"/></svg>
-            </div>
-            <div class="kb-option-title">Tengo cámaras, necesito DVR</div>
-            <div class="kb-option-desc">Ya tengo cámaras instaladas, necesito grabador</div>
-          </div>
-          <div class="kb-option" onclick="setSituacion('accesorios')" data-val="accesorios">
-            <div class="kb-option-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-            </div>
-            <div class="kb-option-title">Solo accesorios</div>
-            <div class="kb-option-desc">Necesito baluns, transformadores, conectores u otros accesorios</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PASO 2: Cámaras -->
-      <div class="kb-step kb-hidden" id="step-camaras">
-        <div class="kb-step-header">
-          <span class="kb-step-num">02</span>
-          <h3>Selecciona tus cámaras</h3>
-        </div>
-        <div class="kb-products-grid">
-          <div class="kb-product" data-id="cam-hd" data-precio="25000" data-nombre="Cámara HD 1080p" data-tipo="camara">
-            <div class="kb-prod-info">
-              <div class="kb-prod-name">Cámara HD 1080p</div>
-              <div class="kb-prod-desc">Interior/Exterior · Visión nocturna 20m</div>
-              <div class="kb-prod-price">$25.000 c/u</div>
-            </div>
-            <div class="kb-qty">
-              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
-              <span class="kb-qty-val">0</span>
-              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
-            </div>
-          </div>
-          <div class="kb-product" data-id="cam-4k" data-precio="45000" data-nombre="Cámara 4K Ultra HD" data-tipo="camara">
-            <div class="kb-prod-info">
-              <div class="kb-prod-name">Cámara 4K Ultra HD</div>
-              <div class="kb-prod-desc">Exterior · Visión nocturna 40m · Gran angular</div>
-              <div class="kb-prod-price">$45.000 c/u</div>
-            </div>
-            <div class="kb-qty">
-              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
-              <span class="kb-qty-val">0</span>
-              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
-            </div>
-          </div>
-          <div class="kb-product" data-id="cam-domo" data-precio="28000" data-nombre="Cámara Domo Interior" data-tipo="camara">
-            <div class="kb-prod-info">
-              <div class="kb-prod-name">Cámara Domo Interior</div>
-              <div class="kb-prod-desc">Techo · Discreta · 360° · Antivandálica</div>
-              <div class="kb-prod-price">$28.000 c/u</div>
-            </div>
-            <div class="kb-qty">
-              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
-              <span class="kb-qty-val">0</span>
-              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
-            </div>
-          </div>
-          <div class="kb-product" data-id="cam-ptz" data-precio="95000" data-nombre="Cámara PTZ Motorizada" data-tipo="camara">
-            <div class="kb-prod-info">
-              <div class="kb-prod-name">Cámara PTZ Motorizada</div>
-              <div class="kb-prod-desc">Zoom óptico · Seguimiento automático · Control remoto</div>
-              <div class="kb-prod-price">$95.000 c/u</div>
-            </div>
-            <div class="kb-qty">
-              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
-              <span class="kb-qty-val">0</span>
-              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PASO 3: DVR/NVR -->
-      <div class="kb-step kb-hidden" id="step-dvr">
-        <div class="kb-step-header">
-          <span class="kb-step-num" id="dvr-stepnum">03</span>
-          <h3>Selecciona tu grabador</h3>
-        </div>
-        <div class="kb-products-grid">
-          <div class="kb-product kb-single" data-id="dvr-4ch" data-precio="65000" data-nombre="DVR 4 canales" data-tipo="dvr" onclick="selectSingle(this)">
-            <div class="kb-prod-info">
-              <div class="kb-prod-name">DVR 4 canales</div>
-              <div class="kb-prod-desc">Para hasta 4 cámaras · Acceso remoto app</div>
-              <div class="kb-prod-price">$65.000</div>
-            </div>
-            <div class="kb-radio"></div>
-          </div>
-          <div class="kb-product kb-single" data-id="dvr-8ch" data-precio="89000" data-nombre="DVR 8 canales" data-tipo="dvr" onclick="selectSingle(this)">
-            <div class="kb-prod-info">
-              <div class="kb-prod-name">DVR 8 canales</div>
-              <div class="kb-prod-desc">Para hasta 8 cámaras · H.265+ · App móvil</div>
-              <div class="kb-prod-price">$89.000</div>
-            </div>
-            <div class="kb-radio"></div>
-          </div>
-          <div class="kb-product kb-single" data-id="dvr-16ch" data-precio="145000" data-nombre="DVR 16 canales" data-tipo="dvr" onclick="selectSingle(this)">
-            <div class="kb-prod-info">
-              <div class="kb-prod-name">DVR 16 canales</div>
-              <div class="kb-prod-desc">Para hasta 16 cámaras · Ideal negocios</div>
-              <div class="kb-prod-price">$145.000</div>
-            </div>
-            <div class="kb-radio"></div>
-          </div>
-          <div class="kb-product kb-single" data-id="nvr-8ch" data-precio="110000" data-nombre="NVR 8 canales (IP)" data-tipo="dvr" onclick="selectSingle(this)">
-            <div class="kb-prod-info">
-              <div class="kb-prod-name">NVR 8 canales (IP)</div>
-              <div class="kb-prod-desc">Para cámaras IP · Red WiFi · Alta resolución</div>
-              <div class="kb-prod-price">$110.000</div>
-            </div>
-            <div class="kb-radio"></div>
-          </div>
-          <div class="kb-product kb-single" data-id="dvr-32ch" data-precio="320000" data-nombre="DVR/XVR 32 canales" data-tipo="dvr" onclick="selectSingle(this)">
-            <div class="kb-prod-info">
-              <div class="kb-prod-name">DVR/XVR 32 canales</div>
-              <div class="kb-prod-desc">Condominios y edificios · Penta-híbrido · IA WizSense · hasta 4K · 2 HDD · App móvil</div>
-              <div class="kb-prod-price">$280.000 – $420.000</div>
-            </div>
-            <div class="kb-radio"></div>
-          </div>
-        </div>
-
-        <!-- Disco duro -->
-        <div style="margin-top: 24px;">
-          <div class="kb-step-header" style="margin-bottom: 14px;">
-            <span class="kb-step-num" style="font-size: 12px; padding: 4px 10px;">+</span>
-            <h3 style="font-size: 17px;">¿Necesitas disco duro?</h3>
-          </div>
-          <div class="kb-options-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
-            <div class="kb-option kb-small kb-single-dd" onclick="selectDD(this)" data-id="dd-no" data-precio="0" data-nombre="">
-              <div class="kb-option-title">Sin disco</div>
-              <div class="kb-option-desc">Ya tengo o no necesito</div>
-            </div>
-            <div class="kb-option kb-small kb-single-dd" onclick="selectDD(this)" data-id="dd-500" data-precio="28000" data-nombre="Disco Duro 500GB">
-              <div class="kb-option-title">500 GB</div>
-              <div class="kb-option-desc">~7 días · 4 cámaras · $28.000</div>
-            </div>
-            <div class="kb-option kb-small kb-single-dd" onclick="selectDD(this)" data-id="dd-1tb" data-precio="45000" data-nombre="Disco Duro 1TB">
-              <div class="kb-option-title">1 TB</div>
-              <div class="kb-option-desc">~15 días · 4 cámaras · $45.000</div>
-            </div>
-            <div class="kb-option kb-small kb-single-dd" onclick="selectDD(this)" data-id="dd-2tb" data-precio="72000" data-nombre="Disco Duro 2TB">
-              <div class="kb-option-title">2 TB</div>
-              <div class="kb-option-desc">~30 días · 4 cámaras · $72.000</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PASO 4: Accesorios -->
-      <div class="kb-step kb-hidden" id="step-accesorios">
-        <div class="kb-step-header">
-          <span class="kb-step-num" id="acc-stepnum">04</span>
-          <h3>Accesorios <span style="font-size:13px; font-weight:400; color: var(--text3); font-family: 'DM Sans', sans-serif;">(opcional)</span></h3>
-        </div>
-        <div class="kb-products-grid">
-          <div class="kb-product" data-id="balun" data-precio="3500" data-nombre="Balun pasivo (par)" data-tipo="accesorio">
-            <div class="kb-prod-info">
-              <div class="kb-prod-name">Balun pasivo (par)</div>
-              <div class="kb-prod-desc">Transmite señal HD por cable UTP · Par Tx/Rx</div>
-              <div class="kb-prod-price">$3.500 el par</div>
-            </div>
-            <div class="kb-qty">
-              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
-              <span class="kb-qty-val">0</span>
-              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
-            </div>
-          </div>
-          <div class="kb-product" data-id="transformador" data-precio="5500" data-nombre="Transformador 12V 1A" data-tipo="accesorio">
-            <div class="kb-prod-info">
-              <div class="kb-prod-name">Transformador 12V 1A</div>
-              <div class="kb-prod-desc">Fuente de poder individual para cámara</div>
-              <div class="kb-prod-price">$5.500 c/u</div>
-            </div>
-            <div class="kb-qty">
-              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
-              <span class="kb-qty-val">0</span>
-              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
-            </div>
-          </div>
-          <div class="kb-product" data-id="fuente-central" data-precio="18000" data-nombre="Fuente central 5A" data-tipo="accesorio">
-            <div class="kb-prod-info">
-              <div class="kb-prod-name">Fuente central 5A</div>
-              <div class="kb-prod-desc">Alimenta hasta 4 cámaras desde un punto</div>
-              <div class="kb-prod-price">$18.000 c/u</div>
-            </div>
-            <div class="kb-qty">
-              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
-              <span class="kb-qty-val">0</span>
-              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
-            </div>
-          </div>
-          <div class="kb-product" data-id="conector-dc" data-precio="800" data-nombre="Conector DC hembra" data-tipo="accesorio">
-            <div class="kb-prod-info">
-              <div class="kb-prod-name">Conector DC hembra</div>
-              <div class="kb-prod-desc">Para empalme de alimentación de cámaras</div>
-              <div class="kb-prod-price">$800 c/u</div>
-            </div>
-            <div class="kb-qty">
-              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
-              <span class="kb-qty-val">0</span>
-              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
-            </div>
-          </div>
-          <div class="kb-product" data-id="cable-coaxial" data-precio="12000" data-nombre="Cable coaxial 100m" data-tipo="accesorio">
-            <div class="kb-prod-info">
-              <div class="kb-prod-name">Cable coaxial 100m</div>
-              <div class="kb-prod-desc">Rollo 100m · Compatible HD y 4K · Apantallado</div>
-              <div class="kb-prod-price">$12.000 el rollo</div>
-            </div>
-            <div class="kb-qty">
-              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
-              <span class="kb-qty-val">0</span>
-              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
-            </div>
-          </div>
-          <div class="kb-product" data-id="instalacion" data-precio="35000" data-nombre="Instalación profesional" data-tipo="accesorio">
-            <div class="kb-prod-info">
-              <div class="kb-prod-name">Instalación profesional</div>
-              <div class="kb-prod-desc">Mano de obra · Cableado · Configuración app</div>
-              <div class="kb-prod-price">Desde $35.000</div>
-            </div>
-            <div class="kb-qty">
-              <button onclick="changeQty(this, -1)" class="kb-qty-btn">−</button>
-              <span class="kb-qty-val">0</span>
-              <button onclick="changeQty(this, 1)" class="kb-qty-btn">+</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RESUMEN DEL KIT -->
-      <div class="kb-summary kb-hidden" id="kb-summary">
-        <div class="kb-summary-header">
-          <h3>Tu Kit Personalizado</h3>
-          <button onclick="resetKit()" class="kb-reset">Armar de nuevo</button>
-        </div>
-        <div id="kb-items-list"></div>
-        <div class="kb-total-row">
-          <span>Total estimado</span>
-          <span id="kb-total-price">$0</span>
-        </div>
-        <p style="font-size: 12px; color: var(--text3); margin-top: 8px;">* Precios de referencia. El valor final incluye instalación y puede variar según comuna y complejidad.</p>
-        <a id="kb-wa-btn" href="#" class="btn-primary" style="margin-top: 20px; display: inline-flex; justify-content: center; width: 100%; font-size: 16px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.571a.75.75 0 00.932.932l5.724-1.467A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22.5A10.456 10.456 0 016.37 20.82l-.41-.243-4.252 1.09 1.09-4.152-.267-.432A10.46 10.46 0 011.5 12C1.5 6.21 6.21 1.5 12 1.5S22.5 6.21 22.5 12 17.79 22.5 12 22.5z"/></svg>
-          Enviar Kit por WhatsApp
-        </a>
-      </div>
-
-    </div><!-- /kit-builder -->
+    <div class="coverage-grid fade-up">
+      <span class="coverage-pill">Las Condes</span>
+      <span class="coverage-pill">Providencia</span>
+      <span class="coverage-pill">Ñuñoa</span>
+      <span class="coverage-pill">Santiago Centro</span>
+      <span class="coverage-pill">Vitacura</span>
+      <span class="coverage-pill">La Florida</span>
+      <span class="coverage-pill">Maipú</span>
+      <span class="coverage-pill">Pudahuel</span>
+      <span class="coverage-pill">Peñalolén</span>
+      <span class="coverage-pill">San Bernardo</span>
+      <span class="coverage-pill">La Reina</span>
+      <span class="coverage-pill">Lo Barnechea</span>
+      <span class="coverage-pill">Quilicura</span>
+      <span class="coverage-pill">Huechuraba</span>
+      <span class="coverage-pill">Recoleta</span>
+      <span class="coverage-pill">San Miguel</span>
+    </div>
   </div>
 </section>
-
-<style>
-  #kit-builder { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
-  .kb-hidden { display: none !important; }
-  .kb-step { background: var(--bg2); border: 1px solid var(--border2); border-radius: 14px; padding: 28px; }
-  .kb-step-header { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
-  .kb-step-num {
-    font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 700;
-    letter-spacing: 0.1em; color: var(--accent);
-    background: var(--accent-dim); border: 1px solid var(--border);
-    padding: 5px 12px; border-radius: 100px; white-space: nowrap;
-  }
-  .kb-step-header h3 { font-size: 20px; font-weight: 600; letter-spacing: 0.02em; }
-  .kb-options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
-  .kb-option {
-    background: var(--bg); border: 1px solid var(--border2);
-    border-radius: 10px; padding: 20px 18px; cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .kb-option:hover { border-color: var(--border); background: var(--surface); }
-  .kb-option.selected { border-color: var(--accent); background: var(--accent-dim); }
-  .kb-option-icon { margin-bottom: 12px; }
-  .kb-option-icon svg { width: 28px; height: 28px; stroke: var(--accent); }
-  .kb-option-title { font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-  .kb-option-desc { font-size: 12px; color: var(--text3); line-height: 1.45; }
-  .kb-option.kb-small { padding: 14px 16px; }
-  .kb-option.kb-small .kb-option-title { font-size: 15px; }
-
-  .kb-products-grid { display: flex; flex-direction: column; gap: 10px; }
-  .kb-product {
-    background: var(--bg); border: 1px solid var(--border2);
-    border-radius: 10px; padding: 16px 20px;
-    display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    transition: border-color 0.2s;
-  }
-  .kb-product:hover { border-color: var(--border); }
-  .kb-product.selected { border-color: var(--accent); background: var(--accent-dim); }
-  .kb-prod-name { font-family: 'Rajdhani', sans-serif; font-size: 17px; font-weight: 600; margin-bottom: 3px; }
-  .kb-prod-desc { font-size: 12px; color: var(--text3); margin-bottom: 6px; }
-  .kb-prod-price { font-size: 14px; font-weight: 500; color: var(--accent); }
-  .kb-qty { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-  .kb-qty-btn {
-    width: 30px; height: 30px; border-radius: 50%;
-    background: var(--surface2); border: 1px solid var(--border2);
-    color: var(--text); font-size: 18px; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.15s, border-color 0.15s;
-    line-height: 1;
-  }
-  .kb-qty-btn:hover { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
-  .kb-qty-val { font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 700; min-width: 24px; text-align: center; }
-  .kb-radio {
-    width: 22px; height: 22px; border-radius: 50%;
-    border: 2px solid var(--border2); flex-shrink: 0;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .kb-product.selected .kb-radio { border-color: var(--accent); background: var(--accent); }
-  .kb-product.kb-single { cursor: pointer; }
-
-  .kb-summary {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 14px; padding: 28px;
-  }
-  .kb-summary-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-  .kb-summary-header h3 { font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700; }
-  .kb-reset {
-    background: transparent; border: 1px solid var(--border2); color: var(--text3);
-    font-size: 13px; padding: 6px 14px; border-radius: 6px; cursor: pointer;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .kb-reset:hover { color: var(--text); border-color: var(--border); }
-  .kb-item-row {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 10px 0; border-bottom: 1px solid var(--border2);
-    font-size: 14px;
-  }
-  .kb-item-row:last-child { border-bottom: none; }
-  .kb-item-name { color: var(--text2); }
-  .kb-item-price { color: var(--text); font-weight: 500; }
-  .kb-total-row {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-top: 16px; padding-top: 16px;
-    border-top: 1px solid var(--border);
-    font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700;
-  }
-  #kb-total-price { color: var(--accent); font-size: 28px; }
-
-  @media (max-width: 480px) {
-    .kb-step { padding: 18px 14px; }
-    .kb-options-grid { grid-template-columns: 1fr 1fr; }
-    .kb-product { flex-wrap: wrap; }
-    .kb-summary { padding: 18px 14px; }
-  }
-  @media (max-width: 360px) {
-    .kb-options-grid { grid-template-columns: 1fr; }
-  }
-</style>
-
-<script>
-(function() {
-  let situacion = null;
-  const stepNums = { camaras: 2, dvr: 3, accesorios: 4 };
-
-  window.setSituacion = function(val) {
-    situacion = val;
-    document.querySelectorAll('#step-situacion .kb-option').forEach(o => {
-      o.classList.toggle('selected', o.dataset.val === val);
-    });
-    // Resetear productos
-    document.querySelectorAll('.kb-qty-val').forEach(el => el.textContent = '0');
-    document.querySelectorAll('.kb-product.kb-single').forEach(el => el.classList.remove('selected'));
-    document.querySelectorAll('.kb-option.kb-single-dd').forEach(el => el.classList.remove('selected'));
-    document.getElementById('kb-summary').classList.add('kb-hidden');
-
-    const showCam = val === 'todo' || val === 'sin-camaras';
-    const showDvr = val === 'todo' || val === 'sin-dvr';
-    const showAcc = true;
-
-    toggleStep('step-camaras', showCam);
-    toggleStep('step-dvr', showDvr);
-    toggleStep('step-accesorios', showAcc);
-
-    // renumerar pasos
-    let n = 2;
-    if (showCam) { document.querySelector('#step-camaras .kb-step-num').textContent = '0' + n++; }
-    if (showDvr) { document.getElementById('dvr-stepnum').textContent = '0' + n++; }
-    document.getElementById('acc-stepnum').textContent = '0' + n;
-
-    updateSummary();
-    document.getElementById('kb-summary').classList.remove('kb-hidden');
-    setTimeout(() => document.getElementById('kb-summary').scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
-  };
-
-  function toggleStep(id, show) {
-    document.getElementById(id).classList.toggle('kb-hidden', !show);
-  }
-
-  window.changeQty = function(btn, delta) {
-    const qtyEl = btn.parentElement.querySelector('.kb-qty-val');
-    let val = parseInt(qtyEl.textContent) + delta;
-    if (val < 0) val = 0;
-    qtyEl.textContent = val;
-    updateSummary();
-  };
-
-  window.selectSingle = function(el) {
-    el.closest('.kb-products-grid').querySelectorAll('.kb-product.kb-single').forEach(p => p.classList.remove('selected'));
-    el.classList.add('selected');
-    updateSummary();
-  };
-
-  window.selectDD = function(el) {
-    document.querySelectorAll('.kb-option.kb-single-dd').forEach(o => o.classList.remove('selected'));
-    el.classList.add('selected');
-    updateSummary();
-  };
-
-  window.resetKit = function() {
-    situacion = null;
-    document.querySelectorAll('#step-situacion .kb-option').forEach(o => o.classList.remove('selected'));
-    document.querySelectorAll('.kb-qty-val').forEach(el => el.textContent = '0');
-    document.querySelectorAll('.kb-product.kb-single').forEach(el => el.classList.remove('selected'));
-    document.querySelectorAll('.kb-option.kb-single-dd').forEach(el => el.classList.remove('selected'));
-    ['step-camaras','step-dvr','step-accesorios'].forEach(id => document.getElementById(id).classList.add('kb-hidden'));
-    document.getElementById('kb-summary').classList.add('kb-hidden');
-    document.getElementById('step-situacion').scrollIntoView({ behavior: 'smooth' });
-  };
-
-  function updateSummary() {
-    const items = [];
-    let total = 0;
-
-    // Cámaras (qty)
-    document.querySelectorAll('#step-camaras .kb-product:not(.kb-hidden)').forEach(prod => {
-      if (prod.closest('.kb-hidden')) return;
-      const qty = parseInt(prod.querySelector('.kb-qty-val').textContent);
-      if (qty > 0) {
-        const precio = parseInt(prod.dataset.precio);
-        const subtotal = precio * qty;
-        total += subtotal;
-        items.push({ nombre: prod.dataset.nombre + ' x' + qty, precio: subtotal });
-      }
-    });
-
-    // DVR (single)
-    const dvrSel = document.querySelector('#step-dvr .kb-product.kb-single.selected');
-    if (dvrSel && !document.getElementById('step-dvr').classList.contains('kb-hidden')) {
-      const precio = parseInt(dvrSel.dataset.precio);
-      total += precio;
-      items.push({ nombre: dvrSel.dataset.nombre, precio });
-    }
-
-    // Disco duro
-    const ddSel = document.querySelector('.kb-option.kb-single-dd.selected');
-    if (ddSel && ddSel.dataset.precio > 0 && !document.getElementById('step-dvr').classList.contains('kb-hidden')) {
-      const precio = parseInt(ddSel.dataset.precio);
-      total += precio;
-      items.push({ nombre: ddSel.dataset.nombre, precio });
-    }
-
-    // Accesorios (qty)
-    document.querySelectorAll('#step-accesorios .kb-product:not(.kb-hidden)').forEach(prod => {
-      if (prod.closest('.kb-hidden')) return;
-      const qty = parseInt(prod.querySelector('.kb-qty-val').textContent);
-      if (qty > 0) {
-        const precio = parseInt(prod.dataset.precio);
-        const subtotal = precio * qty;
-        total += subtotal;
-        items.push({ nombre: prod.dataset.nombre + ' x' + qty, precio: subtotal });
-      }
-    });
-
-    // Render lista
-    const listEl = document.getElementById('kb-items-list');
-    if (items.length === 0) {
-      listEl.innerHTML = '<div class="kb-item-row"><span class="kb-item-name" style="color: var(--text3);">Selecciona productos para ver el resumen</span></div>';
-    } else {
-      listEl.innerHTML = items.map(i =>
-        `<div class="kb-item-row"><span class="kb-item-name">${i.nombre}</span><span class="kb-item-price">$${i.precio.toLocaleString('es-CL')}</span></div>`
-      ).join('');
-    }
-
-    document.getElementById('kb-total-price').textContent = '$' + total.toLocaleString('es-CL');
-
-    // Construir mensaje WhatsApp
-    let msg = 'Hola, armé mi kit en su web y quiero cotizar:%0A%0A';
-    if (items.length > 0) {
-      items.forEach(i => { msg += '• ' + i.nombre + ' — $' + i.precio.toLocaleString('es-CL') + '%0A'; });
-      msg += '%0ATotal estimado: $' + total.toLocaleString('es-CL') + '%0A%0A¿Pueden confirmarme el precio final con instalación?';
-    } else {
-      msg += 'Estoy armando mi kit, ¿pueden ayudarme?';
-    }
-    document.getElementById('kb-wa-btn').href = 'https://api.whatsapp.com/send?phone=56984442165&text=' + msg;
-  }
-})();
-</script>
 
 <!-- FAQ -->
 <section style="background: var(--bg2); border-top: 1px solid var(--border2);">
@@ -1691,83 +890,45 @@
     <div class="faq-list">
       <div class="faq-item fade-up">
         <div class="faq-q">¿Cuánto tarda la instalación? <span class="faq-icon">+</span></div>
-        <div class="faq-a"><div class="faq-a-inner">La mayoría de las instalaciones residenciales se completan en un día. Para negocios o instalaciones más grandes, puede tomar 1 a 2 días. Te confirmamos el tiempo exacto antes de comenzar.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">La mayoría de las instalaciones residenciales se completan en un día. Para negocios o instalaciones más grandes, puede tomar 1 a 2 días.</div></div>
       </div>
       <div class="faq-item fade-up">
         <div class="faq-q">¿Puedo ver las cámaras desde el celular? <span class="faq-icon">+</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Sí, todos nuestros sistemas incluyen acceso remoto desde smartphone. Configuramos la aplicación y puedes ver tus cámaras desde cualquier lugar con internet, en tiempo real y con grabaciones.</div></div>
-      </div>
-      <div class="faq-item fade-up">
-        <div class="faq-q">¿Qué pasa si una cámara falla? <span class="faq-icon">+</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Ofrecemos garantía en todos los equipos instalados. Si tienes algún problema, contáctanos y coordinamos una revisión técnica. Nuestro soporte post-venta está disponible para todos los clientes.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Sí, todos nuestros sistemas incluyen acceso remoto desde smartphone. Configuramos la app y puedes ver tus cámaras desde cualquier lugar en tiempo real.</div></div>
       </div>
       <div class="faq-item fade-up">
         <div class="faq-q">¿Las cámaras funcionan de noche? <span class="faq-icon">+</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Sí, todas nuestras cámaras tienen visión nocturna infrarroja. Pueden grabar con claridad en la oscuridad total, con alcance de hasta 30 metros según el modelo.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Sí, todas tienen visión nocturna infrarroja. Graban con claridad en oscuridad total, con alcance de hasta 30 metros según el modelo.</div></div>
       </div>
       <div class="faq-item fade-up">
         <div class="faq-q">¿Cuánto tiempo graban? <span class="faq-icon">+</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Depende del disco duro y el número de cámaras. Un sistema de 4 cámaras con disco 500GB graba entre 7 y 15 días en loop continuo. Con disco de 1TB o 2TB puedes tener más días de grabación.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Un sistema de 4 cámaras con disco 500GB graba entre 7 y 15 días en loop continuo. Con disco de 1TB o 2TB puedes tener más días.</div></div>
       </div>
       <div class="faq-item fade-up">
-        <div class="faq-q">¿Hacen cotizaciones sin costo? <span class="faq-icon">+</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Sí, la cotización es completamente gratuita y sin compromiso. Contáctanos por WhatsApp o teléfono, cuéntanos tu necesidad y te respondemos con un presupuesto detallado.</div></div>
+        <div class="faq-q">¿La cotización tiene costo? <span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">No, la cotización es completamente gratuita y sin compromiso. Contáctanos por WhatsApp y te respondemos con un presupuesto detallado.</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MARCAS -->
-<section style="background: var(--bg2); border-top: 1px solid var(--border2); padding: 48px 0;">
+<!-- MARCAS (compacto) -->
+<section style="padding: 48px 0;">
   <div class="container">
-    <div class="section-header fade-up" style="margin-bottom: 36px;">
+    <div class="section-header fade-up" style="margin-bottom: 32px;">
       <div class="tag">Marcas que instalamos</div>
       <h2>Equipos de <span class="accent">marcas reconocidas</span></h2>
-      <p>Solo trabajamos con marcas líderes del mercado con garantía y respaldo técnico.</p>
     </div>
     <div class="brands-grid fade-up">
-      <div class="brand-card">
-        <div class="brand-name">Hikvision</div>
-        <div class="brand-desc">Líder mundial en videovigilancia · CCTV · IP · IA</div>
-      </div>
-      <div class="brand-card">
-        <div class="brand-name">Dahua</div>
-        <div class="brand-desc">Tecnología WizSense · DVR/NVR · Condominios</div>
-      </div>
-      <div class="brand-card">
-        <div class="brand-name">Ezviz</div>
-        <div class="brand-desc">Cámaras WiFi · App móvil · Hogares</div>
-      </div>
-      <div class="brand-card">
-        <div class="brand-name">Imou</div>
-        <div class="brand-desc">Vigilancia inteligente · IA · Exterior</div>
-      </div>
-      <div class="brand-card">
-        <div class="brand-name">HiLook</div>
-        <div class="brand-desc">By Hikvision · Calidad profesional · Precio accesible</div>
-      </div>
-      <div class="brand-card">
-        <div class="brand-name">ZKTeco</div>
-        <div class="brand-desc">Control de acceso · Biometría · Edificios</div>
-      </div>
+      <div class="brand-card"><div class="brand-name">Hikvision</div><div class="brand-desc">Líder mundial · CCTV · IP · IA</div></div>
+      <div class="brand-card"><div class="brand-name">Dahua</div><div class="brand-desc">WizSense · DVR/NVR · Condominios</div></div>
+      <div class="brand-card"><div class="brand-name">Ezviz</div><div class="brand-desc">Cámaras WiFi · App · Hogares</div></div>
+      <div class="brand-card"><div class="brand-name">Imou</div><div class="brand-desc">IA · Exterior · Inteligente</div></div>
+      <div class="brand-card"><div class="brand-name">HiLook</div><div class="brand-desc">By Hikvision · Precio accesible</div></div>
+      <div class="brand-card"><div class="brand-name">ZKTeco</div><div class="brand-desc">Control acceso · Biometría</div></div>
     </div>
   </div>
 </section>
-
-<style>
-  .brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
-  .brand-card {
-    background: var(--bg); border: 1px solid var(--border2);
-    border-radius: 10px; padding: 20px 18px; text-align: center;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .brand-card:hover { border-color: var(--border); transform: translateY(-3px); }
-  .brand-name {
-    font-family: 'Rajdhani', sans-serif; font-size: 20px;
-    font-weight: 700; color: var(--text); margin-bottom: 6px;
-  }
-  .brand-desc { font-size: 11px; color: var(--text3); line-height: 1.4; }
-</style>
 
 <!-- FORMULARIO COTIZACIÓN -->
 <section id="cotizar" style="background: var(--bg2); border-top: 1px solid var(--border2);">
@@ -1778,41 +939,21 @@
         <h2>Cuéntanos tu proyecto, <span class="accent">te respondemos hoy</span></h2>
         <p style="color: var(--text2); font-size: 15px; line-height: 1.65; margin-top: 14px;">Completa el formulario y en menos de 1 hora te contactamos con un presupuesto a medida. Sin compromiso.</p>
         <div class="cotizar-benefits">
-          <div class="cotizar-benefit">
-            <span class="cb-icon">✓</span>
-            <span>Cotización sin costo</span>
-          </div>
-          <div class="cotizar-benefit">
-            <span class="cb-icon">✓</span>
-            <span>Visita técnica gratuita</span>
-          </div>
-          <div class="cotizar-benefit">
-            <span class="cb-icon">✓</span>
-            <span>Presupuesto cerrado sin sorpresas</span>
-          </div>
-          <div class="cotizar-benefit">
-            <span class="cb-icon">✓</span>
-            <span>Instalación en 24–48 horas</span>
-          </div>
+          <div class="cotizar-benefit"><span class="cb-icon">✓</span><span>Cotización sin costo</span></div>
+          <div class="cotizar-benefit"><span class="cb-icon">✓</span><span>Visita técnica gratuita</span></div>
+          <div class="cotizar-benefit"><span class="cb-icon">✓</span><span>Presupuesto cerrado sin sorpresas</span></div>
+          <div class="cotizar-benefit"><span class="cb-icon">✓</span><span>Instalación en 24–48 horas</span></div>
         </div>
         <div style="margin-top: 28px;">
           <div style="font-size: 13px; color: var(--text3); margin-bottom: 8px;">¿Prefieres contacto directo?</div>
-          <a href="https://api.whatsapp.com/send?phone=56984442165" style="color: var(--accent); font-size: 15px; font-weight: 500; text-decoration: none;">
-            +56 9 8444 2165 · WhatsApp
-          </a>
+          <a href="https://api.whatsapp.com/send?phone=56984442165" style="color: var(--accent); font-size: 15px; font-weight: 500; text-decoration: none;">+56 9 8444 2165 · WhatsApp</a>
         </div>
       </div>
       <div class="cotizar-form-wrap fade-up">
         <div class="cotizar-form-card">
           <div class="cform-row">
-            <div class="cform-group">
-              <label>Nombre</label>
-              <input type="text" id="cf-nombre" placeholder="Tu nombre">
-            </div>
-            <div class="cform-group">
-              <label>Teléfono / WhatsApp</label>
-              <input type="tel" id="cf-telefono" placeholder="+56 9 ....">
-            </div>
+            <div class="cform-group"><label>Nombre</label><input type="text" id="cf-nombre" placeholder="Tu nombre"></div>
+            <div class="cform-group"><label>Teléfono / WhatsApp</label><input type="tel" id="cf-telefono" placeholder="+56 9 ...."></div>
           </div>
           <div class="cform-group">
             <label>Tipo de propiedad</label>
@@ -1824,10 +965,7 @@
             </div>
           </div>
           <div class="cform-row">
-            <div class="cform-group">
-              <label>Comuna</label>
-              <input type="text" id="cf-comuna" placeholder="Ej: Las Condes">
-            </div>
+            <div class="cform-group"><label>Comuna</label><input type="text" id="cf-comuna" placeholder="Ej: Las Condes"></div>
             <div class="cform-group">
               <label>N° de cámaras aprox.</label>
               <div class="cform-chips" id="cf-camaras">
@@ -1840,108 +978,14 @@
           </div>
           <div class="cform-group">
             <label>¿Qué necesitas? <span style="color: var(--text3); font-weight:400;">(opcional)</span></label>
-            <textarea id="cf-mensaje" placeholder="Cuéntanos un poco más sobre tu proyecto, qué áreas quieres cubrir, si ya tienes equipos, etc." rows="3"></textarea>
+            <textarea id="cf-mensaje" placeholder="Cuéntanos sobre tu proyecto..." rows="3"></textarea>
           </div>
-          <button onclick="enviarCotizacion()" class="btn-primary" style="width:100%; justify-content: center; font-size:16px; padding: 15px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.571a.75.75 0 00.932.932l5.724-1.467A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22.5A10.456 10.456 0 016.37 20.82l-.41-.243-4.252 1.09 1.09-4.152-.267-.432A10.46 10.46 0 011.5 12C1.5 6.21 6.21 1.5 12 1.5S22.5 6.21 22.5 12 17.79 22.5 12 22.5z"/></svg>
+          <button onclick="enviarCotizacion()" class="btn-primary" style="width:100%; justify-content: center; font-size:16px; padding: 15px; border: none; cursor: pointer;">
             Enviar Cotización por WhatsApp
           </button>
           <p style="text-align:center; font-size:12px; color: var(--text3); margin-top:10px;">Tu información es privada y no se comparte con terceros.</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<style>
-  .cotizar-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
-  .cotizar-benefits { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
-  .cotizar-benefit { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text2); }
-  .cb-icon {
-    width: 22px; height: 22px; border-radius: 50%;
-    background: rgba(0,230,118,0.1); border: 1px solid rgba(0,230,118,0.3);
-    color: var(--green); display: flex; align-items: center; justify-content: center;
-    font-size: 12px; flex-shrink: 0;
-  }
-  .cotizar-form-card {
-    background: var(--bg); border: 1px solid var(--border2);
-    border-radius: 14px; padding: 28px;
-    display: flex; flex-direction: column; gap: 18px;
-  }
-  .cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .cform-group { display: flex; flex-direction: column; gap: 7px; }
-  .cform-group label { font-size: 13px; font-weight: 500; color: var(--text2); }
-  .cform-group input, .cform-group textarea {
-    background: var(--bg2); border: 1px solid var(--border2);
-    border-radius: 8px; padding: 10px 14px;
-    color: var(--text); font-size: 14px; font-family: 'DM Sans', sans-serif;
-    outline: none; transition: border-color 0.2s; resize: none;
-  }
-  .cform-group input:focus, .cform-group textarea:focus { border-color: var(--accent); }
-  .cform-chips { display: flex; flex-wrap: wrap; gap: 7px; }
-  .chip {
-    font-size: 12px; padding: 6px 12px; border-radius: 100px;
-    border: 1px solid var(--border2); background: var(--bg2);
-    color: var(--text2); cursor: pointer; transition: all 0.15s;
-    user-select: none;
-  }
-  .chip:hover { border-color: var(--border); color: var(--text); }
-  .chip.selected { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
-  @media (max-width: 768px) {
-    .cotizar-grid { grid-template-columns: 1fr; gap: 32px; }
-    .cform-row { grid-template-columns: 1fr; }
-  }
-</style>
-
-<script>
-  function selectChip(el, group) {
-    el.closest('.cform-chips').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
-    el.classList.add('selected');
-  }
-
-  function enviarCotizacion() {
-    const nombre = document.getElementById('cf-nombre').value.trim();
-    const telefono = document.getElementById('cf-telefono').value.trim();
-    const comuna = document.getElementById('cf-comuna').value.trim();
-    const tipo = document.querySelector('#cf-tipo .chip.selected')?.textContent || 'No especificado';
-    const camaras = document.querySelector('#cf-camaras .chip.selected')?.textContent || 'No especificado';
-    const mensaje = document.getElementById('cf-mensaje').value.trim();
-
-    if (!nombre || !telefono) {
-      alert('Por favor ingresa tu nombre y teléfono para continuar.');
-      return;
-    }
-
-    let msg = `Hola GuardianTech! Quiero cotizar una instalación de cámaras:%0A%0A`;
-    msg += `👤 *Nombre:* ${nombre}%0A`;
-    msg += `📱 *Teléfono:* ${telefono}%0A`;
-    msg += `🏠 *Tipo:* ${tipo}%0A`;
-    msg += `📍 *Comuna:* ${comuna || 'No indicada'}%0A`;
-    msg += `📷 *Cámaras aprox.:* ${camaras}%0A`;
-    if (mensaje) msg += `💬 *Detalles:* ${mensaje}%0A`;
-    msg += `%0A¿Pueden enviarme una cotización?`;
-
-    window.open(`https://api.whatsapp.com/send?phone=56984442165&text=${msg}`, '_blank');
-  }
-</script>
-
-<!-- CTA FINAL -->
-<section class="cta-section">
-  <div class="cta-glow"></div>
-  <div class="container">
-    <div class="fade-up">
-      <div class="tag">Cotización Gratuita</div>
-      <h2>¿Listo para proteger tu <span class="accent">propiedad?</span></h2>
-      <p>Solicita una evaluación sin costo. Te respondemos de inmediato por WhatsApp.</p>
-      <div class="cta-btns">
-        <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20instalacion%20de%20camaras%20de%20seguridad.%20Mi%20ubicacion%20es%20[COMUNA],%20es%20para%20[CASA/NEGOCIO]%20y%20aproximadamente%20necesito%20[X]%20camaras." class="btn-primary" style="font-size: 17px; padding: 16px 32px;">
-          Cotizar por WhatsApp
-        </a>
-      </div>
-      <a href="tel:+56984442165" class="phone-link" style="justify-content: center;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.89 10.8 19.79 19.79 0 01.82 2.18 2 2 0 012.81.01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
-        +56 9 8444 2165
-      </a>
     </div>
   </div>
 </section>
@@ -1984,7 +1028,7 @@
     </div>
     <div class="footer-bottom">
       <p>© 2025 GuardianTech Seguridad — Cámaras de seguridad para condominios, edificios, casas y negocios en Santiago de Chile</p>
-      <p style="color: var(--text3); font-size: 12px;">Diseñado para proteger lo que más importa</p>
+      <p>Diseñado para proteger lo que más importa</p>
     </div>
   </div>
 </footer>
@@ -1995,6 +1039,38 @@
 </a>
 
 <script>
+  // Chip selector
+  function selectChip(el, group) {
+    el.closest('.cform-chips').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  // Enviar cotización por WhatsApp
+  function enviarCotizacion() {
+    const nombre = document.getElementById('cf-nombre').value.trim();
+    const telefono = document.getElementById('cf-telefono').value.trim();
+    const comuna = document.getElementById('cf-comuna').value.trim();
+    const tipo = document.querySelector('#cf-tipo .chip.selected')?.textContent || 'No especificado';
+    const camaras = document.querySelector('#cf-camaras .chip.selected')?.textContent || 'No especificado';
+    const mensaje = document.getElementById('cf-mensaje').value.trim();
+
+    if (!nombre || !telefono) {
+      alert('Por favor ingresa tu nombre y teléfono para continuar.');
+      return;
+    }
+
+    let msg = `Hola GuardianTech! Quiero cotizar una instalación de cámaras:%0A%0A`;
+    msg += `👤 *Nombre:* ${nombre}%0A`;
+    msg += `📱 *Teléfono:* ${telefono}%0A`;
+    msg += `🏠 *Tipo:* ${tipo}%0A`;
+    msg += `📍 *Comuna:* ${comuna || 'No indicada'}%0A`;
+    msg += `📷 *Cámaras aprox.:* ${camaras}%0A`;
+    if (mensaje) msg += `💬 *Detalles:* ${mensaje}%0A`;
+    msg += `%0A¿Pueden enviarme una cotización?`;
+
+    window.open(`https://api.whatsapp.com/send?phone=56984442165&text=${msg}`, '_blank');
+  }
+
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(q => {
     q.addEventListener('click', () => {
