@@ -493,6 +493,27 @@
     .testi-name { font-size: 14px; font-weight: 500; }
     .testi-location { font-size: 12px; color: var(--text3); }
 
+    /* ─── GALERÍA TRABAJOS ─── */
+    .video-wrap {
+      max-width: 720px; margin: 0 auto 40px; border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border2); aspect-ratio: 16/9; background: #000;
+    }
+    .video-wrap iframe, .video-wrap video {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .gallery-item {
+      border-radius: 10px; overflow: hidden; border: 1px solid var(--border2);
+      aspect-ratio: 3/4; transition: transform 0.3s, border-color 0.3s;
+    }
+    .gallery-item:hover { transform: translateY(-4px); border-color: var(--border); }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+
     /* ─── FAQ ─── */
     .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
     .faq-item { background: var(--bg2); border: 1px solid var(--border2); border-radius: 10px; overflow: hidden; }
@@ -629,6 +650,8 @@
       .promo-price { font-size: 42px; }
       .coverage-grid { gap: 8px; }
       .coverage-pill { font-size: 13px; padding: 7px 14px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .video-wrap { margin-bottom: 24px; }
       .faq-q { font-size: 15px; padding: 16px 18px; }
       .section-header { margin-bottom: 40px; }
       .nav-links { display: none; }
@@ -938,6 +961,40 @@
         <h3>Configuración</h3>
         <p>Configuramos acceso remoto en tu celular y te enseñamos a usar el sistema.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUESTROS TRABAJOS -->
+<section id="trabajos" style="background: var(--bg2); border-top: 1px solid var(--border2);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="tag">Nuestros Trabajos</div>
+      <h2>Instalaciones <span class="accent">reales</span> en Santiago</h2>
+      <p>Así quedan nuestros sistemas de seguridad. Cámaras Hikvision instaladas en casas y negocios.</p>
+    </div>
+
+    <!-- Video testimonial -->
+    <div class="video-wrap fade-up">
+      <!-- OPCIÓN 1: YouTube (recomendado) - reemplaza VIDEO_ID por el ID de tu video -->
+      <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Testimonio cliente GuardianTech" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
+      <!-- OPCIÓN 2: MP4 directo - descomenta esto si subes el video a tu hosting -->
+      <video controls poster="img/trabajo-1.jpg" preload="metadata">
+        <source src="img/testimonio.mp4" type="video/mp4">
+        Tu navegador no soporta video.
+      </video>
+    </div>
+
+    <!-- Galería de fotos -->
+    <div class="gallery-grid fade-up">
+      <div class="gallery-item"><img src="img/trabajo-1.jpg" alt="Cámara de seguridad nocturna instalada en exterior" loading="lazy"></div>
+      <div class="gallery-item"><img src="img/trabajo-2.jpg" alt="Cámara domo instalada en techo de local comercial" loading="lazy"></div>
+      <div class="gallery-item"><img src="img/trabajo-3.jpg" alt="Cámara Hikvision domo instalada en casa" loading="lazy"></div>
+      <div class="gallery-item"><img src="img/trabajo-4.jpg" alt="Cámara de seguridad Hikvision en techo con vigas" loading="lazy"></div>
+      <div class="gallery-item"><img src="img/trabajo-5.jpg" alt="Cámara bullet exterior de día instalada en muro" loading="lazy"></div>
+      <div class="gallery-item"><img src="img/trabajo-6.jpg" alt="Cámara Hikvision ColorVu en esquina de edificio" loading="lazy"></div>
+      <div class="gallery-item"><img src="img/trabajo-7.jpg" alt="Cámara bullet con visión nocturna activa" loading="lazy"></div>
     </div>
   </div>
 </section>
