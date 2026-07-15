@@ -605,6 +605,56 @@
     .wa-float:hover { transform: scale(1.08); }
     .wa-float svg { width: 28px; height: 28px; fill: #fff; }
 
+    /* ─── AGENDAR / CALENDARIO ─── */
+    .agendar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+    .calendar-card {
+      background: var(--bg2); border: 1px solid var(--border2);
+      border-radius: 14px; padding: 24px; user-select: none;
+    }
+    .calendar-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+    }
+    .cal-month {
+      font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 600; color: var(--text);
+    }
+    .cal-nav {
+      background: var(--surface); border: 1px solid var(--border2); color: var(--accent);
+      width: 36px; height: 36px; border-radius: 8px; font-size: 20px;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .cal-nav:hover { border-color: var(--accent); background: var(--accent-dim); }
+    .calendar-weekdays {
+      display: grid; grid-template-columns: repeat(7, 1fr); text-align: center;
+      margin-bottom: 8px;
+    }
+    .calendar-weekdays span {
+      font-size: 12px; color: var(--text3); font-weight: 500; padding: 6px 0;
+    }
+    .calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+    .cal-day {
+      aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+      font-size: 14px; border-radius: 8px; cursor: pointer;
+      color: var(--text2); transition: all 0.15s; border: 1px solid transparent;
+    }
+    .cal-day:hover:not(.cal-day-disabled):not(.cal-day-empty) {
+      border-color: var(--accent); background: var(--accent-dim); color: var(--text);
+    }
+    .cal-day-selected {
+      background: var(--accent) !important; color: #000 !important;
+      font-weight: 600; border-color: var(--accent) !important;
+    }
+    .cal-day-today { border-color: var(--border); color: var(--text); font-weight: 500; }
+    .cal-day-disabled { color: var(--text3); opacity: 0.35; cursor: not-allowed; }
+    .cal-day-empty { cursor: default; }
+    .agendar-form-card {
+      background: var(--bg2); border: 1px solid var(--border2);
+      border-radius: 14px; padding: 28px; display: flex; flex-direction: column; gap: 14px;
+    }
+    @media (max-width: 768px) {
+      .agendar-grid { grid-template-columns: 1fr; }
+    }
+
     /* ─── ANIMATIONS ─── */
     .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
@@ -681,6 +731,7 @@
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#promocion">Promoción</a></li>
       <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#agendar">Agendar</a></li>
       <li><a href="#cotizar">Cotizar</a></li>
       <li><a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20cámaras%20de%20seguridad." class="nav-cta">WhatsApp</a></li>
     </ul>
@@ -694,6 +745,7 @@
   <a href="#servicios" onclick="closeMenu()">Servicios</a>
   <a href="#promocion" onclick="closeMenu()">Promoción</a>
   <a href="#proceso" onclick="closeMenu()">Proceso</a>
+  <a href="#agendar" onclick="closeMenu()">Agendar</a>
   <a href="#cobertura" onclick="closeMenu()">Cobertura</a>
   <a href="#cotizar" onclick="closeMenu()">Cotizar gratis</a>
   <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20cámaras%20de%20seguridad." class="nav-mobile-cta">Cotizar por WhatsApp</a>
@@ -966,6 +1018,62 @@
         <div class="step-num">04</div>
         <h3>Configuración</h3>
         <p>Configuramos acceso remoto en tu celular y te enseñamos a usar el sistema.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANIFICAR INSTALACIÓN -->
+<section id="agendar">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="tag">Planifica tu Instalación</div>
+      <h2>Elige una <span class="accent">fecha tentativa</span></h2>
+      <p>Selecciona el día que te acomode para tu instalación y te contactaremos para confirmar.</p>
+    </div>
+    <div class="agendar-grid fade-up">
+      <div class="calendar-card">
+        <div class="calendar-header">
+          <button class="cal-nav" onclick="changeMonth(-1)" aria-label="Mes anterior">‹</button>
+          <span class="cal-month" id="cal-month-label"></span>
+          <button class="cal-nav" onclick="changeMonth(1)" aria-label="Mes siguiente">›</button>
+        </div>
+        <div class="calendar-weekdays">
+          <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
+        </div>
+        <div class="calendar-days" id="cal-days"></div>
+      </div>
+      <div class="agendar-form-card">
+        <h3 style="font-size: 20px; margin-bottom: 6px;">Datos para agendar</h3>
+        <p style="font-size: 13px; color: var(--text3); margin-bottom: 20px;">Completa tus datos y te confirmaremos la fecha por WhatsApp.</p>
+        <div class="cform-group">
+          <label>Fecha seleccionada</label>
+          <input type="text" id="ag-fecha" placeholder="Selecciona en el calendario" readonly>
+        </div>
+        <div class="cform-group">
+          <label>Nombre</label>
+          <input type="text" id="ag-nombre" placeholder="Tu nombre">
+        </div>
+        <div class="cform-group">
+          <label>Teléfono / WhatsApp</label>
+          <input type="tel" id="ag-telefono" placeholder="+56 9 ....">
+        </div>
+        <div class="cform-group">
+          <label>Comuna</label>
+          <input type="text" id="ag-comuna" placeholder="Ej: Las Condes">
+        </div>
+        <div class="cform-group">
+          <label>Horario preferido</label>
+          <div class="cform-chips" id="ag-horario">
+            <span class="chip" onclick="selectChip(this, 'horario')">Mañana (8–12)</span>
+            <span class="chip" onclick="selectChip(this, 'horario')">Tarde (12–17)</span>
+            <span class="chip" onclick="selectChip(this, 'horario')">Cualquiera</span>
+          </div>
+        </div>
+        <button onclick="enviarAgenda()" class="btn-primary" style="width:100%; justify-content: center; font-size:16px; padding: 15px; border: none; cursor: pointer; margin-top: 8px;">
+          📅 Agendar Instalación por WhatsApp
+        </button>
+        <p style="text-align:center; font-size:12px; color: var(--text3); margin-top:10px;">La fecha es tentativa, la confirmaremos por WhatsApp.</p>
       </div>
     </div>
   </div>
@@ -1314,6 +1422,92 @@
     });
   }, { threshold: 0.5 });
   counters.forEach(el => counterObserver.observe(el));
+
+  // ─── CALENDARIO DE INSTALACIÓN ───
+  let calDate = new Date();
+  let selectedDate = null;
+  const months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+  function renderCalendar() {
+    const year = calDate.getFullYear();
+    const month = calDate.getMonth();
+    document.getElementById('cal-month-label').textContent = months[month] + ' ' + year;
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const today = new Date();
+    today.setHours(0,0,0,0);
+
+    // Ajustar para que Lunes = 0
+    const startDay = (firstDay === 0) ? 6 : firstDay - 1;
+
+    let html = '';
+    // Celdas vacías antes del día 1
+    for (let i = 0; i < startDay; i++) {
+      html += '<div class="cal-day cal-day-empty"></div>';
+    }
+    // Días del mes
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date = new Date(year, month, d);
+      const isPast = date < today;
+      const isSunday = date.getDay() === 0;
+      const isToday = date.getTime() === today.getTime();
+      const isSelected = selectedDate && date.getTime() === selectedDate.getTime();
+      let cls = 'cal-day';
+      if (isPast || isSunday) cls += ' cal-day-disabled';
+      else if (isSelected) cls += ' cal-day-selected';
+      else if (isToday) cls += ' cal-day-today';
+      html += `<div class="${cls}" data-date="${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}" onclick="selectCalDay(this)">${d}</div>`;
+    }
+    document.getElementById('cal-days').innerHTML = html;
+  }
+
+  function changeMonth(dir) {
+    calDate.setMonth(calDate.getMonth() + dir);
+    // No permitir meses pasados
+    const now = new Date();
+    if (calDate.getFullYear() < now.getFullYear() || (calDate.getFullYear() === now.getFullYear() && calDate.getMonth() < now.getMonth())) {
+      calDate = new Date(now.getFullYear(), now.getMonth(), 1);
+    }
+    renderCalendar();
+  }
+
+  function selectCalDay(el) {
+    if (el.classList.contains('cal-day-disabled') || el.classList.contains('cal-day-empty')) return;
+    const dateStr = el.dataset.date;
+    const parts = dateStr.split('-');
+    selectedDate = new Date(parts[0], parts[1]-1, parts[2]);
+    // Mostrar en el input con formato legible
+    const dayNum = selectedDate.getDate();
+    const monthName = months[selectedDate.getMonth()];
+    const yearNum = selectedDate.getFullYear();
+    document.getElementById('ag-fecha').value = `${dayNum} de ${monthName}, ${yearNum}`;
+    renderCalendar();
+  }
+
+  function enviarAgenda() {
+    const fecha = document.getElementById('ag-fecha').value.trim();
+    const nombre = document.getElementById('ag-nombre').value.trim();
+    const telefono = document.getElementById('ag-telefono').value.trim();
+    const comuna = document.getElementById('ag-comuna').value.trim();
+    const horario = document.querySelector('#ag-horario .chip.selected')?.textContent || 'No especificado';
+
+    if (!fecha) { alert('Por favor selecciona una fecha en el calendario.'); return; }
+    if (!nombre || !telefono) { alert('Por favor ingresa tu nombre y teléfono.'); return; }
+
+    let msg = `Hola GuardianTech! Quiero agendar mi instalación:%0A%0A`;
+    msg += `📅 *Fecha tentativa:* ${fecha}%0A`;
+    msg += `🕐 *Horario preferido:* ${horario}%0A`;
+    msg += `👤 *Nombre:* ${nombre}%0A`;
+    msg += `📱 *Teléfono:* ${telefono}%0A`;
+    msg += `📍 *Comuna:* ${comuna || 'No indicada'}%0A`;
+    msg += `%0A¿Pueden confirmarme disponibilidad para esa fecha?`;
+
+    window.open(`https://api.whatsapp.com/send?phone=56984442165&text=${msg}`, '_blank');
+  }
+
+  // Inicializar calendario
+  renderCalendar();
 </script>
 
 </body>
