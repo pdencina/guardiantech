@@ -518,6 +518,27 @@
     .gallery-item img {
       width: 100%; height: 100%; object-fit: cover; display: block;
     }
+    /* Galería cuadrada */
+    .gallery-grid-square { grid-template-columns: repeat(3, 1fr); }
+    .gallery-grid-square .gallery-item { aspect-ratio: 1 / 1; }
+    .work-block { margin-top: 56px; }
+    .work-block-title {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+      font-family: 'Rajdhani', sans-serif;
+    }
+    .work-block-title h3 { font-size: 22px; font-weight: 600; }
+    .work-block-loc {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--text2); background: var(--bg);
+      border: 1px solid var(--border2); padding: 5px 12px; border-radius: 100px;
+    }
+    .work-block-loc svg { width: 13px; height: 13px; stroke: var(--accent); fill: none; stroke-width: 2; }
+    @media (max-width: 768px) {
+      .gallery-grid-square { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid-square { grid-template-columns: repeat(2, 1fr); }
+    }
 
     /* ─── FAQ ─── */
     .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
@@ -1109,6 +1130,28 @@
       <div class="gallery-item"><img src="img/trabajo-5.jpg.jpeg" alt="Cámara bullet exterior de día instalada en muro" loading="lazy"></div>
       <div class="gallery-item"><img src="img/trabajo-6.jpg.jpeg" alt="Cámara Hikvision ColorVu en esquina de edificio" loading="lazy"></div>
       <div class="gallery-item"><img src="img/trabajo-7.jpg.jpeg" alt="Cámara bullet con visión nocturna activa" loading="lazy"></div>
+    </div>
+
+    <!-- Trabajo: Av. La Plaza, Las Condes -->
+    <div class="work-block fade-up">
+      <div class="work-block-title">
+        <h3>Instalación en Las Condes</h3>
+        <span class="work-block-loc">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Av. La Plaza, Las Condes
+        </span>
+      </div>
+      <div class="gallery-grid gallery-grid-square">
+        <div class="gallery-item"><img src="img/lascondes-1.jpeg" alt="Instalación de cámaras de seguridad en Av. La Plaza, Las Condes" loading="lazy"></div>
+        <div class="gallery-item"><img src="img/lascondes-2.jpeg" alt="Cámara de seguridad instalada en Av. La Plaza, Las Condes" loading="lazy"></div>
+        <div class="gallery-item"><img src="img/lascondes-3.jpeg" alt="Sistema CCTV instalado en Las Condes" loading="lazy"></div>
+        <div class="gallery-item"><img src="img/lascondes-4.jpeg" alt="Instalación profesional de cámaras en Las Condes" loading="lazy"></div>
+        <div class="gallery-item"><img src="img/lascondes-5.jpeg" alt="Cámara exterior instalada en Av. La Plaza" loading="lazy"></div>
+        <div class="gallery-item"><img src="img/lascondes-6.jpeg" alt="Trabajo de cámaras de seguridad en Las Condes" loading="lazy"></div>
+        <div class="gallery-item"><img src="img/lascondes-7.jpeg" alt="Cámara de vigilancia instalada en Las Condes" loading="lazy"></div>
+        <div class="gallery-item"><img src="img/lascondes-8.jpeg" alt="Instalación CCTV en Av. La Plaza, Las Condes" loading="lazy"></div>
+        <div class="gallery-item"><img src="img/lascondes-9.jpeg" alt="Sistema de seguridad instalado en Las Condes" loading="lazy"></div>
+      </div>
     </div>
   </div>
 </section>
