@@ -737,6 +737,37 @@
       .hero-stats { flex-direction: column; gap: 14px; }
     }
 
+
+    /* ─── ARMA TU KIT ─── */
+    .kit-builder-section { background: var(--bg2); border-top:1px solid var(--border2); border-bottom:1px solid var(--border2); }
+    .kit-builder { max-width: 760px; margin: 0 auto; }
+    .kit-builder-box { background: var(--bg); border:1px solid var(--border2); border-radius:16px; padding:28px; }
+    .kit-builder-label { display:block; font-size:13px; font-weight:600; color:var(--text2); margin-bottom:10px; }
+    .kit-counts { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:24px; }
+    .kit-count-btn { border:1px solid var(--border2); background:var(--bg2); color:var(--text); border-radius:10px; min-height:62px; cursor:pointer; font-size:15px; font-weight:600; }
+    .kit-count-btn strong { display:block; font-size:22px; color:var(--accent); }
+    .kit-count-btn.active { border-color:var(--accent); background:rgba(0,201,255,.08); }
+    .kit-type { width:100%; min-height:48px; border:1px solid var(--border2); border-radius:9px; background:var(--bg2); color:var(--text); padding:0 12px; font-size:16px; margin-bottom:22px; }
+    .kit-summary { border-top:1px solid var(--border2); padding-top:20px; }
+    .kit-summary-head { display:flex; justify-content:space-between; gap:16px; align-items:flex-end; margin-bottom:14px; }
+    .kit-summary-title { font-size:18px; font-weight:600; }
+    .kit-total { font-size:32px; font-weight:700; color:var(--accent); white-space:nowrap; }
+    .kit-includes { display:grid; grid-template-columns:repeat(2,1fr); gap:8px 16px; margin:16px 0 18px; }
+    .kit-includes div { color:var(--text2); font-size:13px; }
+    .kit-includes div:before { content:"✓"; color:var(--accent); margin-right:7px; font-weight:700; }
+    .kit-disclaimer { color:var(--text3); font-size:11px; line-height:1.5; margin:12px 0 0; }
+    @media (max-width:600px) {
+      body > section.kit-builder-section { display:block !important; }
+      .kit-builder-section { padding:30px 0 !important; }
+      .kit-builder-box { padding:18px; border-radius:13px; }
+      .kit-counts { gap:7px; }
+      .kit-count-btn { min-height:58px; font-size:12px; padding:6px; }
+      .kit-count-btn strong { font-size:20px; }
+      .kit-summary-head { align-items:flex-start; flex-direction:column; gap:4px; }
+      .kit-total { font-size:30px; }
+      .kit-includes { grid-template-columns:1fr; }
+    }
+
     /* ─── MOBILE CONVERSION FLOW ─── */
     .mobile-fast { display: none; }
     .mobile-fast-card {
@@ -824,9 +855,9 @@
       <h1>Instalación de <span>cámaras de seguridad</span> en Santiago</h1>
       <p>Cámaras de seguridad para casas, empresas y condominios. Instalación, mantención y acceso desde tu celular en Santiago y RM.</p>
       <div class="hero-btns">
-        <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20instalacion%20de%20camaras%20de%20seguridad.%20Mi%20ubicacion%20es%20[COMUNA],%20es%20para%20[CASA/NEGOCIO]%20y%20aproximadamente%20necesito%20[X]%20camaras." class="btn-primary">
+        <a href="#arma-tu-kit" class="btn-primary">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.571a.75.75 0 00.932.932l5.724-1.467A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22.5A10.456 10.456 0 016.37 20.82l-.41-.243-4.252 1.09 1.09-4.152-.267-.432A10.46 10.46 0 011.5 12C1.5 6.21 6.21 1.5 12 1.5S22.5 6.21 22.5 12 17.79 22.5 12 22.5z"/></svg>
-          Cotizar por WhatsApp
+          Armar mi Kit
         </a>
         <a href="tel:+56984442165" class="btn-secondary">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.89 10.8 19.79 19.79 0 01.82 2.18 2 2 0 012.81.01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
@@ -842,6 +873,58 @@
         <div class="stat-item"><div class="stat-num">Hikvision</div><div class="stat-label">Equipos y configuración</div></div>
         <div class="stat-item"><div class="stat-num">Dahua</div><div class="stat-label">DVR/NVR y acceso remoto</div></div>
         <div class="stat-item"><div class="stat-num">RM</div><div class="stat-label">Cobertura en Santiago</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ARMA TU KIT -->
+<section id="arma-tu-kit" class="kit-builder-section">
+  <div class="container">
+    <div class="section-header fade-up" style="margin-bottom:28px">
+      <div class="tag">Cotiza en segundos</div>
+      <h2>Arma tu <span class="accent">Kit GuardianTech</span></h2>
+      <p>Elige cuántas cámaras necesitas y obtén un presupuesto estimado con lo esencial incluido.</p>
+    </div>
+    <div class="kit-builder">
+      <div class="kit-builder-box">
+        <span class="kit-builder-label">1. ¿Cuántas cámaras necesitas?</span>
+        <div class="kit-counts" role="group" aria-label="Cantidad de cámaras">
+          <button type="button" class="kit-count-btn" data-cameras="2" data-price="229000"><strong>2</strong> cámaras</button>
+          <button type="button" class="kit-count-btn" data-cameras="3" data-price="264000"><strong>3</strong> cámaras</button>
+          <button type="button" class="kit-count-btn active" data-cameras="4" data-price="299000"><strong>4</strong> cámaras</button>
+        </div>
+
+        <label class="kit-builder-label" for="kit-property">2. ¿Dónde las necesitas?</label>
+        <select id="kit-property" class="kit-type">
+          <option value="Casa">Casa</option>
+          <option value="Negocio">Negocio / Local</option>
+          <option value="Oficina">Oficina</option>
+          <option value="Condominio">Condominio / Edificio</option>
+        </select>
+
+        <div class="kit-summary" aria-live="polite">
+          <div class="kit-summary-head">
+            <div>
+              <div class="kit-summary-title">Tu Kit GuardianTech</div>
+              <div id="kit-summary-sub" style="color:var(--text2);font-size:13px">4 cámaras · Casa</div>
+            </div>
+            <div id="kit-total" class="kit-total">$299.000</div>
+          </div>
+          <div class="kit-includes">
+            <div id="kit-camera-line">4 cámaras Full HD</div>
+            <div>DVR de 4 canales</div>
+            <div>Disco duro 500 GB</div>
+            <div>Fuentes y conectividad necesaria</div>
+            <div>Instalación estándar</div>
+            <div>Configuración en celular</div>
+            <div>Configuración del sistema</div>
+            <div>Explicación de uso</div>
+          </div>
+          <a id="kit-whatsapp" class="btn-primary" style="width:100%;justify-content:center" href="https://api.whatsapp.com/send?phone=56984442165">Solicitar este Kit por WhatsApp</a>
+          <p class="kit-disclaimer">Precio estimado para una instalación estándar en Santiago. Distancias especiales de cableado, altura, canalizaciones, obras adicionales o requerimientos particulares pueden modificar el valor final. GuardianTech confirma el presupuesto antes de ejecutar el trabajo.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1489,6 +1572,201 @@
     el.closest('.cform-chips').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
   }
+
+
+  // Calculadora "Arma tu Kit"
+  (function () {
+    const buttons = document.querySelectorAll('.kit-count-btn');
+    const property = document.getElementById('kit-property');
+    const total = document.getElementById('kit-total');
+    const summary = document.getElementById('kit-summary-sub');
+    const cameraLine = document.getElementById('kit-camera-line');
+    const whatsapp = document.getElementById('kit-whatsapp');
+    if (!buttons.length || !property || !total || !summary || !cameraLine || !whatsapp) return;
+
+    let cameras = 4;
+    let price = 299000;
+    const money = n => '
+  function enviarCotizacion() {
+    const nombre = document.getElementById('cf-nombre').value.trim();
+    const telefono = document.getElementById('cf-telefono').value.trim();
+    const comuna = document.getElementById('cf-comuna').value.trim();
+    const tipo = document.querySelector('#cf-tipo .chip.selected')?.textContent || 'No especificado';
+    const camaras = document.querySelector('#cf-camaras .chip.selected')?.textContent || 'No especificado';
+    const mensaje = document.getElementById('cf-mensaje').value.trim();
+
+    if (!nombre || !telefono) {
+      alert('Por favor ingresa tu nombre y teléfono para continuar.');
+      return;
+    }
+
+    let msg = `Hola GuardianTech! Quiero cotizar una instalación de cámaras:%0A%0A`;
+    msg += `👤 *Nombre:* ${nombre}%0A`;
+    msg += `📱 *Teléfono:* ${telefono}%0A`;
+    msg += `🏠 *Tipo:* ${tipo}%0A`;
+    msg += `📍 *Comuna:* ${comuna || 'No indicada'}%0A`;
+    msg += `📷 *Cámaras aprox.:* ${camaras}%0A`;
+    if (mensaje) msg += `💬 *Detalles:* ${mensaje}%0A`;
+    msg += `%0A¿Pueden enviarme una cotización?`;
+
+    window.open(`https://api.whatsapp.com/send?phone=56984442165&text=${msg}`, '_blank');
+  }
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Contadores animados
+  const counters = document.querySelectorAll('.stat-num[data-target]');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1800;
+      const step = Math.ceil(target / (duration / 16));
+      let current = 0;
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = current + suffix;
+        if (current >= target) clearInterval(timer);
+      }, 16);
+      counterObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(el => counterObserver.observe(el));
+
+  // ─── CALENDARIO DE INSTALACIÓN ───
+  let calDate = new Date();
+  let selectedDate = null;
+  const months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+  function renderCalendar() {
+    const year = calDate.getFullYear();
+    const month = calDate.getMonth();
+    document.getElementById('cal-month-label').textContent = months[month] + ' ' + year;
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const today = new Date();
+    today.setHours(0,0,0,0);
+
+    // Ajustar para que Lunes = 0
+    const startDay = (firstDay === 0) ? 6 : firstDay - 1;
+
+    let html = '';
+    // Celdas vacías antes del día 1
+    for (let i = 0; i < startDay; i++) {
+      html += '<div class="cal-day cal-day-empty"></div>';
+    }
+    // Días del mes
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date = new Date(year, month, d);
+      const isPast = date < today;
+      const isSunday = date.getDay() === 0;
+      const isToday = date.getTime() === today.getTime();
+      const isSelected = selectedDate && date.getTime() === selectedDate.getTime();
+      let cls = 'cal-day';
+      if (isPast || isSunday) cls += ' cal-day-disabled';
+      else if (isSelected) cls += ' cal-day-selected';
+      else if (isToday) cls += ' cal-day-today';
+      html += `<div class="${cls}" data-date="${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}" onclick="selectCalDay(this)">${d}</div>`;
+    }
+    document.getElementById('cal-days').innerHTML = html;
+  }
+
+  function changeMonth(dir) {
+    calDate.setMonth(calDate.getMonth() + dir);
+    // No permitir meses pasados
+    const now = new Date();
+    if (calDate.getFullYear() < now.getFullYear() || (calDate.getFullYear() === now.getFullYear() && calDate.getMonth() < now.getMonth())) {
+      calDate = new Date(now.getFullYear(), now.getMonth(), 1);
+    }
+    renderCalendar();
+  }
+
+  function selectCalDay(el) {
+    if (el.classList.contains('cal-day-disabled') || el.classList.contains('cal-day-empty')) return;
+    const dateStr = el.dataset.date;
+    const parts = dateStr.split('-');
+    selectedDate = new Date(parts[0], parts[1]-1, parts[2]);
+    // Mostrar en el input con formato legible
+    const dayNum = selectedDate.getDate();
+    const monthName = months[selectedDate.getMonth()];
+    const yearNum = selectedDate.getFullYear();
+    document.getElementById('ag-fecha').value = `${dayNum} de ${monthName}, ${yearNum}`;
+    renderCalendar();
+  }
+
+  function enviarAgenda() {
+    const fecha = document.getElementById('ag-fecha').value.trim();
+    const nombre = document.getElementById('ag-nombre').value.trim();
+    const telefono = document.getElementById('ag-telefono').value.trim();
+    const comuna = document.getElementById('ag-comuna').value.trim();
+    const horario = document.querySelector('#ag-horario .chip.selected')?.textContent || 'No especificado';
+
+    if (!fecha) { alert('Por favor selecciona una fecha en el calendario.'); return; }
+    if (!nombre || !telefono) { alert('Por favor ingresa tu nombre y teléfono.'); return; }
+
+    let msg = `Hola GuardianTech! Quiero agendar mi instalación:%0A%0A`;
+    msg += `📅 *Fecha tentativa:* ${fecha}%0A`;
+    msg += `🕐 *Horario preferido:* ${horario}%0A`;
+    msg += `👤 *Nombre:* ${nombre}%0A`;
+    msg += `📱 *Teléfono:* ${telefono}%0A`;
+    msg += `📍 *Comuna:* ${comuna || 'No indicada'}%0A`;
+    msg += `%0A¿Pueden confirmarme disponibilidad para esa fecha?`;
+
+    window.open(`https://api.whatsapp.com/send?phone=56984442165&text=${msg}`, '_blank');
+  }
+
+  // Inicializar calendario
+  renderCalendar();
+</script>
+
+</body>
+</html>
+ + Number(n).toLocaleString('es-CL');
+
+    function updateKit() {
+      summary.textContent = cameras + ' cámaras · ' + property.value;
+      cameraLine.textContent = cameras + ' cámaras Full HD';
+      total.textContent = money(price);
+      const msg = 'Hola GuardianTech, armé mi kit en la web:%0A%0A' +
+        '• Cámaras: ' + cameras + '%0A' +
+        '• Tipo de propiedad: ' + encodeURIComponent(property.value) + '%0A' +
+        '• Presupuesto estimado: ' + encodeURIComponent(money(price)) + '%0A%0A' +
+        'Quiero confirmar el presupuesto y coordinar la instalación. Mi comuna es: [COMUNA]';
+      whatsapp.href = 'https://api.whatsapp.com/send?phone=56984442165&text=' + msg;
+    }
+
+    buttons.forEach(btn => btn.addEventListener('click', function () {
+      buttons.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      cameras = Number(this.dataset.cameras) || 4;
+      price = Number(this.dataset.price) || 299000;
+      updateKit();
+    }));
+    property.addEventListener('change', updateKit);
+    updateKit();
+  })();
 
   // Enviar cotización por WhatsApp
   function enviarCotizacion() {
