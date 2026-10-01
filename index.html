@@ -736,6 +736,44 @@
       .kit-items { grid-template-columns: 1fr; }
       .hero-stats { flex-direction: column; gap: 14px; }
     }
+
+    /* ─── MOBILE CONVERSION FLOW ─── */
+    .mobile-fast { display: none; }
+    .mobile-fast-card {
+      background: var(--bg2); border: 1px solid var(--border2); border-radius: 14px;
+      padding: 20px; margin-bottom: 14px;
+    }
+    .mobile-fast-kicker { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; margin-bottom: 8px; }
+    .mobile-fast h2 { font-size: 27px; line-height: 1.12; margin-bottom: 12px; }
+    .mobile-fast h3 { font-size: 18px; margin-bottom: 7px; }
+    .mobile-fast p { color: var(--text2); font-size: 14px; line-height: 1.55; }
+    .mobile-service-row { display: flex; gap: 12px; align-items: flex-start; padding: 15px 0; border-bottom: 1px solid var(--border2); }
+    .mobile-service-row:last-child { border-bottom: 0; }
+    .mobile-service-icon { width: 34px; height: 34px; border-radius: 8px; background: rgba(0,201,255,.10); color: var(--accent); display:flex; align-items:center; justify-content:center; flex:0 0 auto; font-weight:700; }
+    .mobile-proof { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+    .mobile-proof span { font-size:12px; color:var(--text2); border:1px solid var(--border2); border-radius:999px; padding:6px 10px; }
+    .mobile-case-meta { font-size:12px; color:var(--accent); margin-bottom:8px; }
+    .mobile-sticky {
+      display:none; position:fixed; left:12px; right:12px; bottom:12px; z-index:999;
+      background:#20c56b; color:#06120b; text-decoration:none; text-align:center;
+      padding:14px 16px; border-radius:12px; font-weight:700; box-shadow:0 10px 30px rgba(0,0,0,.4);
+    }
+    @media (max-width: 600px) {
+      body { padding-bottom: 78px; }
+      body > section:not(.hero):not(.mobile-fast) { display:none !important; }
+      .ticker-wrap { display:none !important; }
+      .mobile-fast { display:block; padding:28px 0 34px; }
+      .mobile-sticky { display:block; }
+      .hero { padding:82px 0 30px; }
+      .hero .tag { font-size:10px; margin-bottom:12px; }
+      .hero h1 { font-size:31px; margin-bottom:12px; }
+      .hero p { font-size:15px; line-height:1.5; margin-bottom:20px; }
+      .hero .btn-secondary, .hero-badge-resp, .hero-stats { display:none !important; }
+      .hero-btns { margin-bottom:0; }
+      .hero .btn-primary { min-height:50px; }
+      .wa-float { display:none !important; }
+      footer { padding-bottom:24px; }
+    }
   </style>
 </head>
 <body>
@@ -759,13 +797,10 @@
 </nav>
 
 <div class="nav-mobile-menu" id="mobile-menu">
-  <a href="#servicios" onclick="closeMenu()">Servicios</a>
-  <a href="#promocion" onclick="closeMenu()">Promoción</a>
-  <a href="#proceso" onclick="closeMenu()">Proceso</a>
-  <a href="#agendar" onclick="closeMenu()">Agendar</a>
-  <a href="#cobertura" onclick="closeMenu()">Cobertura</a>
-  <a href="#cotizar" onclick="closeMenu()">Cotizar gratis</a>
-  <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20cámaras%20de%20seguridad." class="nav-mobile-cta">Cotizar por WhatsApp</a>
+  <a href="#mobile-servicios" onclick="closeMenu()">Qué hacemos</a>
+  <a href="#mobile-casos" onclick="closeMenu()">Trabajos recientes</a>
+  <a href="tel:+56984442165" onclick="closeMenu()">Llamar</a>
+  <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20vi%20su%20sitio%20y%20quiero%20cotizar%20un%20servicio%20de%20cámaras%20de%20seguridad." class="nav-mobile-cta">Hablar por WhatsApp</a>
 </div>
 
 <script>
@@ -787,7 +822,7 @@
     <div class="hero-content">
       <div class="tag">Casas · Negocios · Condominios · Edificios</div>
       <h1>Instalación de <span>cámaras de seguridad</span> en Santiago</h1>
-      <p>Instalamos y mantenemos sistemas CCTV para condominios, edificios, casas, empresas y negocios en Santiago. Trabajamos con Hikvision y Dahua, DVR/NVR, acceso remoto, control de acceso y video portero IP.</p>
+      <p>Cámaras de seguridad para casas, empresas y condominios. Instalación, mantención y acceso desde tu celular en Santiago y RM.</p>
       <div class="hero-btns">
         <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20instalacion%20de%20camaras%20de%20seguridad.%20Mi%20ubicacion%20es%20[COMUNA],%20es%20para%20[CASA/NEGOCIO]%20y%20aproximadamente%20necesito%20[X]%20camaras." class="btn-primary">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.571a.75.75 0 00.932.932l5.724-1.467A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22.5A10.456 10.456 0 016.37 20.82l-.41-.243-4.252 1.09 1.09-4.152-.267-.432A10.46 10.46 0 011.5 12C1.5 6.21 6.21 1.5 12 1.5S22.5 6.21 22.5 12 17.79 22.5 12 22.5z"/></svg>
@@ -831,6 +866,53 @@
     <div class="ticker-item"><span class="ticker-dot"></span> Soporte técnico 24/7</div>
   </div>
 </div>
+
+
+<!-- EXPERIENCIA MÓVIL: flujo corto orientado a contacto -->
+<section class="mobile-fast" id="mobile-servicios">
+  <div class="container">
+    <div class="mobile-fast-kicker">GuardianTech · Santiago</div>
+    <h2>¿Qué necesitas resolver?</h2>
+
+    <div class="mobile-fast-card">
+      <div class="mobile-service-row">
+        <div class="mobile-service-icon">01</div>
+        <div><h3>Instalar cámaras</h3><p>CCTV para casas, negocios, empresas, edificios y condominios.</p></div>
+      </div>
+      <div class="mobile-service-row">
+        <div class="mobile-service-icon">02</div>
+        <div><h3>Reparar o mantener</h3><p>Revisamos cámaras sin señal, DVR/NVR, grabación, cableado y conexiones.</p></div>
+      </div>
+      <div class="mobile-service-row">
+        <div class="mobile-service-icon">03</div>
+        <div><h3>Acceso desde el celular</h3><p>Configuramos acceso remoto y usuarios autorizados en sistemas compatibles.</p></div>
+      </div>
+    </div>
+
+    <div id="mobile-casos" class="mobile-fast-kicker" style="margin-top:30px">Trabajo reciente</div>
+    <div class="mobile-fast-card">
+      <div class="mobile-case-meta">LA REINA · SOPORTE CCTV</div>
+      <h3>Recuperación de acceso en 2 DVR Dahua</h3>
+      <p>Recuperamos el acceso administrativo y actualizamos las credenciales de dos grabadores. Durante la revisión también detectamos puntos de mejora en conexiones y ventilación del sistema.</p>
+      <div class="mobile-proof">
+        <span>2 DVR revisados</span><span>Acceso recuperado</span><span>Diagnóstico técnico</span>
+      </div>
+    </div>
+
+    <div class="mobile-fast-kicker" style="margin-top:30px">Trabajo con clientes reales</div>
+    <div class="mobile-fast-card">
+      <div class="mobile-case-meta">LAS CONDES · INSTALACIÓN CCTV</div>
+      <h3>Instalación y configuración para cliente residencial</h3>
+      <p>Implementación de cámaras, ordenamiento de la instalación y configuración para visualización desde el celular.</p>
+      <p style="margin-top:10px;font-size:12px;color:var(--text3)">Cliente GuardianTech: Joaquín Jarpa.</p>
+    </div>
+
+    <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20vi%20su%20sitio%20y%20necesito%20ayuda%20con%20mi%20sistema%20de%20cámaras.%20Estoy%20en%20[COMUNA]." class="btn-primary" style="width:100%;justify-content:center;margin-top:8px">Cuéntanos qué necesitas</a>
+    <p style="text-align:center;font-size:12px;color:var(--text3);margin-top:12px">+56 9 8444 2165 · contacto@guardiantech.cl</p>
+  </div>
+</section>
+
+<a class="mobile-sticky" href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20vi%20su%20sitio%20y%20quiero%20cotizar%20un%20servicio%20de%20cámaras%20de%20seguridad.">WhatsApp · Cotizar ahora</a>
 
 <!-- SEGMENTOS: Tipo de propiedad -->
 <section id="servicios" style="background: var(--bg2); border-top: 1px solid var(--border2);">
