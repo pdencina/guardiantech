@@ -740,34 +740,51 @@
 
     /* ─── ARMA TU KIT ─── */
     .kit-builder-section { background: var(--bg2); border-top:1px solid var(--border2); border-bottom:1px solid var(--border2); }
-    .kit-builder { max-width: 760px; margin: 0 auto; }
-    .kit-builder-box { background: var(--bg); border:1px solid var(--border2); border-radius:16px; padding:28px; }
-    .kit-builder-label { display:block; font-size:13px; font-weight:600; color:var(--text2); margin-bottom:10px; }
-    .kit-counts { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:24px; }
-    .kit-count-btn { border:1px solid var(--border2); background:var(--bg2); color:var(--text); border-radius:10px; min-height:62px; cursor:pointer; font-size:15px; font-weight:600; }
-    .kit-count-btn strong { display:block; font-size:22px; color:var(--accent); }
-    .kit-count-btn.active { border-color:var(--accent); background:rgba(0,201,255,.08); }
-    .kit-type { width:100%; min-height:48px; border:1px solid var(--border2); border-radius:9px; background:var(--bg2); color:var(--text); padding:0 12px; font-size:16px; margin-bottom:22px; }
-    .kit-summary { border-top:1px solid var(--border2); padding-top:20px; }
-    .kit-summary-head { display:flex; justify-content:space-between; gap:16px; align-items:flex-end; margin-bottom:14px; }
-    .kit-summary-title { font-size:18px; font-weight:600; }
-    .kit-total { font-size:32px; font-weight:700; color:var(--accent); white-space:nowrap; }
-    .kit-includes { display:grid; grid-template-columns:repeat(2,1fr); gap:8px 16px; margin:16px 0 18px; }
-    .kit-includes div { color:var(--text2); font-size:13px; }
-    .kit-includes div:before { content:"✓"; color:var(--accent); margin-right:7px; font-weight:700; }
+    .kit-builder { max-width: 900px; margin: 0 auto; }
+    .kit-builder-box { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr); gap:0; background:var(--bg); border:1px solid var(--border2); border-radius:18px; overflow:hidden; }
+    .kit-config { padding:30px; }
+    .kit-result { padding:30px; background:var(--bg2); border-left:1px solid var(--border2); }
+    .kit-step { margin-bottom:24px; }
+    .kit-step:last-child { margin-bottom:0; }
+    .kit-builder-label { display:flex; align-items:center; gap:9px; font-size:14px; font-weight:600; color:var(--text); margin-bottom:11px; }
+    .kit-step-num { width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:rgba(0,201,255,.10); color:var(--accent); font-size:11px; }
+    .kit-counts { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; }
+    .kit-count-btn { border:1px solid var(--border2); background:var(--bg2); color:var(--text); border-radius:11px; min-height:70px; cursor:pointer; font-size:13px; font-weight:600; transition:.2s; }
+    .kit-count-btn strong { display:block; font-size:24px; color:var(--accent); margin-bottom:2px; }
+    .kit-count-btn.active { border-color:var(--accent); background:rgba(0,201,255,.08); box-shadow:inset 0 0 0 1px var(--accent); }
+    .kit-field { width:100%; min-height:48px; border:1px solid var(--border2); border-radius:9px; background:var(--bg2); color:var(--text); padding:0 12px; font-size:16px; }
+    .kit-field::placeholder { color:var(--text3); }
+    .kit-radio-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+    .kit-option { position:relative; }
+    .kit-option input { position:absolute; opacity:0; pointer-events:none; }
+    .kit-option label { display:block; min-height:58px; padding:11px 12px; border:1px solid var(--border2); border-radius:10px; background:var(--bg2); cursor:pointer; font-size:13px; line-height:1.35; }
+    .kit-option label small { display:block; color:var(--text3); margin-top:3px; }
+    .kit-option input:checked + label { border-color:var(--accent); background:rgba(0,201,255,.08); }
+    .kit-result-kicker { color:var(--accent); font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; }
+    .kit-result h3 { font-size:22px; margin:7px 0 3px; }
+    .kit-total { font-size:36px; line-height:1; font-weight:700; color:var(--accent); margin:18px 0 5px; }
+    .kit-total-note { font-size:11px; color:var(--text3); }
+    .kit-breakdown { margin:22px 0; border-top:1px solid var(--border2); }
+    .kit-breakdown-row { display:flex; justify-content:space-between; gap:14px; padding:11px 0; border-bottom:1px solid var(--border2); font-size:13px; }
+    .kit-breakdown-row span:first-child { color:var(--text2); }
+    .kit-breakdown-row span:last-child { text-align:right; color:var(--text); font-weight:500; }
+    .kit-included-title { font-size:12px; font-weight:700; margin-bottom:9px; text-transform:uppercase; letter-spacing:.7px; }
+    .kit-includes { display:grid; grid-template-columns:1fr; gap:7px; margin-bottom:20px; }
+    .kit-includes div { color:var(--text2); font-size:12px; }
+    .kit-includes div:before { content:'✓'; color:var(--accent); margin-right:7px; font-weight:700; }
     .kit-disclaimer { color:var(--text3); font-size:11px; line-height:1.5; margin:12px 0 0; }
-    @media (max-width:600px) {
+    @media (max-width:700px) {
       body > section.kit-builder-section { display:block !important; }
-      .kit-builder-section { padding:30px 0 !important; }
-      .kit-builder-box { padding:18px; border-radius:13px; }
-      .kit-counts { gap:7px; }
-      .kit-count-btn { min-height:58px; font-size:12px; padding:6px; }
-      .kit-count-btn strong { font-size:20px; }
-      .kit-summary-head { align-items:flex-start; flex-direction:column; gap:4px; }
-      .kit-total { font-size:30px; }
-      .kit-includes { grid-template-columns:1fr; }
+      .kit-builder-section { padding:32px 0 !important; }
+      .kit-builder-section .section-header { text-align:left; margin-bottom:20px !important; }
+      .kit-builder-section .section-header h2 { font-size:27px; }
+      .kit-builder-box { grid-template-columns:1fr; border-radius:14px; }
+      .kit-config, .kit-result { padding:18px; }
+      .kit-result { border-left:0; border-top:1px solid var(--border2); }
+      .kit-count-btn { min-height:62px; padding:6px; }
+      .kit-radio-grid { grid-template-columns:1fr; }
+      .kit-total { font-size:32px; }
     }
-
     /* ─── MOBILE CONVERSION FLOW ─── */
     .mobile-fast { display: none; }
     .mobile-fast-card {
@@ -883,53 +900,99 @@
 <section id="arma-tu-kit" class="kit-builder-section">
   <div class="container">
     <div class="section-header fade-up" style="margin-bottom:28px">
-      <div class="tag">Cotiza en segundos</div>
+      <div class="tag">Calculadora online</div>
       <h2>Arma tu <span class="accent">Kit GuardianTech</span></h2>
-      <p>Elige cuántas cámaras necesitas y obtén un presupuesto estimado con lo esencial incluido.</p>
+      <p>Configura tu sistema en la misma página. Te mostramos qué incluye y un valor estimado antes de hablar con nosotros.</p>
     </div>
     <div class="kit-builder">
       <div class="kit-builder-box">
-        <span class="kit-builder-label">1. ¿Cuántas cámaras necesitas?</span>
-        <div class="kit-counts" role="group" aria-label="Cantidad de cámaras">
-          <button type="button" class="kit-count-btn" data-cameras="2" data-price="229000"><strong>2</strong> cámaras</button>
-          <button type="button" class="kit-count-btn" data-cameras="3" data-price="264000"><strong>3</strong> cámaras</button>
-          <button type="button" class="kit-count-btn active" data-cameras="4" data-price="299000"><strong>4</strong> cámaras</button>
-        </div>
-
-        <label class="kit-builder-label" for="kit-property">2. ¿Dónde las necesitas?</label>
-        <select id="kit-property" class="kit-type">
-          <option value="Casa">Casa</option>
-          <option value="Negocio">Negocio / Local</option>
-          <option value="Oficina">Oficina</option>
-          <option value="Condominio">Condominio / Edificio</option>
-        </select>
-
-        <div class="kit-summary" aria-live="polite">
-          <div class="kit-summary-head">
-            <div>
-              <div class="kit-summary-title">Tu Kit GuardianTech</div>
-              <div id="kit-summary-sub" style="color:var(--text2);font-size:13px">4 cámaras · Casa</div>
+        <div class="kit-config">
+          <div class="kit-step">
+            <div class="kit-builder-label"><span class="kit-step-num">1</span> ¿Cuántas cámaras necesitas?</div>
+            <div class="kit-counts" role="group" aria-label="Cantidad de cámaras">
+              <button type="button" class="kit-count-btn" data-cameras="2" data-price="229000"><strong>2</strong>cámaras</button>
+              <button type="button" class="kit-count-btn" data-cameras="3" data-price="264000"><strong>3</strong>cámaras</button>
+              <button type="button" class="kit-count-btn active" data-cameras="4" data-price="299000"><strong>4</strong>cámaras</button>
             </div>
-            <div id="kit-total" class="kit-total">$299.000</div>
           </div>
-          <div class="kit-includes">
-            <div id="kit-camera-line">4 cámaras Full HD</div>
-            <div>DVR de 4 canales</div>
-            <div>Disco duro 500 GB</div>
-            <div>Fuentes y conectividad necesaria</div>
-            <div>Instalación estándar</div>
-            <div>Configuración en celular</div>
-            <div>Configuración del sistema</div>
-            <div>Explicación de uso</div>
+
+          <div class="kit-step">
+            <label class="kit-builder-label" for="kit-property"><span class="kit-step-num">2</span> ¿Dónde las instalarás?</label>
+            <select id="kit-property" class="kit-field">
+              <option value="Casa">Casa</option>
+              <option value="Negocio / Local">Negocio / Local</option>
+              <option value="Oficina">Oficina</option>
+              <option value="Condominio / Edificio">Condominio / Edificio</option>
+            </select>
           </div>
-          <a id="kit-whatsapp" class="btn-primary" style="width:100%;justify-content:center" href="https://api.whatsapp.com/send?phone=56984442165">Solicitar este Kit por WhatsApp</a>
-          <p class="kit-disclaimer">Precio estimado para una instalación estándar en Santiago. Distancias especiales de cableado, altura, canalizaciones, obras adicionales o requerimientos particulares pueden modificar el valor final. GuardianTech confirma el presupuesto antes de ejecutar el trabajo.</p>
+
+          <div class="kit-step">
+            <div class="kit-builder-label"><span class="kit-step-num">3</span> Tipo de instalación</div>
+            <div class="kit-radio-grid">
+              <div class="kit-option">
+                <input type="radio" name="kit-install" id="kit-standard" value="Estándar" checked>
+                <label for="kit-standard"><strong>Estándar</strong><small>Instalación base incluida</small></label>
+              </div>
+              <div class="kit-option">
+                <input type="radio" name="kit-install" id="kit-premium" value="Canaleta interior premium">
+                <label for="kit-premium"><strong>Canaleta premium</strong><small>Se cotiza según metros</small></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="kit-step">
+            <div class="kit-builder-label"><span class="kit-step-num">4</span> Almacenamiento</div>
+            <div class="kit-radio-grid">
+              <div class="kit-option">
+                <input type="radio" name="kit-storage" id="kit-500" value="500 GB" checked>
+                <label for="kit-500"><strong>500 GB</strong><small>Incluido en el kit</small></label>
+              </div>
+              <div class="kit-option">
+                <input type="radio" name="kit-storage" id="kit-more" value="Mayor capacidad">
+                <label for="kit-more"><strong>Mayor capacidad</strong><small>1 TB / 2 TB a cotizar</small></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="kit-step">
+            <label class="kit-builder-label" for="kit-commune"><span class="kit-step-num">5</span> ¿En qué comuna?</label>
+            <input id="kit-commune" class="kit-field" type="text" inputmode="text" maxlength="60" placeholder="Ej: La Reina">
+          </div>
         </div>
+
+        <aside class="kit-result" aria-live="polite">
+          <div class="kit-result-kicker">Tu presupuesto</div>
+          <h3 id="kit-result-title">Kit 4 cámaras</h3>
+          <div id="kit-result-sub" style="color:var(--text2);font-size:13px">Casa · instalación estándar</div>
+          <div id="kit-total" class="kit-total">$299.000</div>
+          <div class="kit-total-note" id="kit-total-note">Valor estimado del kit base</div>
+
+          <div class="kit-breakdown">
+            <div class="kit-breakdown-row"><span>Cámaras</span><span id="kit-camera-line">4 Full HD</span></div>
+            <div class="kit-breakdown-row"><span>Grabador</span><span id="kit-recorder-line">DVR 4 canales</span></div>
+            <div class="kit-breakdown-row"><span>Almacenamiento</span><span id="kit-storage-line">500 GB</span></div>
+            <div class="kit-breakdown-row"><span>Instalación</span><span id="kit-install-line">Estándar</span></div>
+          </div>
+
+          <div class="kit-included-title">Todo lo necesario incluido</div>
+          <div class="kit-includes">
+            <div>Cámaras Full HD</div>
+            <div>DVR compatible con el kit</div>
+            <div>Disco duro para videovigilancia</div>
+            <div>Fuente de alimentación y conectividad</div>
+            <div>Cableado para instalación estándar</div>
+            <div>Montaje y puesta en marcha</div>
+            <div>Visualización desde celular</div>
+            <div>Configuración y explicación de uso</div>
+          </div>
+
+          <a id="kit-whatsapp" class="btn-primary" style="width:100%;justify-content:center" href="https://api.whatsapp.com/send?phone=56984442165">Enviar mi Kit por WhatsApp</a>
+          <p class="kit-disclaimer" id="kit-disclaimer">El valor es estimado para una instalación estándar en Santiago/RM. Canalizaciones especiales, distancias extensas, altura u obras adicionales se confirman antes de realizar el trabajo.</p>
+        </aside>
       </div>
     </div>
   </div>
 </section>
-
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker">
@@ -1574,19 +1637,74 @@
   }
 
 
-  // Calculadora "Arma tu Kit"
+  // Calculadora online "Arma tu Kit"
   (function () {
-    const buttons = document.querySelectorAll('.kit-count-btn');
+    const root = document.getElementById('arma-tu-kit');
+    if (!root) return;
+    const buttons = root.querySelectorAll('.kit-count-btn');
     const property = document.getElementById('kit-property');
+    const commune = document.getElementById('kit-commune');
     const total = document.getElementById('kit-total');
-    const summary = document.getElementById('kit-summary-sub');
+    const resultTitle = document.getElementById('kit-result-title');
+    const resultSub = document.getElementById('kit-result-sub');
     const cameraLine = document.getElementById('kit-camera-line');
+    const recorderLine = document.getElementById('kit-recorder-line');
+    const storageLine = document.getElementById('kit-storage-line');
+    const installLine = document.getElementById('kit-install-line');
+    const totalNote = document.getElementById('kit-total-note');
     const whatsapp = document.getElementById('kit-whatsapp');
-    if (!buttons.length || !property || !total || !summary || !cameraLine || !whatsapp) return;
 
     let cameras = 4;
     let price = 299000;
-    const money = n => '
+    const money = function (n) { return '$' + Number(n).toLocaleString('es-CL'); };
+    const selectedValue = function (name) {
+      const el = root.querySelector('input[name="' + name + '"]:checked');
+      return el ? el.value : '';
+    };
+
+    function updateKit() {
+      const install = selectedValue('kit-install') || 'Estándar';
+      const storage = selectedValue('kit-storage') || '500 GB';
+      const place = property.value || 'Casa';
+      const location = commune.value.trim();
+      const needsReview = install !== 'Estándar' || storage !== '500 GB';
+      resultTitle.textContent = 'Kit ' + cameras + ' cámaras';
+      resultSub.textContent = place + ' · ' + install.toLowerCase();
+      cameraLine.textContent = cameras + " Full HD";
+      recorderLine.textContent = 'DVR 4 canales';
+      storageLine.textContent = storage;
+      installLine.textContent = install;
+      total.textContent = money(price);
+      totalNote.textContent = needsReview ? 'Kit base + adicional a confirmar' : 'Valor estimado del kit base';
+
+      let msg = 'Hola GuardianTech, armé mi kit en su página web:\n\n';
+      msg += '• Cámaras: ' + cameras + '\n';
+      msg += '• Propiedad: ' + place + '\n';
+      msg += '• Instalación: ' + install + '\n';
+      msg += '• Almacenamiento: ' + storage + '\n';
+      msg += '• Comuna: ' + (location || 'Por indicar') + '\n';
+      msg += '• Valor estimado kit base: ' + money(price) + '\n\n';
+      if (needsReview) msg += 'Seleccioné opciones que requieren confirmar un valor adicional.\n\n';
+      msg += 'Quiero confirmar el presupuesto y coordinar.';
+      whatsapp.href = 'https://api.whatsapp.com/send?phone=56984442165&text=' + encodeURIComponent(msg);
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        buttons.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        cameras = Number(btn.getAttribute('data-cameras')) || 4;
+        price = Number(btn.getAttribute('data-price')) || 299000;
+        updateKit();
+      });
+    });
+    property.addEventListener('change', updateKit);
+    commune.addEventListener('input', updateKit);
+    root.querySelectorAll('input[name="kit-install"], input[name="kit-storage"]').forEach(function (input) {
+      input.addEventListener('change', updateKit);
+    });
+    updateKit();
+  })();
   function enviarCotizacion() {
     const nombre = document.getElementById('cf-nombre').value.trim();
     const telefono = document.getElementById('cf-telefono').value.trim();
