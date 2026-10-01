@@ -774,7 +774,7 @@
     .kit-includes div:before { content:'✓'; color:var(--accent); margin-right:7px; font-weight:700; }
     .kit-disclaimer { color:var(--text3); font-size:11px; line-height:1.5; margin:12px 0 0; }
     @media (max-width:700px) {
-      body > section.kit-builder-section { display:block !important; }
+      body > section.kit-builder-section { display:block !important; scroll-margin-top:90px; }
       .kit-builder-section { padding:32px 0 !important; }
       .kit-builder-section .section-header { text-align:left; margin-bottom:20px !important; }
       .kit-builder-section .section-header h2 { font-size:27px; }
@@ -809,7 +809,7 @@
     }
     @media (max-width: 600px) {
       body { padding-bottom: 78px; }
-      body > section:not(.hero):not(.mobile-fast) { display:none !important; }
+      body > section:not(.hero):not(.mobile-fast):not(.kit-builder-section) { display:none !important; }
       .ticker-wrap { display:none !important; }
       .mobile-fast { display:block; padding:28px 0 34px; }
       .mobile-sticky { display:block; }
