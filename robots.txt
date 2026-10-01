@@ -5,4 +5,10 @@ Disallow: /admin.html
 User-agent: Googlebot
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
 Sitemap: https://www.guardiantech.cl/sitemap.xml
