@@ -116,6 +116,7 @@
       "@type": "LocalBusiness",
       "name": "GuardianTech Seguridad",
       "telephone": "+56984442165",
+      "email": "contacto@guardiantech.cl",
       "url": "https://www.guardiantech.cl"
     },
     "areaServed": {
@@ -210,14 +211,25 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       background: rgba(9,12,16,0.92); backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border2); padding: 14px 0;
+      border-bottom: 1px solid var(--border2);
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    nav .nav-inner { padding-top: 14px; padding-bottom: 14px; }
+    .topbar { background: var(--bg2); border-bottom: 1px solid var(--border2); font-size: 12.5px; color: var(--text3); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; height: 34px; }
+    .topbar-links { display: flex; gap: 22px; }
+    .topbar a { color: var(--text2); text-decoration: none; display: inline-flex; align-items: center; gap: 7px; transition: color 0.2s; }
+    .topbar a:hover { color: var(--accent); }
+    .topbar svg { width: 13px; height: 13px; stroke: var(--accent); fill: none; stroke-width: 2; }
+    @media (max-width: 768px) { .topbar { display: none; } }
     .logo {
       font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700;
       color: var(--text); text-decoration: none; letter-spacing: 0.04em;
+      display: inline-flex; align-items: center; gap: 8px;
     }
     .logo span { color: var(--accent); }
+    .logo-mark { width: 26px; height: 26px; flex-shrink: 0; }
+    .logo-word { font-weight: inherit; }
     .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
     .nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
@@ -260,7 +272,7 @@
     /* ─── HERO ─── */
     .hero {
       min-height: 100vh; display: flex; align-items: center;
-      position: relative; overflow: hidden; padding: 120px 0 80px;
+      position: relative; overflow: hidden; padding: 140px 0 80px;
     }
     .hero-grid {
       position: absolute; inset: 0; z-index: 0;
@@ -275,7 +287,78 @@
       background: radial-gradient(circle, rgba(0,119,182,0.18) 0%, transparent 70%);
       z-index: 0;
     }
+    .hero-layout {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center;
+    }
     .hero-content { position: relative; z-index: 1; max-width: 640px; }
+    .hero .hero-mail { margin: 16px 0 0; font-size: 14px; color: var(--text3); }
+    .hero-mail a { color: var(--text2); text-decoration: none; border-bottom: 1px dashed var(--border); transition: color 0.2s; }
+    .hero-mail a:hover { color: var(--accent); }
+
+    /* Hero: fotos reales con estética de monitor CCTV */
+    .hero-visual { position: relative; height: 540px; }
+    .hv-main, .hv-second {
+      position: absolute; border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--border); box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+    }
+    .hv-main { top: 0; right: 0; width: 78%; height: 82%; }
+    .hv-second { bottom: 0; left: 0; width: 46%; height: 46%; border-color: rgba(255,255,255,0.12); }
+    .hv-main img, .hv-second img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hv-main::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(180deg, rgba(9,12,16,0.35) 0%, transparent 30%, transparent 70%, rgba(9,12,16,0.55) 100%);
+    }
+    .hv-rec {
+      position: absolute; top: 14px; left: 14px; right: 14px; z-index: 2;
+      display: flex; justify-content: space-between;
+      font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.08em; color: #fff;
+    }
+    .hv-rec-dot { display: inline-flex; align-items: center; gap: 7px; }
+    .hv-rec-dot::before {
+      content: ''; width: 8px; height: 8px; border-radius: 50%; background: #ff3b3b;
+      animation: rec-blink 1.2s infinite;
+    }
+    @keyframes rec-blink { 0%,100% { opacity: 1; } 50% { opacity: 0.2; } }
+    .hv-corner { position: absolute; width: 18px; height: 18px; border-color: var(--accent); border-style: solid; z-index: 2; opacity: 0.8; }
+    .hv-corner.tl { top: 44px; left: 14px; border-width: 2px 0 0 2px; }
+    .hv-corner.tr { top: 44px; right: 14px; border-width: 2px 2px 0 0; }
+    .hv-corner.bl { bottom: 14px; left: 14px; border-width: 0 0 2px 2px; }
+    .hv-corner.br { bottom: 14px; right: 14px; border-width: 0 2px 2px 0; }
+    .hv-card {
+      position: absolute; z-index: 3; display: flex; align-items: center; gap: 12px;
+      background: rgba(20,26,34,0.92); backdrop-filter: blur(10px);
+      border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.45); font-size: 13px; color: var(--text);
+      animation: float-card 6s ease-in-out infinite;
+    }
+    .hv-card small { display: block; color: var(--text3); font-size: 12px; margin-top: 2px; }
+    .hv-card-icon {
+      width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hv-card-icon svg { width: 18px; height: 18px; fill: none; stroke-width: 2; }
+    .hv-card-icon.ok { background: rgba(0,230,118,0.12); }
+    .hv-card-icon.ok svg { stroke: var(--green); }
+    .hv-card-icon.cam { background: var(--accent-dim); }
+    .hv-card-icon.cam svg { stroke: var(--accent); }
+    .hv-card-top { top: 30%; left: -6%; }
+    .hv-card-bottom { bottom: 6%; right: 2%; animation-delay: -3s; }
+    @keyframes float-card { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @media (max-width: 960px) {
+      .hero-layout { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { height: 440px; max-width: 520px; width: 100%; margin: 0 auto; }
+      .hv-card-top { left: 0; }
+    }
+    @media (max-width: 480px) {
+      .hero-visual { height: 340px; }
+      .hv-main { width: 100%; height: 78%; }
+      .hv-second { display: none; }
+      .hv-card { font-size: 12px; padding: 10px 12px; }
+      .hv-card-top { top: auto; bottom: 0; left: 0; }
+      .hv-card-bottom { display: none; }
+    }
     .hero h1 {
       font-size: clamp(38px, 6vw, 68px); font-weight: 700;
       line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 20px;
@@ -362,7 +445,12 @@
       font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
       text-transform: uppercase; padding: 4px 12px; border-radius: 100px;
     }
-    .seg-icon { font-size: 36px; line-height: 1; }
+    .seg-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: var(--accent-dim); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .seg-icon svg { width: 26px; height: 26px; stroke: var(--accent); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
     .seg-card h3 { font-size: 22px; font-weight: 700; }
     .seg-card p { font-size: 14px; color: var(--text2); line-height: 1.6; }
     .seg-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
@@ -511,6 +599,27 @@
       aspect-ratio: 3/4; transition: transform 0.3s, border-color 0.3s;
     }
     .gallery-item:hover { transform: translateY(-4px); border-color: var(--border); }
+    .gallery-item { cursor: zoom-in; }
+
+    /* Visor de fotos */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 500; display: none;
+      align-items: center; justify-content: center;
+      background: rgba(5,7,10,0.94); backdrop-filter: blur(6px); padding: 24px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 100%; max-height: 86vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+    .lb-btn {
+      position: absolute; background: rgba(26,33,48,0.9); border: 1px solid var(--border2);
+      color: var(--text); width: 46px; height: 46px; border-radius: 50%;
+      font-size: 26px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .lb-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .lb-close { top: 18px; right: 18px; }
+    .lb-prev { left: 18px; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 18px; top: 50%; transform: translateY(-50%); }
+    .lb-count { position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; font-size: 13px; color: var(--text3); }
     .gallery-item img {
       width: 100%; height: 100%; object-fit: cover; display: block;
     }
@@ -581,6 +690,70 @@
     }
     .chip:hover { border-color: var(--border); color: var(--text); }
     .chip.selected { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
+    .cform-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .cform-actions .btn-primary, .cform-actions .btn-secondary {
+      width: 100%; justify-content: center; font-size: 15px; padding: 14px 16px; cursor: pointer;
+    }
+    .cform-actions .btn-primary { border: none; }
+    .cform-actions .btn-secondary { background: transparent; }
+    @media (max-width: 520px) { .cform-actions { grid-template-columns: 1fr; } }
+
+    /* ─── CANALES DE CONTACTO ─── */
+    .contact-channels { display: flex; flex-direction: column; gap: 10px; margin-top: 28px; }
+    .channel {
+      display: flex; align-items: center; gap: 14px; text-decoration: none;
+      background: var(--bg); border: 1px solid var(--border2); border-radius: 12px;
+      padding: 14px 16px; transition: border-color 0.2s, transform 0.2s;
+    }
+    .channel:hover { border-color: var(--border); transform: translateX(4px); }
+    .channel-icon {
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--accent-dim); border: 1px solid var(--border);
+    }
+    .channel-icon svg { width: 19px; height: 19px; stroke: var(--accent); fill: none; stroke-width: 1.9; }
+    .channel-icon.wa { background: rgba(37,211,102,0.1); border-color: rgba(37,211,102,0.3); }
+    .channel-icon.wa svg { fill: #25D366; stroke: none; }
+    .channel-label { font-size: 12px; color: var(--text3); }
+    .channel-value { font-size: 15px; color: var(--text); font-weight: 500; word-break: break-all; }
+    .channel-arrow { margin-left: auto; color: var(--accent); font-size: 18px; }
+
+    /* ─── CTA FINAL ─── */
+    .final-cta { padding: 72px 0; }
+    .final-cta-box {
+      position: relative; overflow: hidden; text-align: center;
+      border: 1px solid var(--border); border-radius: 20px; padding: 56px 32px;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(0,201,255,0.16) 0%, transparent 50%),
+        radial-gradient(circle at 85% 100%, rgba(0,119,182,0.22) 0%, transparent 55%),
+        var(--bg2);
+    }
+    .final-cta-box h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 700; line-height: 1.1; margin-bottom: 14px; }
+    .final-cta-box p { color: var(--text2); font-size: 16px; line-height: 1.6; max-width: 540px; margin: 0 auto 30px; }
+    .final-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── BARRA CONTACTO MÓVIL ─── */
+    .mobile-bar { display: none; }
+    @media (max-width: 768px) {
+      .mobile-bar {
+        display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 8px;
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 200;
+        background: rgba(9,12,16,0.96); backdrop-filter: blur(12px);
+        border-top: 1px solid var(--border2);
+        padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+      }
+      .mobile-bar a {
+        display: flex; align-items: center; justify-content: center; gap: 7px;
+        border-radius: 10px; padding: 11px 6px; text-decoration: none;
+        font-family: 'Rajdhani', sans-serif; font-size: 15px; font-weight: 600;
+        color: var(--text); background: var(--surface); border: 1px solid var(--border2);
+      }
+      .mobile-bar a.mb-wa { background: #25D366; color: #fff; border-color: #25D366; }
+      .mobile-bar svg { width: 17px; height: 17px; flex-shrink: 0; }
+      a.wa-float { display: none; }
+      .mobile-sticky { display: none !important; }
+      body { padding-bottom: 68px; }
+    }
 
     /* ─── MARCAS ─── */
     .brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
@@ -829,8 +1002,26 @@
 
 <!-- NAV -->
 <nav>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span>Lun–Sáb 8:00–19:00 · Santiago y Región Metropolitana</span>
+      <div class="topbar-links">
+        <a href="mailto:contacto@guardiantech.cl?subject=Solicitud%20de%20cotizaci%C3%B3n">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+          contacto@guardiantech.cl
+        </a>
+        <a href="tel:+56984442165">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.89 10.8 19.79 19.79 0 01.82 2.18 2 2 0 012.81.01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +56 9 8444 2165
+        </a>
+      </div>
+    </div>
+  </div>
   <div class="container nav-inner">
-    <a href="#" class="logo">Guardian<span>Tech</span></a>
+    <a href="#" class="logo">
+      <svg class="logo-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5l8-3z" fill="rgba(0,201,255,0.12)" stroke="#00c9ff" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke="#00e676" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <b class="logo-word">Guardian<span>Tech</span></b>
+    </a>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#promocion">Promoción</a></li>
@@ -849,6 +1040,7 @@
   <a href="#mobile-servicios" onclick="closeMenu()">Qué hacemos</a>
   <a href="#mobile-casos" onclick="closeMenu()">Trabajos recientes</a>
   <a href="tel:+56984442165" onclick="closeMenu()">Llamar</a>
+  <a href="mailto:contacto@guardiantech.cl?subject=Solicitud%20de%20cotizaci%C3%B3n" onclick="closeMenu()">✉ contacto@guardiantech.cl</a>
   <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20vi%20su%20sitio%20y%20quiero%20cotizar%20un%20servicio%20de%20cámaras%20de%20seguridad." class="nav-mobile-cta">Hablar por WhatsApp</a>
 </div>
 
@@ -867,7 +1059,7 @@
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
-  <div class="container">
+  <div class="container hero-layout">
     <div class="hero-content">
       <div class="tag">Casas · Negocios · Condominios · Edificios</div>
       <h1>Instalación de <span>cámaras de seguridad</span> en Santiago</h1>
@@ -882,7 +1074,8 @@
           Llamar Ahora
         </a>
       </div>
-      <div class="hero-badge-resp">
+      <p class="hero-mail">¿Prefieres correo? Escríbenos a <a href="mailto:contacto@guardiantech.cl?subject=Solicitud%20de%20cotizaci%C3%B3n">contacto@guardiantech.cl</a></p>
+      <div class="hero-badge-resp" style="margin-top: 20px;">
         <span class="badge-dot"></span>
         Atención en Santiago y Región Metropolitana · Lun–Sáb 8:00–19:00
       </div>
@@ -891,6 +1084,24 @@
         <div class="stat-item"><div class="stat-num">Hikvision</div><div class="stat-label">Equipos y configuración</div></div>
         <div class="stat-item"><div class="stat-num">Dahua</div><div class="stat-label">DVR/NVR y acceso remoto</div></div>
         <div class="stat-item"><div class="stat-num">RM</div><div class="stat-label">Cobertura en Santiago</div></div>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hv-main">
+        <img src="img/trabajo-6.jpg.jpeg" alt="">
+        <div class="hv-rec"><span class="hv-rec-dot">REC · CAM 01</span><span id="hv-clock">--:--:--</span></div>
+        <span class="hv-corner tl"></span><span class="hv-corner tr"></span>
+        <span class="hv-corner bl"></span><span class="hv-corner br"></span>
+      </div>
+      <div class="hv-second"><img src="img/lascondes-3.jpeg" alt=""></div>
+      <div class="hv-card hv-card-top">
+        <span class="hv-card-icon ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <div>Instalación finalizada<small>Av. La Plaza, Las Condes</small></div>
+      </div>
+      <div class="hv-card hv-card-bottom">
+        <span class="hv-card-icon cam"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
+        <div>Tus cámaras en vivo<small>desde el celular, 24/7</small></div>
       </div>
     </div>
   </div>
@@ -1081,7 +1292,7 @@
     </div>
     <div class="seg-grid">
       <div class="seg-card fade-up">
-        <div class="seg-icon">🏢</div>
+        <div class="seg-icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="1.5"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg></div>
         <h3>Condominios y Edificios</h3>
         <p>Vigilancia de pasillos, estacionamientos y áreas comunes. Control de acceso y video portero IP por piso.</p>
         <ul class="seg-list">
@@ -1094,7 +1305,7 @@
       </div>
       <div class="seg-card fade-up seg-card-featured">
         <div class="seg-badge">Más solicitado</div>
-        <div class="seg-icon">🏠</div>
+        <div class="seg-icon"><svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1v-9.5z"/></svg></div>
         <h3>Casas y Hogares</h3>
         <p>Cámaras en entradas, jardín y garaje. Ve todo desde tu smartphone en tiempo real con alertas instantáneas.</p>
         <ul class="seg-list">
@@ -1106,7 +1317,7 @@
         <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20camaras%20de%20seguridad%20para%20mi%20casa." class="seg-cta">Cotizar para mi casa →</a>
       </div>
       <div class="seg-card fade-up">
-        <div class="seg-icon">🏪</div>
+        <div class="seg-icon"><svg viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9M3 9v11h18V9M3 9h18M9 20v-6h6v6"/><path d="M3 9a3 3 0 006 0 3 3 0 006 0 3 3 0 006 0"/></svg></div>
         <h3>Negocios y Empresas</h3>
         <p>Protege tu local, bodega u oficina. Monitoreo remoto para dueños con cámaras en zonas críticas.</p>
         <ul class="seg-list">
@@ -1546,9 +1757,22 @@
           <div class="cotizar-benefit"><span class="cb-icon">✓</span><span>Presupuesto cerrado sin sorpresas</span></div>
           <div class="cotizar-benefit"><span class="cb-icon">✓</span><span>Instalación en 24–48 horas</span></div>
         </div>
-        <div style="margin-top: 28px;">
-          <div style="font-size: 13px; color: var(--text3); margin-bottom: 8px;">¿Prefieres contacto directo?</div>
-          <a href="https://api.whatsapp.com/send?phone=56984442165" style="color: var(--accent); font-size: 15px; font-weight: 500; text-decoration: none;">+56 9 8444 2165 · WhatsApp</a>
+        <div class="contact-channels">
+          <a class="channel" href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20c%C3%A1maras%20de%20seguridad.">
+            <span class="channel-icon wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.571a.75.75 0 00.932.932l5.724-1.467A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22.5A10.456 10.456 0 016.37 20.82l-.41-.243-4.252 1.09 1.09-4.152-.267-.432A10.46 10.46 0 011.5 12C1.5 6.21 6.21 1.5 12 1.5S22.5 6.21 22.5 12 17.79 22.5 12 22.5z"/></svg></span>
+            <span><span class="channel-label">WhatsApp · respuesta rápida</span><br><span class="channel-value">+56 9 8444 2165</span></span>
+            <span class="channel-arrow">→</span>
+          </a>
+          <a class="channel" href="mailto:contacto@guardiantech.cl?subject=Solicitud%20de%20cotizaci%C3%B3n">
+            <span class="channel-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span>
+            <span><span class="channel-label">Correo · envíanos fotos o planos</span><br><span class="channel-value">contacto@guardiantech.cl</span></span>
+            <span class="channel-arrow">→</span>
+          </a>
+          <a class="channel" href="tel:+56984442165">
+            <span class="channel-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.89 10.8 19.79 19.79 0 01.82 2.18 2 2 0 012.81.01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span>
+            <span><span class="channel-label">Llámanos · Lun–Sáb 8:00–19:00</span><br><span class="channel-value">+56 9 8444 2165</span></span>
+            <span class="channel-arrow">→</span>
+          </a>
         </div>
       </div>
       <div class="cotizar-form-wrap fade-up">
@@ -1556,6 +1780,10 @@
           <div class="cform-row">
             <div class="cform-group"><label>Nombre</label><input type="text" id="cf-nombre" placeholder="Tu nombre"></div>
             <div class="cform-group"><label>Teléfono / WhatsApp</label><input type="tel" id="cf-telefono" placeholder="+56 9 ...."></div>
+          </div>
+          <div class="cform-group">
+            <label>Correo <span style="color: var(--text3); font-weight:400;">(para recibir la cotización formal)</span></label>
+            <input type="email" id="cf-email" placeholder="tucorreo@ejemplo.cl">
           </div>
           <div class="cform-group">
             <label>Tipo de propiedad</label>
@@ -1582,11 +1810,36 @@
             <label>¿Qué necesitas? <span style="color: var(--text3); font-weight:400;">(opcional)</span></label>
             <textarea id="cf-mensaje" placeholder="Cuéntanos sobre tu proyecto..." rows="3"></textarea>
           </div>
-          <button onclick="enviarCotizacion()" class="btn-primary" style="width:100%; justify-content: center; font-size:16px; padding: 15px; border: none; cursor: pointer;">
-            Enviar Cotización por WhatsApp
-          </button>
-          <p style="text-align:center; font-size:12px; color: var(--text3); margin-top:10px;">Tu información es privada y no se comparte con terceros.</p>
+          <div class="cform-actions">
+            <button onclick="enviarCotizacion()" class="btn-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.571a.75.75 0 00.932.932l5.724-1.467A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22.5A10.456 10.456 0 016.37 20.82l-.41-.243-4.252 1.09 1.09-4.152-.267-.432A10.46 10.46 0 011.5 12C1.5 6.21 6.21 1.5 12 1.5S22.5 6.21 22.5 12 17.79 22.5 12 22.5z"/></svg>
+              Enviar por WhatsApp
+            </button>
+            <button onclick="enviarCotizacionCorreo()" class="btn-secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+              Enviar por correo
+            </button>
+          </div>
+          <p style="text-align:center; font-size:12px; color: var(--text3); margin-top:2px;">Tu información es privada y no se comparte con terceros.</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final-cta">
+  <div class="container">
+    <div class="final-cta-box fade-up">
+      <div class="tag">Cotización gratuita</div>
+      <h2>Protege lo que más te importa <span class="accent">desde esta semana</span></h2>
+      <p>Cuéntanos qué necesitas y te enviamos un presupuesto cerrado, sin costo ni compromiso. Respondemos en menos de 1 hora.</p>
+      <div class="final-cta-btns">
+        <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20instalacion%20de%20camaras%20de%20seguridad." class="btn-primary">Cotizar por WhatsApp</a>
+        <a href="mailto:contacto@guardiantech.cl?subject=Solicitud%20de%20cotizaci%C3%B3n" class="btn-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+          contacto@guardiantech.cl
+        </a>
       </div>
     </div>
   </div>
@@ -1614,6 +1867,7 @@
         <ul>
           <li><a href="tel:+56984442165">+56 9 8444 2165</a></li>
           <li><a href="https://api.whatsapp.com/send?phone=56984442165">WhatsApp</a></li>
+          <li><a href="mailto:contacto@guardiantech.cl">contacto@guardiantech.cl</a></li>
           <li><a href="#">Santiago, Chile</a></li>
         </ul>
       </div>
@@ -1629,11 +1883,36 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 GuardianTech Seguridad — CCTV para condominios, edificios, casas, empresas y negocios en Santiago de Chile</p>
+      <p>© <span id="year">2026</span> GuardianTech Seguridad — CCTV para condominios, edificios, casas, empresas y negocios en Santiago de Chile</p>
       <p>Diseñado para proteger lo que más importa</p>
     </div>
   </div>
 </footer>
+
+<!-- BARRA DE CONTACTO MÓVIL -->
+<div class="mobile-bar">
+  <a class="mb-wa" href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20instalacion%20de%20camaras%20de%20seguridad.">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.571a.75.75 0 00.932.932l5.724-1.467A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22.5A10.456 10.456 0 016.37 20.82l-.41-.243-4.252 1.09 1.09-4.152-.267-.432A10.46 10.46 0 011.5 12C1.5 6.21 6.21 1.5 12 1.5S22.5 6.21 22.5 12 17.79 22.5 12 22.5z"/></svg>
+    WhatsApp
+  </a>
+  <a href="tel:+56984442165">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.89 10.8 19.79 19.79 0 01.82 2.18 2 2 0 012.81.01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Llamar
+  </a>
+  <a href="mailto:contacto@guardiantech.cl?subject=Solicitud%20de%20cotizaci%C3%B3n">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+    Correo
+  </a>
+</div>
+
+<!-- VISOR DE FOTOS -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto de instalación">
+  <button class="lb-btn lb-close" onclick="closeLightbox()" aria-label="Cerrar">×</button>
+  <button class="lb-btn lb-prev" onclick="stepLightbox(-1)" aria-label="Anterior">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-btn lb-next" onclick="stepLightbox(1)" aria-label="Siguiente">›</button>
+  <div class="lb-count" id="lb-count"></div>
+</div>
 
 <!-- WHATSAPP FLOTANTE -->
 <a href="https://api.whatsapp.com/send?phone=56984442165&text=Hola,%20quiero%20cotizar%20instalacion%20de%20camaras%20de%20seguridad." class="wa-float" aria-label="Contactar por WhatsApp">
@@ -1748,30 +2027,102 @@
     updateKit();
   })();
 
-  function enviarCotizacion() {
-    const nombre = document.getElementById('cf-nombre').value.trim();
-    const telefono = document.getElementById('cf-telefono').value.trim();
-    const comuna = document.getElementById('cf-comuna').value.trim();
-    const tipo = document.querySelector('#cf-tipo .chip.selected')?.textContent || 'No especificado';
-    const camaras = document.querySelector('#cf-camaras .chip.selected')?.textContent || 'No especificado';
-    const mensaje = document.getElementById('cf-mensaje').value.trim();
-
-    if (!nombre || !telefono) {
+  // Datos del formulario de cotización (null si falta nombre o teléfono)
+  function datosCotizacion() {
+    const d = {
+      nombre: document.getElementById('cf-nombre').value.trim(),
+      telefono: document.getElementById('cf-telefono').value.trim(),
+      email: document.getElementById('cf-email').value.trim(),
+      comuna: document.getElementById('cf-comuna').value.trim(),
+      tipo: document.querySelector('#cf-tipo .chip.selected')?.textContent.replace(/^[^\p{L}]+/u, '').trim() || 'No especificado',
+      camaras: document.querySelector('#cf-camaras .chip.selected')?.textContent.trim() || 'No especificado',
+      mensaje: document.getElementById('cf-mensaje').value.trim()
+    };
+    if (!d.nombre || !d.telefono) {
       alert('Por favor ingresa tu nombre y teléfono para continuar.');
-      return;
+      return null;
     }
-
-    let msg = `Hola GuardianTech! Quiero cotizar una instalación de cámaras:%0A%0A`;
-    msg += `👤 *Nombre:* ${nombre}%0A`;
-    msg += `📱 *Teléfono:* ${telefono}%0A`;
-    msg += `🏠 *Tipo:* ${tipo}%0A`;
-    msg += `📍 *Comuna:* ${comuna || 'No indicada'}%0A`;
-    msg += `📷 *Cámaras aprox.:* ${camaras}%0A`;
-    if (mensaje) msg += `💬 *Detalles:* ${mensaje}%0A`;
-    msg += `%0A¿Pueden enviarme una cotización?`;
-
-    window.open(`https://api.whatsapp.com/send?phone=56984442165&text=${msg}`, '_blank');
+    return d;
   }
+
+  // Enviar cotización por WhatsApp
+  function enviarCotizacion() {
+    const d = datosCotizacion();
+    if (!d) return;
+
+    let msg = `Hola GuardianTech! Quiero cotizar una instalación de cámaras:\n\n`;
+    msg += `👤 *Nombre:* ${d.nombre}\n`;
+    msg += `📱 *Teléfono:* ${d.telefono}\n`;
+    if (d.email) msg += `✉️ *Correo:* ${d.email}\n`;
+    msg += `🏠 *Tipo:* ${d.tipo}\n`;
+    msg += `📍 *Comuna:* ${d.comuna || 'No indicada'}\n`;
+    msg += `📷 *Cámaras aprox.:* ${d.camaras}\n`;
+    if (d.mensaje) msg += `💬 *Detalles:* ${d.mensaje}\n`;
+    msg += `\n¿Pueden enviarme una cotización?`;
+
+    window.open(`https://api.whatsapp.com/send?phone=56984442165&text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  // Enviar cotización por correo corporativo
+  function enviarCotizacionCorreo() {
+    const d = datosCotizacion();
+    if (!d) return;
+
+    const asunto = `Solicitud de cotización - ${d.tipo} - ${d.comuna || 'Santiago'}`;
+    let cuerpo = `Hola GuardianTech,\n\nQuiero solicitar una cotización de instalación de cámaras de seguridad.\n\n`;
+    cuerpo += `Nombre: ${d.nombre}\n`;
+    cuerpo += `Teléfono / WhatsApp: ${d.telefono}\n`;
+    if (d.email) cuerpo += `Correo: ${d.email}\n`;
+    cuerpo += `Tipo de propiedad: ${d.tipo}\n`;
+    cuerpo += `Comuna: ${d.comuna || 'No indicada'}\n`;
+    cuerpo += `Cámaras aprox.: ${d.camaras}\n`;
+    if (d.mensaje) cuerpo += `\nDetalles:\n${d.mensaje}\n`;
+    cuerpo += `\nQuedo atento/a a su respuesta.\n${d.nombre}`;
+
+    window.location.href = `mailto:contacto@guardiantech.cl?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+  }
+
+  // Reloj tipo cámara en el hero
+  const hvClock = document.getElementById('hv-clock');
+  function tickClock() {
+    hvClock.textContent = new Date().toLocaleTimeString('es-CL', { hour12: false });
+  }
+  tickClock();
+  setInterval(tickClock, 1000);
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Visor de fotos de la galería
+  const lbImages = Array.from(document.querySelectorAll('.gallery-item img'));
+  let lbIndex = 0;
+  function showLightbox(i) {
+    lbIndex = (i + lbImages.length) % lbImages.length;
+    const img = lbImages[lbIndex];
+    document.getElementById('lb-img').src = img.src;
+    document.getElementById('lb-img').alt = img.alt;
+    document.getElementById('lb-count').textContent = `${lbIndex + 1} / ${lbImages.length}`;
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function stepLightbox(dir) { showLightbox(lbIndex + dir); }
+  lbImages.forEach((img, i) => {
+    img.parentElement.addEventListener('click', () => {
+      showLightbox(i);
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  document.getElementById('lightbox').addEventListener('click', e => {
+    if (e.target.id === 'lightbox') closeLightbox();
+  });
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') stepLightbox(-1);
+    if (e.key === 'ArrowRight') stepLightbox(1);
+  });
 
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(q => {
