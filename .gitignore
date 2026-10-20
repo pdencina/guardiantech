@@ -1,0 +1,5 @@
+# Herramientas internas: se usan desde este computador y no se publican
+admin.html
+
+# Configuración local de Claude Code
+.claude/
